@@ -1,0 +1,56 @@
+@font-face{
+  font-family: KB;
+  src: local('../fonts/KBFGTextL.woff') format('woff')
+}
+
+html,body {
+  width:100%;
+  height:100%;
+  padding:0;
+  margin:0;
+  font: 10px "KB";
+}
+
+.overlay_section{
+  background-color:#ffcc01;
+  position: absolute;
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width:100%;
+  height:100%;
+}
+
+.init_logo{
+  width: 40%;
+  padding-top:40%;
+  background-image: url('../images/kb_logo.png');
+  background-size: 100% 100%;
+  border-bottom: 2px solid black;
+}
+
+.inittext_container{
+  margin-top:4rem;
+  width:40%;
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-size:2.5rem;
+}
+
+.inittext_gradient{
+  width:75%;
+  font-size:8rem;
+  display:flex;
+  justify-content: space-around;
+}
+
+.inittext_sub{
+  width:75%;
+  padding:1rem 0rem;
+  background-color:black;
+  color:white;
+  text-align: center;
+}
