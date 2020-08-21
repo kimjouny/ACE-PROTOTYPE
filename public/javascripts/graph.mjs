@@ -126,10 +126,16 @@ OVERLAY_BTN.addEventListener('click',()=>{
 });
 
 /*SLIDER EVENT LISTENER */
-document.getElementById('range_slider').addEventListener('change',(e)=>{
+const SLIDER=document.getElementById('range_slider');
+SLIDER.addEventListener('change',(e)=>{
   const AGE_TEXT=document.getElementsByClassName('age_input')[0];
   AGE_TEXT.innerHTML=e.target.value;
 });
+
+SLIDER.addEventListener('input',(e)=>{
+  const AGE_TEXT=document.getElementsByClassName('age_input')[0];
+  AGE_TEXT.innerHTML=e.target.value;
+})
 
 /*CLOSE BTN EVENT */
 document.getElementsByClassName('overlay_close_btn')[0].addEventListener('click',()=>{
