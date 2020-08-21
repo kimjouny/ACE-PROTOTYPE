@@ -10,6 +10,7 @@ let dataset=[
     0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0
 ];
+let temp_dataset;
 
 for(let i=0;i<CUSTOMERS[0].pensions.length;i++){
     for(let j=0;j<numDataPoints;j++){
@@ -17,12 +18,14 @@ for(let i=0;i<CUSTOMERS[0].pensions.length;i++){
     }
 }
 
+temp_dataset=dataset;
+
 var data = {
   labels: Array.apply(null, Array(numDataPoints)).map(function() {
     return '';
   }),
   datasets: [{
-    data: dataset,
+    data: temp_dataset,
     pointRadius: 0,
     borderWidth: 10,
     borderColor: '#50953a',
@@ -30,7 +33,7 @@ var data = {
   }]
 };
 
-new Chart(ctx, {
+let CHARTJS=new Chart(ctx, {
   type: 'line',
   data: data,
   options: {
@@ -130,6 +133,16 @@ const SLIDER=document.getElementById('range_slider');
 SLIDER.addEventListener('change',(e)=>{
   const AGE_TEXT=document.getElementsByClassName('age_input')[0];
   AGE_TEXT.innerHTML=e.target.value;
+  /* update graph */
+  temp_dataset=dataset.slice(0,e.target.value-54)
+  CHARTJS.data.labels=Array.apply(null, Array(e.target.value-54)).map(function() {
+    return '';
+  });
+  CHARTJS.data.datasets.data=temp_dataset;
+  CHARTJS.update();
+  /**x axis width update */
+  const X_AXIS=document.getElementsByClassName('chartJS_agecontainer')[0]
+  X_AXIS.style.width=`${36/(e.target.value-54)*100}%`
 });
 
 SLIDER.addEventListener('input',(e)=>{

@@ -13,6 +13,7 @@
   padding:0% 0%;
   border-radius: 3rem;
   background-color: #f0e1ca;
+  overflow: hidden;
 }
 
 .chartJS_text{
@@ -49,46 +50,13 @@
 
 .chartJS_agecontainer{
   display:flex;
+  widows: 100%;
   font-size:3rem;
   list-style:none;
   justify-content: space-between;
-  padding:0 0.5%;
+  padding:0;
   color:#675b43;
   font-weight: bold;
-}
-
-.chartJS_edit_container{
-  margin-top:3%;
-  display:flex;
-  justify-content: space-between;
-  width:100%;
-  height:auto;
-}
-
-.chartJS_edit{
-  width:42.5%;
-  color:white;
-  display:flex;
-  align-items: center;
-  justify-content: center;
-  padding: 3% 0;
-  font-size: 4rem;
-  border-radius: 2rem;
-  transition:background-color 0.5s;
-}
-
-.edit_spend{
-  margin-left: 5%;
-  background-color:#f7ac00;
-}
-
-.edit_age{
-  margin-right:5%;
-  background-color:#887a64;
-}
-
-.edit_selected{
-  background-color:white
 }
 
 .chartJS_spend_container{
@@ -118,15 +86,6 @@
   font-weight: bold;
   padding:1% 0;
   font-size:5rem;
-}
-
-.spend_close_btn{
-  width:4rem;
-  height:4rem;
-  color:transparent;
-  background-image: url(../assets/images/close_btn.png);
-  background-size: 3rem 3rem;
-  background-repeat: no-repeat;
 }
 
 .chartJS_spend_row{
