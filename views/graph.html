@@ -3,7 +3,7 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/chartJs.css">
     <script type="module" src="javascripts/graph.mjs"></script>
     <script type="text/javascript" src="javascripts/Chart.bundle.min.js"></script>
-
+    <link rel="stylesheet" type="text/css" href="stylesheets/slider.css">
 </head>
 <!--연금 나이 col 36개-->
 <body>
@@ -25,18 +25,22 @@
             </ul>
         </div>
     </section>
-    <section class="chartJS_edit_container">
-        <div data-color="#f7ac00" class="chartJS_edit edit_spend">지출 조절</div>
-        <div data-color="#887a64" class="chartJS_edit edit_age">나이 조절</div>
+    <section class="control_overlay_btn_container">
+        <div class="control_overlay_btn_wrapper">
+            <div class="control_overlay_btn_icon"></div>
+            <div class="control_overlay_btn_text">그래프 조절하기</div>
+        </div>
     </section>
-    <section class="chartJS_spend_container">
+    <section class="sample_footer_container">
+        this is footer section
+    </section>
+    <section class="chartJS_overlay_container">
         <div class="chartJS_spend_wrapper">
             <div class="spend_text_wrapper">
                 <div class="spend_text">
                     미래생활비 : 
                     <span class="spend_input">170</span>만원
                 </div>
-                <div class="spend_close_btn"></div>
             </div>
             <ul class="chartJS_spend_row">
                 <li data-spend="170" class="chartJS_spend_element spend_selected">기본형</li>
@@ -45,6 +49,19 @@
                 <li data-spend="265" class="chartJS_spend_element">여가형</li>
                 <li data-spend="360" class="chartJS_spend_element">운용형</li>
             </ul>
+        </div>
+        <div class="chartJS_spend_wrapper">
+            <div class="spend_text_wrapper">
+                <div class="spend_text">
+                    기대수명 : 
+                    <span class="age_input">90</span>세
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="slider">
+                <input id="range_slider" type = "range" min="56" max="90" value="90" />              
+            </div>
         </div>
     </section>
 </body>

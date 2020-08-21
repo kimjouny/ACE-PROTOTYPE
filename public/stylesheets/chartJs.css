@@ -102,14 +102,12 @@
 }
 
 .chartJS_spend_wrapper{
+  margin-top: 5%;
   display:flex;
   flex-direction: column;
   align-items: center;
   width:90%;
-  background-color:#f7f6f6;
-  padding: 3% 0;
-  border: 1px solid silver;
-  border-radius: 2rem;
+  padding: 3% 0 0 0;
 }
 
 .spend_text_wrapper{
@@ -120,14 +118,6 @@
   font-weight: bold;
   padding:1% 0;
   font-size:5rem;
-}
-
-.spend_text{
-
-}
-
-.spend_input{
-
 }
 
 .spend_close_btn{
@@ -142,7 +132,7 @@
 .chartJS_spend_row{
   margin:0;
   padding:0;
-  margin-top:2%;
+  margin-top:5%;
   list-style: none;
   display:flex;
   width:100%;
@@ -171,6 +161,75 @@
   width:90%;
   text-align:center;
   padding:3% 0;
-  background-color: #f7ac00;
+
   color:white;
+}
+
+.control_overlay_btn_container{
+  margin-top: 2%;
+  width:100%;
+  border-radius:  3rem;
+  transition:transform 0.5s;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.control_overlay_btn_wrapper{
+  padding:1% 0;
+  display:flex;
+  width:90%;
+  background-color: rgba(247, 172, 0, 1);
+  border-radius: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.control_overlay_btn_icon{
+  width:8rem;
+  height:8rem;
+  background-image: url(../images/control.png);
+  background-size:80% 80%;  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+.control_overlay_btn_text{
+  
+  color:white;
+  font-size:4rem;
+}
+
+.control_expand{
+  transform:translateY(200%)
+}
+
+.sample_footer_container{
+  position: fixed;
+  bottom:0;
+  width:100%;
+  height:8%;
+  border-top: 1px solid gray;
+  background-color: white;
+  display:flex;
+  color:gray;
+  justify-content: center;
+  align-items: center;
+  font-size:4rem;
+}
+
+.chartJS_overlay_container{
+  width:100%;
+  height:50%;
+  position:fixed;
+  bottom:-50%;
+  background-color: #c9d5a1;
+  border-radius: 4rem 4rem 0 0;
+  display:flex;
+  flex-direction: column;
+  transition:transform 0.5s;
+  align-items: center;
+}
+
+.overlay_active{
+  transform:translateY(-100%)
 }

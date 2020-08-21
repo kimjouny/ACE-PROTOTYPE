@@ -52,7 +52,7 @@ new Chart(ctx, {
   }
 });
 
-const SPEND_OPTIONS=document.getElementsByClassName('chartJS_spend_container')[0];
+const SPEND_OPTIONS=document.getElementsByClassName('chartJS_overlay_container')[0];
 SPEND_OPTIONS.addEventListener('click',(e)=>{
   switch(e.target.tagName){
     case 'LI':{
@@ -115,31 +115,18 @@ const changeHorozontal=(spendInput)=>{
   }
 }
 
-const EDIT_BUTTONS=document.getElementsByClassName('chartJS_edit_container')[0];
-EDIT_BUTTONS.addEventListener('click',(e)=>{
-  if(e.target.classList.length==3){
-    e.target.classList.remove('edit_selected')
-    e.target.style.color='white'
-    e.target.style.border='none'
-    if(e.target.classList[1]=='edit_spend'){
-      document.getElementsByClassName('chartJS_spend_container')[0].style.display='none';
-    }
-    return;
+const OVERLAY_BTN=document.getElementsByClassName('control_overlay_btn_container')[0];
+OVERLAY_BTN.addEventListener('click',()=>{
+  const OVERLAY_OUT=document.getElementsByClassName('chartJS_overlay_container')[0];
+  if(OVERLAY_OUT.classList.length===1){
+    OVERLAY_OUT.classList.add('overlay_active'); 
+    return; 
   }
-  editUnselectAll()
-  e.target.classList.add('edit_selected');
-  e.target.style.color=e.target.dataset.color
-  e.target.style.border=`1px solid ${e.target.dataset.color}`
-  if(e.target.classList[1]=='edit_spend'){
-    document.getElementsByClassName('chartJS_spend_container')[0].style.display='flex';
-  }
-})
+  OVERLAY_OUT.classList.remove('overlay_active');
+});
 
-const editUnselectAll=()=>{
-  const BUTTONS=EDIT_BUTTONS.getElementsByClassName('chartJS_edit');
-  for(let i=0; i<BUTTONS.length;i++){
-    BUTTONS[i].classList.remove('edit_selected');
-    BUTTONS[i].style.color='white'
-    BUTTONS[i].style.border=`none`
-  }
-}
+/*SLIDER EVENT LISTENER */
+document.getElementById('range_slider').addEventListener('change',(e)=>{
+  const AGE_TEXT=document.getElementsByClassName('age_input')[0];
+  AGE_TEXT.innerHTML=e.target.value;
+});
