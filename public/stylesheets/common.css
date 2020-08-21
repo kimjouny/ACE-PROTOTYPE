@@ -1,9 +1,14 @@
+@font-face{
+    font-family: KB;
+    src: url('../fonts/KBFGTextL.woff') format('woff')
+}
+
 html,body{
     padding:0;
     margin:0;
     width: 100%;
     height:100%;
     background-color: white;
-    font-size: 10px;
+    font: 10px 'KB';
     overflow: scroll;
 }
