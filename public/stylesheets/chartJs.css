@@ -233,3 +233,23 @@
 .overlay_active{
   transform:translateY(-100%)
 }
+
+
+.overlay_close{
+  width:100%;
+  position: absolute;
+  bottom:5%;
+  display:flex;
+  justify-content: center;
+}
+
+.overlay_close_btn{
+  width:15%;
+  padding-top: 15%;
+  background-image: url(../images/close_btn.png);
+  background-size: 30% 30%;
+  background-repeat: no-repeat;
+  background-color:white;
+  background-position: 50% 50%;
+  border-radius:100%;
+}

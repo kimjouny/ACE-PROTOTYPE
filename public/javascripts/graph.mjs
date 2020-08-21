@@ -114,10 +114,10 @@ const changeHorozontal=(spendInput)=>{
     default:{}
   }
 }
-
+const OVERLAY_OUT=document.getElementsByClassName('chartJS_overlay_container')[0];
 const OVERLAY_BTN=document.getElementsByClassName('control_overlay_btn_container')[0];
 OVERLAY_BTN.addEventListener('click',()=>{
-  const OVERLAY_OUT=document.getElementsByClassName('chartJS_overlay_container')[0];
+  
   if(OVERLAY_OUT.classList.length===1){
     OVERLAY_OUT.classList.add('overlay_active'); 
     return; 
@@ -129,4 +129,9 @@ OVERLAY_BTN.addEventListener('click',()=>{
 document.getElementById('range_slider').addEventListener('change',(e)=>{
   const AGE_TEXT=document.getElementsByClassName('age_input')[0];
   AGE_TEXT.innerHTML=e.target.value;
+});
+
+/*CLOSE BTN EVENT */
+document.getElementsByClassName('overlay_close_btn')[0].addEventListener('click',()=>{
+  OVERLAY_OUT.classList.remove('overlay_active');
 });
