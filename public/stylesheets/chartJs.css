@@ -26,6 +26,7 @@
   font-size:6rem;
   color:#675b43;
   margin-bottom:20%;
+  line-height: 130%;
 }
 
 .chartJS_spendline{
@@ -164,6 +165,9 @@
 
 }
 
+.pension_used{
+  opacity:0.5;
+}
 .control_overlay_btn_container{
   margin-top: 2%;
   width:100%;
@@ -206,7 +210,7 @@
   position: fixed;
   bottom:0;
   width:100%;
-  height:8%;
+  height:10%;
   border-top: 1px solid gray;
   background-color: white;
   display:flex;

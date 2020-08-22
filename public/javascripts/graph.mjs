@@ -133,7 +133,7 @@ document.getElementsByClassName('overlay_close_btn')[0].addEventListener('click'
 /* home pension Interaction  */
 const HOME_PENSION=document.getElementsByClassName('home_pension_wrapper')[0];
 const homePensionHandler=(e)=>{
-  HOME_PENSION.style.opacity='0.5'
+  HOME_PENSION.classList.add('pension_used')
   HOME_PENSION.removeEventListener('click',homePensionHandler)
   ctx.style.transform='translateY(-20%)'
 }
