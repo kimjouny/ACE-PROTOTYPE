@@ -16,6 +16,10 @@
   overflow: hidden;
 }
 
+#myChart{
+  transition:transform 0.5s;
+}
+
 .chartJS_text{
   margin-top:5%;
   margin-left:5%;
@@ -26,7 +30,7 @@
 
 .chartJS_spendline{
   position:absolute;
-  top:60%;
+  top:56%;
   border:none;
   color:rgba(255, 255, 255, 0);
   width:100%;
@@ -38,7 +42,7 @@
 .chartJS_spendtext{
   border-radius:3rem;
   position:absolute;
-  top:60%;
+  top:56%;
   padding:2rem;
   font-size:4rem;
   background-color:rgba(255, 193, 3, 0.4);
@@ -122,6 +126,42 @@
   padding:3% 0;
 
   color:white;
+}
+
+.home_pension_container{
+  margin-top: 3rem;
+  font-size:4rem;
+  color:white;
+  width:100%;
+  display:flex;
+  justify-content: center;
+}
+
+.home_pension_wrapper{
+  padding: 5% 0;
+  background-color: #419fe8;
+  border-radius: 3rem;
+  width:90%;
+  background-image: url(../images/home_pension_icon.png);
+  background-repeat: no-repeat;
+  background-size:20%;
+  background-position: 90% 50%;
+  transition:opacity 0.5s;
+}
+
+.home_pension_text{
+  margin-left: 5%;
+}
+
+.home_pension_btn{
+  margin-top: 5%;
+  width:fit-content;
+  margin-left: 5%;
+  padding:3%;
+  font-size:3rem;
+  background-color:#eda190;
+  border-radius: 2rem;
+
 }
 
 .control_overlay_btn_container{

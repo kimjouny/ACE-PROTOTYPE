@@ -88,34 +88,9 @@ SPEND_OPTIONS.addEventListener('click',(e)=>{
 const changeHorozontal=(spendInput)=>{
   const SPEND_LINE=document.getElementsByClassName('chartJS_spendline')[0];
   const SPEND_BOX=document.getElementsByClassName('chartJS_spendtext')[0];
-  switch(spendInput){
-    case '170':{
-      SPEND_LINE.style.top='60%';
-      SPEND_BOX.style.top='60%';
-      break;
-    }
-    case '210':{
-      SPEND_LINE.style.top='50%';
-      SPEND_BOX.style.top='50%';
-      break;
-    }
-    case '240':{
-      SPEND_LINE.style.top='45%';
-      SPEND_BOX.style.top='45%';
-      break;
-    }
-    case '265':{
-      SPEND_LINE.style.top='40%';
-      SPEND_BOX.style.top='40%';
-      break;
-    }
-    case '360':{
-      SPEND_LINE.style.top='30%';
-      SPEND_BOX.style.top='30%';
-      break;
-    }
-    default:{}
-  }
+  const spend_ratio=170/spendInput*56
+  SPEND_LINE.style.top=`${spend_ratio}%`
+  SPEND_BOX.style.top=`${spend_ratio}%`
 }
 const OVERLAY_OUT=document.getElementsByClassName('chartJS_overlay_container')[0];
 const OVERLAY_BTN=document.getElementsByClassName('control_overlay_btn_container')[0];
@@ -154,3 +129,13 @@ SLIDER.addEventListener('input',(e)=>{
 document.getElementsByClassName('overlay_close_btn')[0].addEventListener('click',()=>{
   OVERLAY_OUT.classList.remove('overlay_active');
 });
+
+/* home pension Interaction  */
+const HOME_PENSION=document.getElementsByClassName('home_pension_wrapper')[0];
+const homePensionHandler=(e)=>{
+  HOME_PENSION.style.opacity='0.5'
+  HOME_PENSION.removeEventListener('click',homePensionHandler)
+  ctx.style.transform='translateY(-20%)'
+}
+HOME_PENSION.addEventListener('click',homePensionHandler)
+
