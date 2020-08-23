@@ -85,7 +85,7 @@ html,body{
 
 .common_footer_container{
     width:100%;
-    height:auto;
+    min-height:15rem;
     border-top: 1px solid gray;
     background-color: white;
     display:flex;
