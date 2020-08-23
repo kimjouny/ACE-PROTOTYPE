@@ -1,7 +1,7 @@
 import {CUSTOMERS} from './pensionData.mjs'
-import { ICON_BUILD } from './iconBuilder.mjs';
+// import { ICON_BUILD } from './iconBuilder.mjs';
 
-ICON_BUILD();
+// ICON_BUILD();
 
 const ctx = document.getElementById("myChart");
 let numDataPoints = 36;
