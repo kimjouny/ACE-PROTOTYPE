@@ -21,9 +21,71 @@ html,body{
     overflow: scroll;
 }
 
-.common_footer_container{
+.common_header_container{
     width:100%;
     height:15rem;
+    border-bottom: 1px solid gray;
+    background-color: white;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size:4rem;
+  }
+
+.common_header_wrapper{
+    width:95%;
+    display:flex;
+    justify-content: space-between;    
+    align-items: center;
+}
+
+.header_head{
+    width:50%;
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.prev_btn{
+    width: 20%;
+    padding-top: 20%;
+    background-image: url(../images/back.png);
+    background-size: 160% 160%;
+    background-position: 50% 50%;
+}
+
+.head_text{
+    color:black;
+    font-size:4rem;
+    font-weight: bolder;
+    padding-left: 5%;
+}
+
+.header_icons{
+    width:50%;
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.search_btn{
+    width:20%;
+    padding-top: 20%;
+    background-image: url(../images/search.png);
+    background-size: 100% 100%;
+}
+
+.total_btn{    
+    margin-left: 5%;
+    width:20%;
+    padding-top: 20%;
+    background-image: url(../images/totalmenu.png);
+    background-size: 100% 100%;
+}
+
+.common_footer_container{
+    width:100%;
+    height:auto;
     border-top: 1px solid gray;
     background-color: white;
     display:flex;
@@ -32,15 +94,58 @@ html,body{
     align-items: center;
     font-size:4rem;
   }
+
+  .common_footer_wrapper{
+      width:90%;
+      display:flex;
+      justify-content: space-between;
+      align-items: center;
+      list-style: none;
+      margin:0;
+      padding:0;
+  }
+
+  .home_btn{
+    width:15%;
+    padding-top: 15%;
+    background-image: url(../images/home.png);
+    background-size: 130%;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+  }
   
-  .common_header_container{
-    width:100%;
-    height:15rem;
-    border-bottom: 1px solid gray;
-    background-color: white;
-    display:flex;
-    color:gray;
-    justify-content: center;
-    align-items: center;
-    font-size:4rem;
+  .allaccount_btn{
+    width:15%;
+    padding-top: 15%;
+    background-image: url(../images/allaccount.png);
+    background-size: 130%;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+  }
+
+  .quicktransfer_btn{
+    width:15%;
+    padding-top: 15%;
+    background-image: url(../images/quicktransfer.png);
+    background-size: 130%;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+  }
+
+  .financemall_btn{
+    width:15%;
+    padding-top: 15%;
+    background-image: url(../images/financemall.png);
+    background-size: 130%;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+  }
+
+  .callcenter_btn{
+    width:15%;
+    padding-top: 15%;
+    background-image: url(../images/allaccount.png);
+    background-size: 130%;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
   }
