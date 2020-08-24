@@ -14,7 +14,6 @@ const monthlyReqChart=(retireAge, deadAge, reqAsset, finAsset, pubPention, perPe
  
   // 카테고리별 도넛차트 생성
   var pieSeries2 = chart.series.push(new am4charts.PieSeries());
-  
   pieSeries2.dataFields.value = "value";
   pieSeries2.slices.template.propertyFields.fill = "fill";
   pieSeries2.labels.template.fontSize="30";
@@ -125,7 +124,7 @@ const monthlyReqChart=(retireAge, deadAge, reqAsset, finAsset, pubPention, perPe
     "fill": "#B3C9ED"
   }];
   legend.position="right";
-  legend.fontSize=30;
+  legend.fontSize=40;
   legend.maxWidth = undefined;
   
 }

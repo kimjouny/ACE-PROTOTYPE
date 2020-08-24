@@ -16,9 +16,9 @@ border-radius: 3rem;
 }
 
 #chartdiv {
-width: 100%;
+width: 130%;
 height: 50rem;
-transform: translateX(-15%);
+transform: translateX(-18%);
 }
 
 #chartdiv2{
@@ -27,7 +27,6 @@ height:100%;
 }
 
 .pie_text_wrapper{
-    font-weight: bolder;
     width:90%;
     line-height: 130%;
     margin-top: 5%;
@@ -48,6 +47,4 @@ height:100%;
     width:95%;
     font-size: 3rem;
     color:gray;
-
-
 }

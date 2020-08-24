@@ -309,7 +309,7 @@
 
 .chartJS_overlay_container{
   width:100%;
-  height:50%;
+  height:auto;
   position:fixed;
   bottom:-50%;
   background-color: #c9d5a1;
@@ -321,14 +321,13 @@
 }
 
 .overlay_active{
-  transform:translateY(-100%)
+  transform:translateY(-120%)
 }
 
 
 .overlay_close{
+  margin: 10% 0;
   width:100%;
-  position: absolute;
-  bottom:5%;
   display:flex;
   justify-content: center;
 }
