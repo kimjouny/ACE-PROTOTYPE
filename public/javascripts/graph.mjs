@@ -70,7 +70,7 @@ SPEND_OPTIONS.addEventListener('click',(e)=>{
       ACTIVED.classList.remove('spend_selected');
       e.target.classList.add('spend_selected');
       /*change horizontal height */
-      changeHorozontal(e.target.dataset.spend);
+      changeHorozontal(e.target.dataset.spend,e.target.innerHTML);
       break;
     }
     case 'DIV':{
@@ -88,11 +88,12 @@ SPEND_OPTIONS.addEventListener('click',(e)=>{
   }
 });
 
-const changeHorozontal=(spendInput)=>{
+const changeHorozontal=(spendInput,spendtext)=>{
   const SPEND_LINE=document.getElementsByClassName('chartJS_spendline')[0];
   const SPEND_BOX=document.getElementsByClassName('chartJS_spendtext')[0];
   SPEND_LINE.style.top=`${92-1.84*spendInput*12/100}%`
   SPEND_BOX.style.top=`${92-1.84*spendInput*12/100}%`
+  SPEND_BOX.innerHTML=spendtext
 }
 const OVERLAY_OUT=document.getElementsByClassName('chartJS_overlay_container')[0];
 const OVERLAY_BTN=document.getElementsByClassName('control_overlay_btn_container')[0];
