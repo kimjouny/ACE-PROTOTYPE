@@ -1,7 +1,8 @@
 import {CUSTOMERS} from './pensionData.mjs'
-// import { ICON_BUILD } from './iconBuilder.mjs';
+import {monthlyReqChart} from './pie.mjs'
 
-// ICON_BUILD();
+/*PIE SCRIPT START */
+monthlyReqChart(55, 90, 2700000, 200000000, 429051000, 130485000, 199140000);
 
 const ctx = document.getElementById("myChart");
 let numDataPoints = 36;

@@ -7,9 +7,9 @@ router.get('/', function(req, res, next) {
   res.render('index.html');
 });
 
-router.get('/gauge', function(req, res, next) {
+router.get('/lee', function(req, res, next) {
   // res.render('index', { title: 'Express' });
-  res.render('gauge.html');
+  res.render('lee.html');
 });
 
 router.get('/graph', function(req, res, next) {

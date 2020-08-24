@@ -6,6 +6,11 @@
     <script type="module" src="javascripts/graph.mjs"></script>
     <script type="text/javascript" src="javascripts/Chart.bundle.min.js"></script>
     <link rel="stylesheet" type="text/css" href="stylesheets/slider.css">
+    <!-- PIE DEPENENCY -->
+    <script src="javascripts/vendor/pie/core.js"></script>
+    <script src="javascripts/vendor/pie/charts.js"></script>
+    <script src="javascripts/vendor/pie/animated.js"></script>
+    <link rel="stylesheet" type="text/css" href="stylesheets/pie.css">
 </head>
 <body>
     <!-- HEADER -->
@@ -23,6 +28,13 @@
     </section>
     <!-- CONTENT -->
     <section class="page_container">
+        <!-- PIE COMPONENT -->
+        <section class="pie_container">
+            <div class="pie_wrapper">
+              <div id="chartdiv"></div>
+              <div id="chartdiv2"></div>
+            </div>
+          </section>
         <section class="chartJS_container">
             <div class="chartJS_wrapper">
                 <div class="chartJS_text">
