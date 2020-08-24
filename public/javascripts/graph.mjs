@@ -136,10 +136,18 @@ document.getElementsByClassName('overlay_close_btn')[0].addEventListener('click'
 
 /* home pension Interaction  */
 const HOME_PENSION=document.getElementsByClassName('home_pension_wrapper')[0];
-const homePensionHandler=(e)=>{
+const POPUP=document.getElementsByClassName('hpension_popup_container')[0];
+POPUP.getElementsByClassName('hclose_wrapper')[0].addEventListener('click',()=>{
+  POPUP.style.display='none'
+})
+POPUP.getElementsByClassName('estate_btn')[0].addEventListener('click',()=>{
+  POPUP.style.display='none'
   HOME_PENSION.classList.add('pension_used')
   HOME_PENSION.removeEventListener('click',homePensionHandler)
-  ctx.style.transform='translateY(-20%)'
+  ctx.style.transform='translateY(-20%)' 
+})
+const homePensionHandler=(e)=>{
+  POPUP.style.display='flex';
 }
 HOME_PENSION.addEventListener('click',homePensionHandler)
 

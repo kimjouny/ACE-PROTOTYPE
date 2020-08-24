@@ -1,3 +1,122 @@
+.hpension_popup_container{
+  display: none;
+  position: absolute;
+  width:100%;
+  height:100%;
+  background-color: rgba(0, 0, 0, 0.502);
+  z-index: 10;
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+}
+
+.hpension_popup_wrapper{
+  position: relative;
+  width:80%;
+  height:60%;
+  background-color: #419fe8;
+  border-radius: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hpension_title_wrapper{
+  width:90%;
+  display: flex;
+  justify-content: flex-start;
+
+  align-items: center;
+  
+}
+
+.hpension_space_wrapper{
+  padding:5% 0;
+  width:90%;
+  display: flex;
+  justify-content: space-between;
+  
+}
+.hpension_title_text{
+  margin-left: 3%;
+  font-size: 5rem;
+  color:white;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.hpension_title_icon{
+  width:15%;
+  padding-top: 15%;
+  background-image: url(../images/ht_icon.png);
+  background-size: 100% 100%;
+}
+
+.hclose_wrapper{
+  color:white;
+  font-size: 7rem;
+  font-stretch: 200%;
+}
+
+.estate_container{
+  margin-top:10%;
+  width:100%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.estate_wrapper{
+  position: relative;
+  width:90%;
+  display:flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: white;
+  padding:5% 0%;
+  border-radius: 3rem;
+}
+
+.estate_icon{
+  width:15%;
+  padding-top: 15%;
+  background-image: url(../images/building.png);
+  background-size: 100% 100%;
+  margin-left: 5%;
+}
+
+.estate_texts{
+  margin-left: 5%;
+}
+
+.estate_title{
+  font-size:4rem;
+}
+
+.estate_cost{
+  margin-top: 1rem;
+  font-size: 3rem;
+}
+
+.estate_btn_container{
+  display:flex;
+  position: absolute;
+  width:100%;
+  bottom:0%;
+  margin-bottom: 5%;
+  justify-content: center;
+}
+
+.estate_btn{
+  width:90%;
+  padding:5% 0;
+  background-color: orange;
+  border-radius: 3rem;
+  font-size: 4rem;
+  color:white;
+  text-align: center;
+}
+
 .chartJS_container {
     /* margin-top: 5%; */
     padding-top:5%;
