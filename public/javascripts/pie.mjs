@@ -18,38 +18,7 @@ const monthlyReqChart=(retireAge, deadAge, reqAsset, finAsset, pubPention, perPe
     // Let's cut a hole in our Pie chart the size of 40% the radius
     chart.innerRadius = am4core.percent(20);
     
-    // Add and configure Series
-    var pieSeries = chart.series.push(new am4charts.PieSeries());
-    pieSeries.dataFields.value = "value";
-    pieSeries.dataFields.category = "category";
-    pieSeries.slices.template.stroke = am4core.color("#fff");
-    pieSeries.innerRadius = 10;
-    pieSeries.slices.template.fillOpacity = 0.5;
-    
 
-    pieSeries.slices.template.propertyFields.disabled = "labelDisabled2";
-    pieSeries.labels.template.propertyFields.disabled = "labelDisabled";  //큰 조각 라벨
-    pieSeries.ticks.template.propertyFields.disabled = "labelDisabled";   //큰 조각 화살표
-  // chart.legend.disabled="legendDisabled";
-    // Add data
-    pieSeries.data = [{
-      "category": "",
-      "value": monthlyFinAsset+monthlyPerPention+monthlyPubPention+monthlyRetirePention,
-      "labelDisabled":true,
-      "labelDisabled2":true,
-    
-    }, {
-      "category": "부족금액",
-      "value": shortAmount,
-      "labelDisabled" : true
-    }];
-
-
-
-    // Disable sliding out of slices
-    pieSeries.slices.template.states.getKey("hover").properties.shiftRadius = 0;
-    pieSeries.slices.template.states.getKey("hover").properties.scale = 1;
-    
     // Add second series
     var pieSeries2 = chart.series.push(new am4charts.PieSeries());
     pieSeries2.dataFields.value = "value";
@@ -57,6 +26,7 @@ const monthlyReqChart=(retireAge, deadAge, reqAsset, finAsset, pubPention, perPe
     pieSeries2.slices.template.states.getKey("hover").properties.shiftRadius = 0;
     pieSeries2.slices.template.states.getKey("hover").properties.scale = 1;
     pieSeries2.slices.template.propertyFields.fill = "fill";
+    pieSeries2.labels.template.fontSize="30";
     //pieSeries.legend.itemContainers.template.clickable=false;
     // Add data
     pieSeries2.data = [{
@@ -86,6 +56,37 @@ const monthlyReqChart=(retireAge, deadAge, reqAsset, finAsset, pubPention, perPe
     "fill":"#B3C9ED"
   }];
 
+      // Add and configure Series
+      var pieSeries = chart.series.push(new am4charts.PieSeries());
+      pieSeries.dataFields.value = "value";
+      pieSeries.dataFields.category = "category";
+      pieSeries.slices.template.stroke = am4core.color("#fff");
+      pieSeries.innerRadius = 10;
+      pieSeries.slices.template.fillOpacity = 1;
+  
+      pieSeries.slices.template.propertyFields.disabled = "labelDisabled2";
+      pieSeries.labels.template.propertyFields.disabled = "labelDisabled";  //큰 조각 라벨
+      pieSeries.ticks.template.propertyFields.disabled = "labelDisabled";   //큰 조각 화살표
+    // chart.legend.disabled="legendDisabled";
+      // Add data
+      pieSeries.data = [{
+        "category": "",
+        "value": monthlyFinAsset+monthlyPerPention+monthlyPubPention+monthlyRetirePention,
+        "labelDisabled":true,
+        "labelDisabled2":true,
+      
+      }, {
+        "category": "부족금액",
+        "value": shortAmount,
+        "labelDisabled" : true
+      }];
+  
+  
+  
+      // Disable sliding out of slices
+      pieSeries.slices.template.states.getKey("hover").properties.shiftRadius = 0;
+      pieSeries.slices.template.states.getKey("hover").properties.scale = 1;
+      
   
   var slice = pieSeries.slices.template;
   slice.states.getKey("hover").properties.scale = 1;
@@ -95,10 +96,10 @@ const monthlyReqChart=(retireAge, deadAge, reqAsset, finAsset, pubPention, perPe
   slice.states.getKey("active").properties.shiftRadius = 0;
 
   var label = pieSeries.createChild(am4core.Label);   //가운데 합계
-  label.text = "현재 "+Math.round((monthlyFinAsset+monthlyPerPention+monthlyPubPention+monthlyRetirePention)/reqAsset*100)+"% 달성";
+  label.text =  Math.round((monthlyFinAsset+monthlyPerPention+monthlyPubPention+monthlyRetirePention)/reqAsset*100)+"% 달성";
   label.horizontalCenter = "middle";
   label.verticalCenter = "middle";
-  label.fontSize = 30;
+  label.fontSize = 40;
   
   pieSeries.adapter.add("innerRadius", function(innerRadius, target){
     return am4core.percent(40);
@@ -116,7 +117,7 @@ const monthlyReqChart=(retireAge, deadAge, reqAsset, finAsset, pubPention, perPe
     return am4core.percent(80);
   })
 
-  var chart2 = am4core.create("chartdiv2", am4charts.XYChart);
+ /*  var chart2 = am4core.create("chartdiv2", am4charts.XYChart);
   chart2.logo.disabled = true; //arm차트 로고 숨기기
   //chart2.hiddenState.properties.opacity = 0; // this creates initial fade-in
   
@@ -181,7 +182,7 @@ const monthlyReqChart=(retireAge, deadAge, reqAsset, finAsset, pubPention, perPe
   bullet2.label.text = "{valueY.totalPercent.formatNumber('#.00')}%";
   bullet2.locationY = 0.5;
   bullet2.label.fill = am4core.color("#000000");
-  // end am4core.ready()
+  // end am4core.ready() */
 }
 
 export {monthlyReqChart}
