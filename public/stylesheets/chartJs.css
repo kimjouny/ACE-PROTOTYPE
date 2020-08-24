@@ -17,6 +17,16 @@
   overflow: hidden;
 }
 
+.canvas_container{
+  display:flex;
+  justify-content: flex-end;
+  width:100%;
+}
+
+.canvas_wrapper{
+  width:90%;
+}
+
 #myChart{
   transition:transform 0.5s;
 }
@@ -26,15 +36,15 @@
   margin-left:5%;
   font-size:5rem;
   color:#675b43;
-  margin-bottom:20%;
+  margin-bottom:30%;
   line-height: 130%;
 }
 
 .chartJS_spendline{
   position:absolute;
-  top:56%;
+  top:54.464%;
   border:none;
-  color:rgba(255, 255, 255, 0);
+  color:rgba(147, 105, 105, 0);
   width:100%;
   height:1px;
   border-top:1rem dashed rgba(255, 193, 3, 0.4);
@@ -44,7 +54,7 @@
 .chartJS_spendtext{
   border-radius:3rem;
   position:absolute;
-  top:56%;
+  top:54.464%;
   padding:2rem;
   font-size:4rem;
   background-color:rgba(255, 193, 3, 0.4);
@@ -56,13 +66,31 @@
 
 .chartJS_agecontainer{
   display:flex;
-  widows: 100%;
+  width: 90%;
   font-size:3rem;
   list-style:none;
   justify-content: space-between;
   padding:0;
   color:#675b43;
   font-weight: bold;
+  margin-left: 10%;
+} 
+
+.yaxis_wrapper{
+  position: absolute;
+  left:0;
+  top:31%;
+  width:100%;
+  height:60%;
+  display:flex;
+  flex-direction: column-reverse;
+  align-items: flex-start;
+  list-style: none;
+  justify-content: space-between;
+  padding:0;
+  margin:0;
+  font-size: 3rem;
+  padding-left: 2%;
 }
 
 .chartJS_spend_container{

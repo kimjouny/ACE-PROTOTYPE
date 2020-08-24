@@ -91,9 +91,8 @@ SPEND_OPTIONS.addEventListener('click',(e)=>{
 const changeHorozontal=(spendInput)=>{
   const SPEND_LINE=document.getElementsByClassName('chartJS_spendline')[0];
   const SPEND_BOX=document.getElementsByClassName('chartJS_spendtext')[0];
-  const spend_ratio=170/spendInput*56
-  SPEND_LINE.style.top=`${spend_ratio}%`
-  SPEND_BOX.style.top=`${spend_ratio}%`
+  SPEND_LINE.style.top=`${92-1.84*spendInput*12/100}%`
+  SPEND_BOX.style.top=`${92-1.84*spendInput*12/100}%`
 }
 const OVERLAY_OUT=document.getElementsByClassName('chartJS_overlay_container')[0];
 const OVERLAY_BTN=document.getElementsByClassName('control_overlay_btn_container')[0];
@@ -120,7 +119,7 @@ SLIDER.addEventListener('change',(e)=>{
   CHARTJS.update();
   /**x axis width update */
   const X_AXIS=document.getElementsByClassName('chartJS_agecontainer')[0]
-  X_AXIS.style.width=`${36/(e.target.value-54)*100}%`
+  X_AXIS.style.width=`${36/(e.target.value-54)*90}%`
 });
 
 SLIDER.addEventListener('input',(e)=>{
