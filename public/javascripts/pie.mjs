@@ -96,13 +96,13 @@ const monthlyReqChart=(retireAge, deadAge, reqAsset, finAsset, pubPention, perPe
   slice.states.getKey("active").properties.shiftRadius = 0;
 
   var label = pieSeries.createChild(am4core.Label);   //가운데 합계
-  label.text =  Math.round((monthlyFinAsset+monthlyPerPention+monthlyPubPention+monthlyRetirePention)/reqAsset*100)+"% 달성";
+  label.text =  "미래준비율\n"+Math.round((monthlyFinAsset+monthlyPerPention+monthlyPubPention+monthlyRetirePention)/reqAsset*100)+"% 달성";
   label.horizontalCenter = "middle";
   label.verticalCenter = "middle";
   label.fontSize = 40;
   
   pieSeries.adapter.add("innerRadius", function(innerRadius, target){
-    return am4core.percent(40);
+    return am4core.percent(40);s
   })
   
   pieSeries2.adapter.add("innerRadius", function(innerRadius, target){

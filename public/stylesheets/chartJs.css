@@ -183,6 +183,24 @@
   border-bottom:2px solid black;
 }
 
+.diagnose_container{
+  line-height: 140%;
+  margin-top: 3%;
+  font-size: 4rem;
+  color:gray;
+}
+
+.diagnose_wrapper{
+  width:100%;
+  display:flex;
+  justify-content: center;
+}
+
+.diagnose{
+  width:90%;
+
+}
+
 .home_pension_container{
   margin-top: 3rem;
   font-size:4rem;
@@ -205,6 +223,7 @@
 }
 
 .home_pension_text{
+  font-size: 4rem;
   margin-left: 5%;
 }
 
@@ -214,7 +233,8 @@
   margin-left: 5%;
   padding:3%;
   font-size:3rem;
-  background-color:#eda190;
+  background-color:white;
+  color:gray;
   border-radius: 2rem;
 
 }

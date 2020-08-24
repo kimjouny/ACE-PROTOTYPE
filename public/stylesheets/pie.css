@@ -8,8 +8,9 @@ justify-content: center;
 .pie_wrapper{
 width:90%;
 display:flex;
+flex-direction: column;
 justify-content: center;
-align-content: center;
+align-items: center;
 background-color: rgb(240, 238, 238);
 border-radius: 3rem;
 }
@@ -22,4 +23,29 @@ height: 50rem;
 #chartdiv2{
 width: 15%;
 height:100%;
+}
+
+.pie_text_wrapper{
+    font-weight: bolder;
+    width:90%;
+    margin-top: 5%;
+    font-size: 4rem;
+}
+
+.pie_foot_text_wrapper{
+    background-color: white;
+    width:90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3%;
+    border-radius: 1rem;
+}
+.pie_foot_text{
+    padding :3% 0;
+    width:95%;
+    font-size: 3rem;
+    color:gray;
+
+
 }
