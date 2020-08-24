@@ -122,6 +122,7 @@ SLIDER.addEventListener('change',(e)=>{
   /**x axis width update */
   const X_AXIS=document.getElementsByClassName('chartJS_agecontainer')[0]
   X_AXIS.style.width=`${36/(e.target.value-54)*90}%`
+  console.log(changeGaugeText());
 });
 
 SLIDER.addEventListener('input',(e)=>{
@@ -151,3 +152,17 @@ const homePensionHandler=(e)=>{
 }
 HOME_PENSION.addEventListener('click',homePensionHandler)
 
+const changeGaugeText=()=>{
+  let average=temp_dataset.reduce((acc,v)=>{
+    return acc+v;
+  },0)/numDataPoints/12;
+  // console.log(average);
+  if(checkHomePension()){
+    return average+46;
+  }
+  return average;
+}
+
+const checkHomePension=()=>{
+  return HOME_PENSION.classList.length===2?true:false;
+}
