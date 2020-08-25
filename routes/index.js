@@ -12,7 +12,7 @@ router.get('/lee', function(req, res, next) {
   res.render('lee.html');
 });
 
-router.get('/graph', function(req, res, next) {
+router.get('/decumulation', function(req, res, next) {
   // res.render('index', { title: 'Express' });
   res.render('graph.html');
 });
