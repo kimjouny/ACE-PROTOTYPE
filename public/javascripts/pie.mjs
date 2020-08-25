@@ -40,14 +40,14 @@ const monthlyReqChart=(retireAge, deadAge, reqAsset, finAsset, pubPention, perPe
     {
     "category": "개인연금",
     "value": monthlyPerPention,
-    "fill":"#FF4560",
+    "fill":"#B3C9ED",
     "labelDisabled":true,
     },
-  
+    
     {
     "category": "부족금액",
     "value": shortAmount,
-    "fill":"#B3C9ED",
+    "fill":"#FF4560",
     "labelDisabled":true
   }];
 
@@ -58,7 +58,7 @@ const monthlyReqChart=(retireAge, deadAge, reqAsset, finAsset, pubPention, perPe
   pieSeries.slices.template.propertyFields.disabled = "labelDisabled2";
   pieSeries.labels.template.propertyFields.disabled = "labelDisabled";  //큰 조각 라벨
   pieSeries.ticks.template.propertyFields.disabled = "labelDisabled";   //큰 조각 화살표
-
+  pieSeries.slices.template.propertyFields.fill = "fill";
   pieSeries.data = [{
     "category": "",
     "value": monthlyFinAsset+monthlyPerPention+monthlyPubPention+monthlyRetirePention,
@@ -68,7 +68,8 @@ const monthlyReqChart=(retireAge, deadAge, reqAsset, finAsset, pubPention, perPe
   }, {
     "category": "부족금액",
     "value": shortAmount,
-    "labelDisabled" : true
+    "labelDisabled" : true,
+    "fill":"#FF4560"
   }];
 
   pieSeries.adapter.add("innerRadius", function(innerRadius, target){
@@ -118,14 +119,18 @@ const monthlyReqChart=(retireAge, deadAge, reqAsset, finAsset, pubPention, perPe
     "fill": "#FEB019"
   },{
     "name": "개인연금 : " + Math.round(monthlyPerPention/10000)+"만원",
-    "fill": "#FF4560"
+    "fill": "#B3C9ED"
   },{
     "name": "부족금액 : " + Math.round(shortAmount/10000)+"만원",
-    "fill": "#B3C9ED"
+    "fill": "#FF4560"
+    
   }];
   legend.position="right";
   legend.fontSize=40;
   legend.maxWidth = undefined;
+  legend.itemContainers.template.clickable = false;
+    legend.itemContainers.template.focusable = false;
+    legend.itemContainers.template.cursorOverStyle = am4core.MouseCursorStyle.default;
   
 }
 
