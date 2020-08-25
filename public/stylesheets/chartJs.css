@@ -161,7 +161,7 @@
 
 .chartJS_spendline{
   position:absolute;
-  top:54.464%;
+  top:39.008%;
   border:none;
   color:rgba(147, 105, 105, 0);
   width:100%;
@@ -173,7 +173,7 @@
 .chartJS_spendtext{
   border-radius:3rem;
   position:absolute;
-  top:54.464%;
+  top:39.008%;
   padding:2rem;
   font-size:4rem;
   background-color:rgba(255, 193, 3, 0.4);
