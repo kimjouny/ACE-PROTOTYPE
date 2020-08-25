@@ -183,6 +183,30 @@
   transition:top 1s;
 }
 
+.xaxis_age{
+  position:relative;
+}
+
+.yaxis_cost{
+  position: relative;
+}
+.yaxis_grid{
+  position: absolute;
+  left:150%;
+  width:85rem;
+  height:49%;
+  border-bottom: 0.5px solid #c69449;
+}
+
+.xaxis_grid{
+  position: absolute;
+  display:flex;
+  width:49%;
+  height:45rem;
+  top:-46rem;
+  border-right: 0.5px solid #c69449;
+}
+
 .chartJS_agecontainer{
   display:flex;
   width: 90%;
