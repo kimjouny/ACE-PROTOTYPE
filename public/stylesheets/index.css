@@ -1,15 +1,3 @@
-@font-face{
-  font-family: KB;
-  src: url('../fonts/KBFGTextL.woff') format('woff')
-}
-
-html,body {
-  width:100%;
-  height:auto;
-  padding:0;
-  margin:0;
-  font: 10px "KB";
-}
 
 .overlay_section{
   background-color:#ffcc01;

@@ -7,18 +7,8 @@ router.get('/', function(req, res, next) {
   res.render('index.html');
 });
 
-router.get('/lee', function(req, res, next) {
-  // res.render('index', { title: 'Express' });
-  res.render('lee.html');
-});
-
 router.get('/decumulation', function(req, res, next) {
   // res.render('index', { title: 'Express' });
   res.render('graph.html');
-});
-
-router.get('/layout', function(req, res, next) {
-  // res.render('index', { title: 'Express' });
-  res.render('layout.html');
 });
 module.exports = router;

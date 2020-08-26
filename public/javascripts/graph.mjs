@@ -89,12 +89,16 @@ SPEND_OPTIONS.addEventListener('click',(e)=>{
   }
 });
 
+const GRAPH_AREA=document.getElementsByClassName('yaxis_wrapper')[0];
+GRAPH_AREA.addEventListener('click', (e)=>{
+  console.log(e)
+});
+
 const changeHorozontal=(spendInput,spendtext)=>{
   const SPEND_LINE=document.getElementsByClassName('chartJS_spendline')[0];
   const SPEND_BOX=document.getElementsByClassName('chartJS_spendtext')[0];
   SPEND_LINE.style.top=`${92-1.84*spendInput*12/100}%`
-  SPEND_BOX.style.top=`${92-1.84*spendInput*12/100}%`
-  SPEND_BOX.innerHTML=spendtext
+ㅋ  SPEND_BOX.innerHTML=spendtext
 }
 const OVERLAY_OUT=document.getElementsByClassName('chartJS_overlay_container')[0];
 const OVERLAY_BTN=document.getElementsByClassName('control_overlay_btn_container')[0];
@@ -151,7 +155,7 @@ const homePensionHandler=(e)=>{
   POPUP.style.display='flex';
 }
 HOME_PENSION.addEventListener('click',homePensionHandler)
-
+/* 
 const changeGaugeText=()=>{
   let average=temp_dataset.reduce((acc,v)=>{
     return acc+v;
@@ -161,8 +165,8 @@ const changeGaugeText=()=>{
     return average+46;
   }
   return average;
-}
-
+} */
+/* 
 const checkHomePension=()=>{
   return HOME_PENSION.classList.length===2?true:false;
-}
+} */
