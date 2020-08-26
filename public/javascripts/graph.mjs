@@ -98,7 +98,7 @@ const changeHorozontal=(spendInput,spendtext)=>{
   const SPEND_LINE=document.getElementsByClassName('chartJS_spendline')[0];
   const SPEND_BOX=document.getElementsByClassName('chartJS_spendtext')[0];
   SPEND_LINE.style.top=`${92-1.84*spendInput*12/100}%`
-ㅋ  SPEND_BOX.innerHTML=spendtext
+  SPEND_BOX.innerHTML=spendtext;
 }
 const OVERLAY_OUT=document.getElementsByClassName('chartJS_overlay_container')[0];
 const OVERLAY_BTN=document.getElementsByClassName('control_overlay_btn_container')[0];
