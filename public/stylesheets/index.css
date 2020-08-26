@@ -67,3 +67,16 @@
   background-repeat: no-repeat;
   background-position: 20% 0%;
 }
+
+/* slide container */
+.slide_container{
+  position: absolute;
+  width:100%;
+  height:85%;
+  background-color: #fefefe;
+  bottom:-30%;
+   /*when is activated*/
+  /* bottom:7%; */
+  border-radius: 5rem;
+  left:0;
+}
