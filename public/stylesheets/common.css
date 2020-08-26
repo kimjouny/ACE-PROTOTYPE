@@ -34,6 +34,7 @@ html,body{
 
 .common_header_wrapper{
     width:95%;
+    height: 100%;
     display:flex;
     justify-content: space-between;    
     align-items: center;

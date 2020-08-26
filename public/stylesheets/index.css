@@ -1,8 +1,9 @@
 
+/* INIT DISPLAY */
 .overlay_section{
   background-color:#ffcc01;
   position: absolute;
-  display:flex;
+  display:none;
   justify-content: center;
   flex-direction: column;
   align-items: center;
@@ -41,4 +42,28 @@
   background-color:black;
   color:white;
   text-align: center;
+}
+
+/*WELCOME COMPONENT*/
+.welcome_container{
+  width:100%;
+  height:70%;
+  background-image: url(../images/welcome_display.jpg);
+  background-repeat: no-repeat;
+  background-size: 130% 130%;
+  background-position:50% 0%;
+}
+
+.transparent_back{
+  background-color: rgba(255, 255, 255, 0) !important;
+  border: none !important;
+}
+
+.kb_logo{
+  width:100%;
+  padding-top: 10%;
+  background-image: url(../images/kblogo_mono.png);
+  background-size: 70% 120%;
+  background-repeat: no-repeat;
+  background-position: 20% 0%;
 }
