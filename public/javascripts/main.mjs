@@ -43,3 +43,4 @@ SCROLL_VIEW.addEventListener('touchmove',handleTouchMove)
 
 const PROTOTYPES=document.getElementsByClassName('version_el');
 PROTOTYPES[0].addEventListener('click',()=>window.location.href="/v1.0")
+PROTOTYPES[1].addEventListener('click',()=>window.location.href="/v1.1")
