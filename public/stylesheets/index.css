@@ -76,8 +76,7 @@
   height:85%;
   background-color: #fefefe;
   bottom:-30%;
-   /*when is activated*/
-  /* bottom:7%; */
+  transition : bottom 0.5s;
   border-radius: 5rem;
   left:0;
 }
