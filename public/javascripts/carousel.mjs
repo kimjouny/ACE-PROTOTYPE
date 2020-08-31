@@ -28,9 +28,9 @@ const handleTouchMove=(evt,idx)=> {
     xDown[idx] = null;                                             
 };
 
-const handleCarouselBtn=(e)=>{
+const handleCarouselBtn=(e,CAROUSEL_WRAP)=>{
     if(e.target.tagName!=="LI")return;
-    CAROUSEL_WRAP[i].style.transform=`translateX(${e.target.value*(-100)}%)`
+    CAROUSEL_WRAP.style.transform=`translateX(${e.target.value*(-100)}%)`
 }
 
 
@@ -38,7 +38,7 @@ const initCarousel=(CAROUSEL_WRAP,CAROUSEL_BTNS)=>{
     for(let i=0;i<CAROUSEL_WRAP.length;i++){
         CAROUSEL_WRAP[i].addEventListener('touchstart',(e)=>handleTouchStart(e,i),false);
         CAROUSEL_WRAP[i].addEventListener('touchmove',(e)=>handleTouchMove(e,i),false);
-        CAROUSEL_BTNS[i].addEventListener('click',handleCarouselBtn)
+        CAROUSEL_BTNS[i].addEventListener('click',(e)=>handleCarouselBtn(e,CAROUSEL_WRAP[i]))
         CAROUSEL_WRAP[i].addEventListener('transitionend',()=>carouselRun=false);
     }
 }
