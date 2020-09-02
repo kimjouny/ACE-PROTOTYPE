@@ -175,11 +175,21 @@
   width:10%;
   height:51%;
   top:37%;
-  border-left:10px dashed #31aae7;
+  border-left:10px dashed white;
   transform: translateX(-50%);
   border-radius: 3%;
 }
 
+.chartJS_stockage{
+  position: absolute;
+  padding:3%;
+  top:89%;
+  background-color: white;
+  color:black;
+  font-size:3rem;
+  transform: translateX(-100%);
+  border-radius: 100%;
+}
 .chartJS_spendtext{
   border-radius:3rem;
   position:absolute;

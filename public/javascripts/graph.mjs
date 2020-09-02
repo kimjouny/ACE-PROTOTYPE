@@ -91,18 +91,45 @@ SPEND_OPTIONS.addEventListener('click',(e)=>{
 
 
 /** STOCK INTERACTION */
-let STOCK_EL=document.createElement('div');
+const STOCK_EL=document.createElement('div');
+const STOCK_AGE=document.createElement('div');
 STOCK_EL.classList.add('chartJS_stockline');
+STOCK_AGE.classList.add('chartJS_stockage');
 
-const GRAPH_AREA=document.getElementsByClassName('chartJS_wrapper')[0];
-GRAPH_AREA.addEventListener('click', (e)=>{
+
+const handleStockTouchStart=(e)=>{
   /* VALIDATE GRAPH SECTION */
-  if(e.clientX<e.currentTarget.offsetWidth*0.1+e.currentTarget.offsetLeft)return;
-  const graphRatio=(e.pageX-e.currentTarget.offsetLeft-(e.currentTarget.offsetWidth*0.12))/(e.currentTarget.offsetWidth*0.88);
+  if(e.touches[0].clientX<e.currentTarget.offsetWidth*0.1+e.currentTarget.offsetLeft)return;
+  const graphRatio=(e.touches[0].clientX-e.currentTarget.offsetLeft-(e.currentTarget.offsetWidth*0.12))/(e.currentTarget.offsetWidth*0.88);
   const currentAge=Math.round(55+graphRatio*(numDataPoints));
-  STOCK_EL.style.left=`${e.pageX}px`
+  STOCK_EL.style.left=`${e.touches[0].clientX}px`
+  STOCK_AGE.style.left=`${e.touches[0].clientX}px`
+  STOCK_AGE.innerHTML=`${currentAge}`;
   GRAPH_AREA.appendChild(STOCK_EL)
-});
+  GRAPH_AREA.appendChild(STOCK_AGE)
+}
+
+const handleStockTouchMove=(e)=>{
+    if(e.touches[0].clientX<e.currentTarget.offsetWidth*0.1+e.currentTarget.offsetLeft)return;
+    const graphRatio=(e.touches[0].clientX-e.currentTarget.offsetLeft-(e.currentTarget.offsetWidth*0.12))/(e.currentTarget.offsetWidth*0.88);
+    const currentAge=Math.round(55+graphRatio*(numDataPoints));
+    if(currentAge<55||currentAge>90)return;
+    STOCK_EL.style.left=`${e.touches[0].clientX}px`
+    STOCK_AGE.style.left=`${e.touches[0].clientX}px`
+    STOCK_AGE.innerHTML=`${currentAge}`;
+}
+
+const handleStockTouchEnd=(e)=>{
+  GRAPH_AREA.removeChild(STOCK_EL);
+  GRAPH_AREA.removeChild(STOCK_AGE);
+}
+
+/* STOCK INTERACTION */
+const GRAPH_AREA=document.getElementsByClassName('chartJS_wrapper')[0];
+GRAPH_AREA.addEventListener('touchstart', handleStockTouchStart);
+GRAPH_AREA.addEventListener('touchmove', handleStockTouchMove);
+GRAPH_AREA.addEventListener('touchend', handleStockTouchEnd);
+
 
 const changeHorozontal=(spendInput,spendtext)=>{
   const SPEND_LINE=document.getElementsByClassName('chartJS_spendline')[0];
