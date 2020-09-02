@@ -170,6 +170,16 @@
   transition:top 1s;
 }
 
+.chartJS_stockline{
+  position: absolute;
+  width:10%;
+  height:51%;
+  top:37%;
+  border-left:10px dashed #31aae7;
+  transform: translateX(-50%);
+  border-radius: 3%;
+}
+
 .chartJS_spendtext{
   border-radius:3rem;
   position:absolute;

@@ -89,15 +89,26 @@ SPEND_OPTIONS.addEventListener('click',(e)=>{
   }
 });
 
-const GRAPH_AREA=document.getElementsByClassName('yaxis_wrapper')[0];
+
+/** STOCK INTERACTION */
+let STOCK_EL=document.createElement('div');
+STOCK_EL.classList.add('chartJS_stockline');
+
+const GRAPH_AREA=document.getElementsByClassName('chartJS_wrapper')[0];
 GRAPH_AREA.addEventListener('click', (e)=>{
-  console.log(e)
+  /* VALIDATE GRAPH SECTION */
+  if(e.clientX<e.currentTarget.offsetWidth*0.1+e.currentTarget.offsetLeft)return;
+  const graphRatio=(e.pageX-e.currentTarget.offsetLeft-(e.currentTarget.offsetWidth*0.12))/(e.currentTarget.offsetWidth*0.88);
+  const currentAge=Math.round(55+graphRatio*(numDataPoints));
+  STOCK_EL.style.left=`${e.pageX}px`
+  GRAPH_AREA.appendChild(STOCK_EL)
 });
 
 const changeHorozontal=(spendInput,spendtext)=>{
   const SPEND_LINE=document.getElementsByClassName('chartJS_spendline')[0];
   const SPEND_BOX=document.getElementsByClassName('chartJS_spendtext')[0];
   SPEND_LINE.style.top=`${92-1.84*spendInput*12/100}%`
+  SPEND_BOX.style.top=`${92-1.84*spendInput*12/100}%`
   SPEND_BOX.innerHTML=spendtext;
 }
 const OVERLAY_OUT=document.getElementsByClassName('chartJS_overlay_container')[0];
@@ -123,7 +134,7 @@ SLIDER.addEventListener('change',(e)=>{
   });
   CHARTJS.data.datasets.data=temp_dataset;
   CHARTJS.update();
-  /**x axis width update */
+  /*x axis width update */
   const X_AXIS=document.getElementsByClassName('chartJS_agecontainer')[0]
   X_AXIS.style.width=`${36/(e.target.value-54)*90}%`
   console.log(changeGaugeText());
@@ -155,18 +166,3 @@ const homePensionHandler=(e)=>{
   POPUP.style.display='flex';
 }
 HOME_PENSION.addEventListener('click',homePensionHandler)
-/* 
-const changeGaugeText=()=>{
-  let average=temp_dataset.reduce((acc,v)=>{
-    return acc+v;
-  },0)/numDataPoints/12;
-  // console.log(average);
-  if(checkHomePension()){
-    return average+46;
-  }
-  return average;
-} */
-/* 
-const checkHomePension=()=>{
-  return HOME_PENSION.classList.length===2?true:false;
-} */
