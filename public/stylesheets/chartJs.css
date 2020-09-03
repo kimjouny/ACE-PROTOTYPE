@@ -136,10 +136,71 @@
   overflow: hidden;
 }
 
+.stockdisplay_container{
+  position: absolute;
+  display:flex;
+  flex-direction: column;
+  width:86%;
+  top:2%;
+  left:2%;
+  height:auto;
+  background-color: rgba(0,0,0,0.7);
+  border-radius: 3rem;
+  z-index: 80;
+  padding:5%;
+}
+
+.stockdisplay_agewrap{
+  font-size:5rem;
+  color:white;
+  border-bottom: 2px solid white;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.stockdisplay_month_income{
+  font-weight: bold;
+  background-color:#50953a;
+  padding: 0 2rem ;
+  border-radius: 3rem;
+}
+
+.STpension_wrap{
+  width:100%;
+  display:flex;
+  margin:0;
+  padding:0;
+  align-items: center;
+  background-color: white;
+  border-radius: 1rem;
+  overflow: hidden;
+  list-style: none;
+}
+
+.STpension_label{
+  margin:1%;
+  width:5rem;
+  height: 5rem;
+  background-color: coral;
+  border-radius: 1rem;
+}
+
+.STpension_type{
+  flex:1;
+  font-size: 3rem;
+}
+
+.STpension_amt{
+  width:25%;
+  font-size: 4rem;
+  text-align: center;
+}
+
 .canvas_container{
   display:flex;
   justify-content: flex-end;
   width:100%;
+  z-index: 25;
 }
 
 .canvas_wrapper{

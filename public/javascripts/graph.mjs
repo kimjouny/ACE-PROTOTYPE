@@ -1,5 +1,6 @@
 import {CUSTOMERS} from './pensionData.mjs'
 import {monthlyReqChart} from './pie.mjs'
+import {COLORS} from './chartColor.mjs'
 
 /*PIE SCRIPT START */
 monthlyReqChart(55, 90, 2700000, 200000000, 429051000, 130485000, 199140000);
@@ -92,29 +93,6 @@ SPEND_OPTIONS.addEventListener('click',(e)=>{
 
 
 /** STOCK INTERACTION */
-const STATIC_MENTION=`
-  은퇴이후 55~65세에<br>
-  은퇴 자금 부족이 심할 것으로<br>
-  예상됩니다.
-`
-
-const getPensionAmount=()=>{
-    return document.getElementsByClassName('pension_used').length?46:0;
-}
-
-const buildStockMention=(age)=>{
-
-  return `
-    <div style="color:black;font-weight:bold;">${age}세</div>
-    <div style="width:fit-content;background-color: #4f953a;color:white;padding:0 1rem;margin-top:1rem;">
-      월수령액 : ${Math.floor(temp_dataset[(age-55)]/120)+getPensionAmount()}만 원
-    </div>
-    <div style="width:fit-content;background-color: #f7ac00;color:white;padding:0 1rem;margin-top:1rem;">
-      월지출액 : ${document.getElementsByClassName('spend_selected')[0].dataset.spend}만 원
-    </div>
-  `
-}
-
 const STOCK_EL=document.createElement('div');
 const STOCK_AGE=document.createElement('div');
 const CHART_HEAD=document.getElementsByClassName('chartJS_text')[0];
@@ -132,7 +110,7 @@ const handleStockTouchStart=(e)=>{
   STOCK_AGE.innerHTML=`${currentAge}`;
   GRAPH_AREA.appendChild(STOCK_EL)
   GRAPH_AREA.appendChild(STOCK_AGE);
-  CHART_HEAD.innerHTML=buildStockMention(currentAge);
+  CHART_HEAD.style.visibility="hidden";
 }
 
 const handleStockTouchMove=(e)=>{
@@ -143,14 +121,14 @@ const handleStockTouchMove=(e)=>{
     STOCK_EL.style.left=`${e.touches[0].clientX}px`
     STOCK_AGE.style.left=`${e.touches[0].clientX}px`
     STOCK_AGE.innerHTML=`${currentAge}`;
-    CHART_HEAD.innerHTML=buildStockMention(currentAge);
-    
+    // CHART_HEAD.innerHTML=buildStockMention(currentAge);
+    CHART_HEAD.style.visibility="hidden";
 }
 
 const handleStockTouchEnd=(e)=>{
   GRAPH_AREA.removeChild(STOCK_EL);
   GRAPH_AREA.removeChild(STOCK_AGE);
-  CHART_HEAD.innerHTML=STATIC_MENTION
+  CHART_HEAD.style.visibility="visible";
 }
 
 /* STOCK INTERACTION */
