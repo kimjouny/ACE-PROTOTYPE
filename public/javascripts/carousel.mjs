@@ -1,18 +1,25 @@
 
-let xDown = [null,null];                                                        
+let xDown = [null,null];    
+let yDown=null;                                                   
 let xPos = [0,0];
 let carouselRun=false;
 const getTouches=(evt)=> {return evt.touches; }             // browser API}                                                     
 
 const handleTouchStart=(evt,idx)=>{
     const firstTouch = getTouches(evt)[0];                                      
-    xDown[idx] = firstTouch.clientX;                                                                      
+    xDown[idx] = firstTouch.clientX;           
+    yDown=firstTouch.clientY;                                                     
 };                                                
 
 const handleTouchMove=(evt,idx)=> {
     if (!xDown || carouselRun )return;
-    var xUp = evt.touches[0].clientX;                                    
+    var xUp = evt.touches[0].clientX;        
+    let yUp = evt.touches[0].clientY;                            
     var xDiff = xDown[idx] - xUp;
+    let yDiff= yDown-yUp;
+    if(Math.abs(yDiff)>Math.abs(xDiff)){
+        return;
+    }
     if ( xDiff > 0 ) {
         /* left swipe */ 
         if(xPos[idx]>=2)return;
@@ -25,7 +32,7 @@ const handleTouchMove=(evt,idx)=> {
         carouselRun=true;
     }                       
     /* reset values */
-    xDown[idx] = null;                                             
+    xDown[idx] = null;                                            
 };
 
 const handleCarouselBtn=(e,CAROUSEL_WRAP)=>{

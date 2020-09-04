@@ -135,6 +135,7 @@
     height:60%;
     position: relative;
     overflow: hidden;
+    margin-bottom: 5%;
 }
 
 .graph_element{
