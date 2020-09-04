@@ -89,6 +89,7 @@
 .td_amount{
     width:100%;
     font-size: 6rem;
+    font-weight: bold;
     text-align: center;
     color:#65C3EC;
 }
