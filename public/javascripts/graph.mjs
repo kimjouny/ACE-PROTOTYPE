@@ -5,7 +5,7 @@ import {COLORS} from './chartColor.mjs'
 /*PIE SCRIPT START */
 monthlyReqChart(55, 90, 2700000, 200000000, 429051000, 130485000, 199140000);
 
-
+/**INIT CHART */
 const ctx = document.getElementById("myChart");
 let numDataPoints = 36;
 let dataset=[
@@ -39,6 +39,8 @@ var data = {
   }]
 };
 
+
+/**BUILD CHART */
 let CHARTJS=new Chart(ctx, {
   type: 'line',
   data: data,
@@ -61,6 +63,8 @@ let CHARTJS=new Chart(ctx, {
   }
 });
 
+
+/**SET SPEND OPTIONS */
 const SPEND_OPTIONS=document.getElementsByClassName('chartJS_overlay_container')[0];
 SPEND_OPTIONS.addEventListener('click',(e)=>{
   switch(e.target.tagName){

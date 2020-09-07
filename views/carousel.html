@@ -5,6 +5,11 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/carousel.css">
     <link rel="stylesheet" type="text/css" href="stylesheets/common.css">
     <script type="module" src="javascripts/index_v1_1.mjs"></script>
+    <!-- CHART -->
+    <link rel="stylesheet" type="text/css" href="stylesheets/chartJs.css">
+
+    <script type="text/javascript" src="javascripts/Chart.bundle.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="stylesheets/slider.css">
   </head>
   <body>
     <!-- HEADER -->
@@ -55,7 +60,94 @@
                 <li value="1" class="graph_toggle">구간</li>
                 </ul>            
               <section class="graph_list">
-                  <div class="graph_element" style="left:0%;background-color: skyblue;"></div> 
+                  <div class="graph_element" style="left:0%;height:auto;">
+                    <div class="chartJS_wrapper" style="width:100%;padding-bottom: 3%;">
+                      <div class="stockdisplay_container">
+                          <div class="stockdisplay_agewrap">
+                              <span class="stockdisplay_agecontrol"></span>세 월수령액 : 
+                              <span class="stockdisplay_month_income"></span>
+                          </div>
+                          <div class="STpension_container"></div>
+                      </div>
+                      <div class="chartJS_text">
+                          은퇴이후 55~65세에<br>
+                          은퇴 자금 부족이 심할 것으로<br>
+                          예상됩니다.
+                      </div>
+      
+                      <div class="canvas_container">
+                          <div class="yaxis_container">
+                              <ul class="yaxis_wrapper">
+                                  <hr class="chartJS_spendline"/>
+                                  <div class="chartJS_spendtext">KB소비지수</div>
+                                  <li class="yaxis_cost">
+                                      <span class="none_col yaxis_cost">0</span>0
+                                      <span class="yaxis_grid"></span> 
+                                  </li>
+                                  <li><span class="none_col">0</span>5</li>
+                                  <li class="yaxis_cost">
+                                      10
+                                      <span class="yaxis_grid"></span>
+                                  </li>
+                                  <li>15</li>
+                                  <li class="yaxis_cost">
+                                      20
+                                      <span class="yaxis_grid"></span>
+                                  </li>
+                                  <li>25</li>
+                                  <li class="yaxis_cost">
+                                       30
+                                       <span class="yaxis_grid"></span>
+                                  </li>
+                                  <li>35</li>
+                                  <li class="yaxis_cost">
+                                      40
+                                      <span class="yaxis_grid"></span>
+                                  </li>
+                                  <li>45</li>
+                              </ul>
+                          </div>
+                          <div class="canvas_wrapper">
+                              <canvas id="myChart" width="3" height="1"></canvas>
+                          </div>
+                      </div>
+                      <ul class="chartJS_agecontainer">
+                         
+                          <li class="xaxis_age">
+                              <div class="xaxis_grid"></div>
+                              55
+                          </li>
+                          <li class="xaxis_age">
+                              <div class="xaxis_grid"></div>
+                              60
+                          </li>
+                          <li class="xaxis_age">
+                              <div class="xaxis_grid"></div>
+                              65
+                          </li>
+                          <li class="xaxis_age">
+                              <div class="xaxis_grid"></div>
+                              70
+                          </li>
+                          <li class="xaxis_age">
+                              <div class="xaxis_grid"></div>
+                              75
+                          </li>
+                          <li class="xaxis_age"> 
+                              <div class="xaxis_grid"></div>
+                              80
+                          </li>
+                          <li class="xaxis_age">
+                              <div class="xaxis_grid"></div>
+                              85
+                          </li>
+                          <li class="xaxis_age">
+                              <div class="xaxis_grid"></div>
+                              90
+                          </li>
+                      </ul>
+                  </div>
+                  </div> 
                   <div class="graph_element" style="left:110%;background-color: pink;"></div> 
               </section>
             </li>
