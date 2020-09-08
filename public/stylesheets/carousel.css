@@ -49,6 +49,7 @@
 
 .totalincome_container{
     margin-top: 5%;
+    margin-left: 5%;
     width:80%;
     height: auto;
     border:1px solid silver;
@@ -108,7 +109,7 @@
 
 .graph_toggle_container{
     overflow:hidden;
-    margin: 2% 0;
+    margin: 2% 0 2% 5%;
     width:90%;
     display:flex;
     background-color: white;
