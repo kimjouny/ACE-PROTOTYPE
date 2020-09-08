@@ -2,6 +2,15 @@ import {initCarousel} from './carousel.mjs'
 import {graphToggle} from './graphToggle.mjs'
 import {CUSTOMERS} from './pensionData.mjs'
 import {COLORS} from './chartColor.mjs'
+/* PIE INTEGRATION  */
+import {totalAsset_pieChart} from './pie.mjs'
+import {monthlyPention_chart} from './pie.mjs'
+
+/* PIE PART */
+window.onload=()=>{
+  totalAsset_pieChart(55, 90, 2700000, 200000000, 429051000, 130485000, 199140000);
+  monthlyPention_chart(55, 90, 27000000, 200000000, 429051000, 130485000, 199140000,112312312);
+}
 
 /*CAROUSEL LAYOUT INTERACTION */
 const CAROUSEL_BTNS=document.getElementsByClassName('carousel_btn_wrapper');
@@ -155,8 +164,6 @@ let segdata=temp_dataset.slice(0,11).reduce((acc,v)=>{
   acc.push(Math.round(v/12));
   return acc;
 },[]);
-
-console.log(segdata);
 const SEG1=document.getElementById('segment_graph1');
 let data1 = {
   labels: Array.apply(null, Array(segdata.length)).map(function() {
