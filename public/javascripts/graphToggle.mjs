@@ -4,12 +4,12 @@ const graphToggle=(e,toggleComponent)=>{
     TOGGLE_BTNS[e.target.value].classList.add('gt_focused');
     TOGGLE_BTNS[Math.abs(e.target.value-1)].classList.remove('gt_focused');    
     if(e.target.value){
-        toggleComponent[0].style.left="-110%";
+        toggleComponent[0].style.left="-100%";
         toggleComponent[1].style.left="0%";
     }
     else{
         toggleComponent[0].style.left="0%";
-        toggleComponent[1].style.left="110%";
+        toggleComponent[1].style.left="100%";
     }
 }
 

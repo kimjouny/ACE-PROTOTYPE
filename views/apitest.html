@@ -1,0 +1,70 @@
+<html>
+<head>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="js/jquery.ajax-cross-origin.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/hmac-sha256.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/enc-base64-min.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            $("input[type=button]").click(function () {
+
+                // $.ajaxPrefilter('json', function (options, orig, jqXHR) {
+                //     return 'jsonp';
+                // });
+                $.ajax({
+                    url: "https://dev-openapi.kbstar.com:8443/cqs/issuingWaitingStatus/ver1",
+                   // crossOrigin: true,
+                    crossDomain: true,
+                    type: "post",
+                    dataType: "json",
+                    contentType: "application/json",
+                    headers: {
+                        "hsKey": GenerateHMAC('l7xxkIbPvyQa2yaaUhensvWLGa9oqN62Siy8'),
+                       // "hsKey": "LA08ubL8CSqf8TkGBwHhKhaOXolVpzqi1lwXHIy1Km8YVCHBJcqFkzuqlXdP9kZ/WMt7oVfNQXGzrKVYYplYUw==",
+                        "apiKey": "l7xxkIbPvyQa2yaaUhensvWLGa9oqN62Siy8"
+                    },
+                    // beforeSend: function (xhr) {
+                    //     xhr.setRequestHeader("hsKey", "LA08ubL8CSqf8TkGBwHhKhaOXolVpzqi1lwXHIy1Km8YVCHBJcqFkzuqlXdP9kZ");
+                    //     xhr.setRequestHeader("apiKey", "l7xxkIbPvyQa2yaaUhensvWLGa9oqN62Siy8");
+                    // },
+                    data: {
+
+                        "dataBody": {
+                            "ciNo": "LA08ubL8CSqf8TkGBwHhKhaOXolVpzqi1lwXHIy1Km8YVCHBJcqFkzuqlXdP9kZ/WMt7oVfNQXGzrKVYYplYUw=="
+                        }
+                    },
+                    success: function (data) {
+                        alert("성공 : " + JSON.stringify(data));
+
+                    },
+                    error: function (xhr) {
+                        alert("실패" + JSON.stringify(xhr));
+                    }
+
+                });
+                //return false; 
+
+            });
+
+        });
+
+            function GenerateHMAC(payload) {
+                
+                var message = btoa(payload + "1NXCCYbelOaAhNRCmXpjVp370mnIChRa");
+                var hash = CryptoJS.HmacSHA256(message, 'sha256');
+                var hashInBase64 = CryptoJS.enc.Base64.stringify(hash);
+                return hashInBase64;
+            }
+    </script>
+
+<body>
+    <input type="button" value="확인" />
+
+    <div></div>
+</body>
+
+</html>

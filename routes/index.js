@@ -13,4 +13,9 @@ router.get('/v1.0', (req, res, next)=> {
 router.get('/v1.1', (req,res,next)=>{
   res.render('carousel.html');
 })
+
+router.get('/apitest', (req,res,next)=>{
+  res.render('apitest.html');
+})
+
 module.exports = router;
