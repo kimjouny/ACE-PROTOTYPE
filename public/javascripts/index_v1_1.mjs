@@ -24,6 +24,31 @@ const GRAPH_TOGGLES=document.getElementsByClassName('graph_toggle_container')[0]
 GRAPH_TOGGLES.addEventListener('click',e=>graphToggle(e,TOGGLE_ELES));
 
 /**INIT CHART */
+const buildChart=(context, inputData)=>{
+  return new Chart(context,{
+    type: 'line',
+    data: inputData,
+    options: {
+      tooltips: {
+        enabled: false,
+      },
+      legend: {
+        display: false,
+      },
+      pointDot: false,
+      scales: {
+        xAxes: [{
+          display: false,
+        }],
+        yAxes: [{
+          display: false,
+        }],
+      }
+    }
+  });
+}
+
+
 const ctx = document.getElementById("myChart");
 let numDataPoints = 36;
 let dataset=[
@@ -59,27 +84,7 @@ var data = {
 
 
 /**BUILD CHART */
-let CHARTJS=new Chart(ctx, {
-  type: 'line',
-  data: data,
-  options: {
-    tooltips: {
-      enabled: false,
-    },
-    legend: {
-      display: false,
-    },
-    pointDot: false,
-    scales: {
-      xAxes: [{
-        display: false,
-      }],
-      yAxes: [{
-        display: false,
-      }],
-    }
-  }
-});
+let CHARTJS=buildChart(ctx,data);
 
 /** STOCK INTERACTION */
 const STOCK_EL=document.createElement('div');
@@ -177,25 +182,5 @@ let data1 = {
     backgroundColor: 'transparent',
   }]
 };
-
-let SEGCHART= new Chart(SEG1, {
-  type: 'line',
-  data: data1,
-  options: {
-    tooltips: {
-      enabled: false,
-    },
-    legend: {
-      display: false,
-    },
-    pointDot: false,
-    scales: {
-      xAxes: [{
-        display: false,
-      }],
-      yAxes: [{
-        display: false,
-      }],
-    }
-  }
-});
+/**SEGMENT CHART */
+let SEGCHART=buildChart(SEG1,data1);
