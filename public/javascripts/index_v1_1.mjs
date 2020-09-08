@@ -150,3 +150,45 @@ const GRAPH_AREA=document.getElementsByClassName('chartJS_wrapper')[0];
 GRAPH_AREA.addEventListener('touchstart', handleStockTouchStart);
 GRAPH_AREA.addEventListener('touchmove', handleStockTouchMove);
 GRAPH_AREA.addEventListener('touchend', handleStockTouchEnd);
+
+let segdata=temp_dataset.slice(0,11).reduce((acc,v)=>{
+  acc.push(Math.round(v/12));
+  return acc;
+},[]);
+
+console.log(segdata);
+const SEG1=document.getElementById('segment_graph1');
+let data1 = {
+  labels: Array.apply(null, Array(segdata.length)).map(function() {
+    return '';
+  }),
+  datasets: [{
+    data: segdata,
+    pointRadius: 0,
+    borderWidth: 10,
+    borderColor: '#50953a',
+    backgroundColor: 'transparent',
+  }]
+};
+
+let SEGCHART= new Chart(SEG1, {
+  type: 'line',
+  data: data1,
+  options: {
+    tooltips: {
+      enabled: false,
+    },
+    legend: {
+      display: false,
+    },
+    pointDot: false,
+    scales: {
+      xAxes: [{
+        display: false,
+      }],
+      yAxes: [{
+        display: false,
+      }],
+    }
+  }
+});

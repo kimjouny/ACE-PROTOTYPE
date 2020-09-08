@@ -140,10 +140,46 @@
 }
 
 .graph_element{
-    position: relative;;
+    position: absolute;
     width:100%;
     display: flex;
     justify-content: center;
     align-items: center;
     transition:left 0.5s;
+}
+
+.graph_segment_wrapper{
+    width:90%;
+    padding:5% 0;
+    background-color: white;
+    border: 1px solid silver;
+    border-radius: 3rem;
+    margin-bottom: 3%;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.segment_texts{
+    margin-left: 10%;
+    color:silver;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size:3rem;
+}
+
+.segment_age{
+    font-size:4rem;
+    color:black;
+}
+
+.segment_amount_wrapper{
+    font-size: 7rem;
+    color: #007acc;
+}
+
+.seggraph_wrapper{
+    width:30%;
+    margin-right: 10%;
 }
