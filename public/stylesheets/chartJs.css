@@ -132,7 +132,8 @@
   position:relative;
   padding:0% 0%;
   border-radius: 3rem;
-  background-color: #f0e1ca;
+  background-color: white;
+  border:1px solid silver;
   overflow: hidden;
 }
 
@@ -243,7 +244,7 @@
   width:10%;
   height:51%;
   top:37%;
-  border-left:10px dashed white;
+  border-left:10px dashed #65c3ec;
   transform: translateX(-50%);
   border-radius: 3%;
 }
@@ -252,8 +253,8 @@
   position: absolute;
   padding:3%;
   top:89%;
-  background-color: white;
-  color:black;
+  background-color: #65c3ec;
+  color:white;
   font-size:3rem;
   transform: translateX(-100%);
   border-radius: 100%;
@@ -283,7 +284,7 @@
   left:150%;
   width:85rem;
   height:49%;
-  border-bottom: 0.5px solid #c69449;
+  border-bottom: 0.5px solid silver;
 }
 
 .xaxis_grid{
@@ -292,7 +293,7 @@
   width:49%;
   height:45rem;
   top:-46rem;
-  border-right: 0.5px solid #c69449;
+  border-right: 0.5px solid silver;
 }
 
 .chartJS_agecontainer{

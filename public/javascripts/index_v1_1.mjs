@@ -78,7 +78,7 @@ var data = {
     data: temp_dataset,
     pointRadius: 0,
     borderWidth: 10,
-    borderColor: '#50953a',
+    borderColor: '#007acc',
     backgroundColor: 'transparent',
   }]
 };
