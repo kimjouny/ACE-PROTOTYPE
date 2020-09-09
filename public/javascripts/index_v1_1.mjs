@@ -2,6 +2,7 @@ import {initCarousel} from './carousel.mjs'
 import {graphToggle} from './graphToggle.mjs'
 import {CUSTOMERS} from './pensionData.mjs'
 import {COLORS} from './chartColor.mjs'
+import {counterAnimation} from './counterAnimation.mjs'
 
 /* PIE INTEGRATION  */
 import {totalAsset_pieChart} from './pie.mjs'
@@ -12,6 +13,11 @@ window.onload=()=>{
   totalAsset_pieChart(55, 90, 2650000, 239143000, 429051000, 289444000, 55788000);  //jy 파라미터 변경
   monthlyPention_chart(55, 90, 27000000, 200000000, 429051000, 130485000, 199140000,112312312);
 }
+
+/* PACHINCO INTERACTION */
+counterAnimation('.pc_amount');
+counterAnimation('.pc_ratio');
+
 
 /*CAROUSEL LAYOUT INTERACTION */
 const CAROUSEL_BTNS=document.getElementsByClassName('carousel_btn_wrapper');
