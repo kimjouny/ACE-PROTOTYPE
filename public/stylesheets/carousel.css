@@ -55,9 +55,16 @@
   background-color: #65c3ec;
 }
 
+
+.caro_header_container{
+  margin: 5% 0 0 5%;
+  font-weight: bolder;
+  font-size: 6rem;
+  color: #747474;
+}
+
 .totalincome_container {
-  margin-top: 5%;
-  margin-left: 5%;
+  margin: 2% 0 0 5%;
   width: 80%;
   height: auto;
   border: 1px solid silver;
