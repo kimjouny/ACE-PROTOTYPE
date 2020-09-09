@@ -124,6 +124,7 @@ const buildPensionInfo=(age)=>{
 }
 
 const handleStockTouchStart=(e)=>{
+  if(e.touches[0].pageY-e.currentTarget.getBoundingClientRect().y<CANVAS_CONTAINER.offsetTop)return;
   /* VALIDATE GRAPH SECTION */
   if(e.touches[0].clientX<e.currentTarget.offsetWidth*0.1+e.currentTarget.offsetLeft)return;
   const graphRatio=(e.touches[0].clientX-e.currentTarget.offsetLeft-(e.currentTarget.offsetWidth*0.12))/(e.currentTarget.offsetWidth*0.88);
@@ -141,6 +142,7 @@ const handleStockTouchStart=(e)=>{
 }
 
 const handleStockTouchMove=(e)=>{
+    if(e.touches[0].pageY-e.currentTarget.getBoundingClientRect().y<CANVAS_CONTAINER.offsetTop)return;
     if(e.touches[0].clientX<e.currentTarget.offsetWidth*0.1+e.currentTarget.offsetLeft)return;
     const graphRatio=(e.touches[0].clientX-e.currentTarget.offsetLeft-(e.currentTarget.offsetWidth*0.12))/(e.currentTarget.offsetWidth*0.88);
     const currentAge=Math.round(55+graphRatio*(numDataPoints));
@@ -154,6 +156,7 @@ const handleStockTouchMove=(e)=>{
 }
 
 const handleStockTouchEnd=(e)=>{
+  
   GRAPH_AREA.removeChild(STOCK_EL);
   GRAPH_AREA.removeChild(STOCK_AGE);
   CHART_HEAD.style.visibility="visible";
@@ -161,6 +164,7 @@ const handleStockTouchEnd=(e)=>{
 }
 
 /* STOCK INTERACTION */
+const CANVAS_CONTAINER=document.getElementsByClassName('canvas_container')[0];
 const GRAPH_AREA=document.getElementsByClassName('chartJS_wrapper')[0];
 GRAPH_AREA.addEventListener('touchstart', handleStockTouchStart);
 GRAPH_AREA.addEventListener('touchmove', handleStockTouchMove);
