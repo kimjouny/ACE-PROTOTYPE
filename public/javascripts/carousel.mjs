@@ -23,7 +23,7 @@ const handleTouchMove=(evt,idx)=> {
     }
     if ( xDiff > 0 ) {
         /* left swipe */ 
-        if(xPos[idx]>=2)return;
+        if(xPos[idx]>=1)return;
         evt.currentTarget.style.transform=`translateX(${(++xPos[idx])*(-100)}%)`
         carouselRun=true;
         const focused=document.getElementsByClassName('caro_btn_focused')[0];
