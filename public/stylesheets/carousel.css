@@ -46,6 +46,13 @@
     height: 3rem;
     background-color: silver;
     border-radius: 100%;
+    transition: width 0.5s;
+}
+
+.caro_btn_focused{
+    width:8rem;
+    border-radius: 3rem;
+    background-color: #65C3EC;
 }
 
 .totalincome_container{

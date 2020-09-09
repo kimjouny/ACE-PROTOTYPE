@@ -26,11 +26,17 @@ const handleTouchMove=(evt,idx)=> {
         if(xPos[idx]>=2)return;
         evt.currentTarget.style.transform=`translateX(${(++xPos[idx])*(-100)}%)`
         carouselRun=true;
+        const focused=document.getElementsByClassName('caro_btn_focused')[0];
+        focused.classList.remove('caro_btn_focused');
+        focused.nextElementSibling.classList.add('caro_btn_focused');
     } else {
         /* right swipe */
-        if(xPos[idx]<1)return;
+        if(xPos[idx]<0)return;
         evt.currentTarget.style.transform=`translateX(${(--xPos[idx])*(-100)}%)`
         carouselRun=true;
+        const focused=document.getElementsByClassName('caro_btn_focused')[0];
+        focused.classList.remove('caro_btn_focused');
+        focused.previousElementSibling.classList.add('caro_btn_focused');
     }                       
     /* reset values */
     xDown[idx] = null;                                            
@@ -39,6 +45,11 @@ const handleTouchMove=(evt,idx)=> {
 const handleCarouselBtn=(e,CAROUSEL_WRAP)=>{
     if(e.target.tagName!=="LI")return;
     CAROUSEL_WRAP.style.transform=`translateX(${e.target.value*(-100)}%)`
+    const focused=document.getElementsByClassName('caro_btn_focused')[0];
+    if(focused===e.target)return;
+    e.target.classList.add('caro_btn_focused');
+    focused.classList.remove('caro_btn_focused')
+    xPos[0]=e.target.value;
 }
 
 
