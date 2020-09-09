@@ -1,4 +1,4 @@
-const totalAsset_pieChart=(retireAge, deadAge, reqAsset, finAsset, pubPention, retirePention, perPention)=>{
+const totalAsset_pieChart=(retireAge, deadAge, reqAsset, finAsset, pubPention, perPention, retirePention)=>{
   var futureScore=0;    //미래준비율 표시 변수
       var ageRange = deadAge - retireAge + 1; //연령범위
       var reqAsset = reqAsset;  //월 필요금액
@@ -6,9 +6,7 @@ const totalAsset_pieChart=(retireAge, deadAge, reqAsset, finAsset, pubPention, r
       var monthlyPubPention = Math.round(pubPention / ageRange / 12);
       var monthlyPerPention = Math.round(perPention / ageRange / 12);
       var monthlyRetirePention = Math.round(retirePention / ageRange / 12);
-      var preIncome=finAsset + pubPention + perPention + retirePention;
-      var preExpend=reqAsset*ageRange*12;
-      var shortAmount = preExpend - preIncome;  //부족금액
+      var shortAmount = reqAsset - (monthlyFinAsset + monthlyPubPention + monthlyPerPention + monthlyRetirePention);  //월 부족금액
       am4core.useTheme(am4themes_animated);
 
       // 도넛차트 시작
@@ -26,26 +24,26 @@ const totalAsset_pieChart=(retireAge, deadAge, reqAsset, finAsset, pubPention, r
       // Add data
       pieSeries2.data = [{
         "category": "금융자산",
-        "value": finAsset,
-        "fill": "#22CEE9",
-        
+        "value": monthlyFinAsset,
+        "fill": "#008FFB",
+        "labelDisabled": true
       }, {
         "category": "공적연금",
-        "value": pubPention,
-        "fill": "#FA9F44",
-        
+        "value": monthlyPubPention,
+        "fill": "#00E397",
+        "labelDisabled": true
       },
       {
         "category": "퇴직연금",
-        "value": retirePention,
-        "fill": "#1DCFC1",
-        
+        "value": monthlyRetirePention,
+        "fill": "#FEB019",
+        "labelDisabled": true
       },
       {
         "category": "개인연금",
-        "value": perPention,
-        "fill": "#CEA974",
-       
+        "value": monthlyPerPention,
+        "fill": "#B3C9ED",
+        "labelDisabled": true,
       },
 
       {
@@ -64,12 +62,9 @@ const totalAsset_pieChart=(retireAge, deadAge, reqAsset, finAsset, pubPention, r
       pieSeries.slices.template.propertyFields.disabled = "labelDisabled2";
       pieSeries.labels.template.propertyFields.disabled = "labelDisabled";  //큰 조각 라벨
       pieSeries.ticks.template.propertyFields.disabled = "labelDisabled";   //큰 조각 화살표
-
-      pieSeries.labels.template.text= (shortAmount / 100000000).toFixed(1)+"억원 부족";
-
       pieSeries.data = [{
         "category": "",
-        "value": preIncome,
+        "value": monthlyFinAsset + monthlyPerPention + monthlyPubPention + monthlyRetirePention,
         "labelDisabled": true,
         "labelDisabled2": true
 
@@ -88,18 +83,18 @@ const totalAsset_pieChart=(retireAge, deadAge, reqAsset, finAsset, pubPention, r
       })
 
       pieSeries.adapter.add("radius", function (innerRadius, target) {
-        return am4core.percent(130);
-      })
-
-      pieSeries2.adapter.add("radius", function (innerRadius, target) {
         return am4core.percent(100);
       })
 
+      pieSeries2.adapter.add("radius", function (innerRadius, target) {
+        return am4core.percent(80);
+      })
+
       //레전드 박스
-      document.getElementById('pie_legend_box1').innerHTML = "금융자산<br>" + (finAsset / 100000000).toFixed(1) + "억원";
-      document.getElementById('pie_legend_box2').innerHTML = "공적연금<br>" + (pubPention / 100000000).toFixed(1) + "억원";
-      document.getElementById('pie_legend_box3').innerHTML = "퇴직연금<br>" + (retirePention / 100000000).toFixed(1) + "억원";
-      document.getElementById('pie_legend_box4').innerHTML = "개인연금<br>" + (perPention / 100000000).toFixed(1) + "억원";
+      document.getElementById('pie_legend_box1').innerHTML = "금융자산<br>" + Math.round(finAsset / 100000000) + "억원";
+      document.getElementById('pie_legend_box2').innerHTML = "공적연금<br>" + Math.round(pubPention / 100000000) + "억원";
+      document.getElementById('pie_legend_box3').innerHTML = "퇴직연금<br>" + Math.round(retirePention / 100000000) + "억원";
+      document.getElementById('pie_legend_box4').innerHTML = "개인연금<br>" + Math.round(perPention / 100000000) + "억원";
      
       // 마우스 클릭 이벤트 제어
       var slice = pieSeries.slices.template;
@@ -109,21 +104,25 @@ const totalAsset_pieChart=(retireAge, deadAge, reqAsset, finAsset, pubPention, r
       slice.states.getKey("hover").properties.scale = 1;
       slice.states.getKey("active").properties.shiftRadius = 0;
 
+      slice.events.on("dragstop", function (event) {
+        handleDragStop(event);
+      })
+
       // 파이차트 가운데 합계 라벨
       var label = pieSeries.createChild(am4core.Label);
-      futureScore=Math.round((preIncome / preExpend) * 100);
+      futureScore=Math.round((monthlyFinAsset + monthlyPerPention + monthlyPubPention + monthlyRetirePention) / reqAsset * 100);
       document.getElementById('future_span').innerHTML = futureScore+"%";
       label.text = futureScore+"%";
       label.horizontalCenter = "middle";
       label.verticalCenter = "middle";
-      label.fontSize = 80;
+      label.fontSize = 40;
 
       //애니메이션 효과
       pieSeries.hiddenState.properties.endAngle = -80;
       pieSeries2.hiddenState.properties.endAngle = -80;
 
        // 상단 공통금액 출력
-      var totAsset = ((preExpend-preIncome)/100000000).toFixed(1);
+      var totAsset = (((reqAsset*ageRange*12)-(finAsset+pubPention+perPention+retirePention))/100000000).toFixed(1);
      
       if(totAsset>0){
         document.getElementById("totAsset").style.color="red";
@@ -135,8 +134,8 @@ const totalAsset_pieChart=(retireAge, deadAge, reqAsset, finAsset, pubPention, r
         totAsset=-1*totAsset;
       }
       document.getElementById('totAsset').innerHTML = totAsset+"억원";
-      document.getElementById('preIncome').innerHTML = (preIncome/100000000).toFixed(1);
-      document.getElementById('preExpend').innerHTML = (preExpend/100000000).toFixed(1);
+      document.getElementById('preIncome').innerHTML = ((finAsset+pubPention+perPention+retirePention)/100000000).toFixed(1);
+      document.getElementById('preExpend').innerHTML = ((reqAsset*12*ageRange)/100000000).toFixed(1);
     
     }
 
