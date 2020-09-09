@@ -184,3 +184,735 @@ let data1 = {
 };
 /**SEGMENT CHART */
 let SEGCHART=buildChart(SEG1,data1);
+
+
+/** HOSUNG MIGRATION */
+//국민연금 button으로 위아래
+var national_pension_down_content = document.getElementById(
+  "national_pension_down_content"
+);
+var national_pension_down_button = document.getElementById(
+  "national_pension_down_button"
+);
+national_pension_down_button.addEventListener(
+  "click",
+  national_pension_content
+);
+function national_pension_content() {
+  if (national_pension_down_content.style.display == "none") {
+    national_pension_down_content.style.display = "block";
+  } else {
+    national_pension_down_content.style.display = "none";
+  }
+}
+
+//퇴직연금 button으로 위아래
+var retire_pension_down_content = document.getElementById(
+  "retire_pension_down_content"
+);
+var retire_pension_down_button = document.getElementById(
+  "retire_pension_down_button"
+);
+
+retire_pension_down_button.addEventListener(
+  "click",
+  retire_pension_down_button1
+);
+
+function retire_pension_down_button1() {
+  if (retire_pension_down_content.style.display == "none") {
+    retire_pension_down_content.style.display = "block";
+  } else {
+    retire_pension_down_content.style.display = "none";
+  }
+}
+
+//개인연금 button으로 위아래
+var personal_pension_down_button = document.getElementById(
+  "personal_pension_down_button"
+);
+var personal_pension_down_content = document.getElementById(
+  "personal_pension_down_content"
+);
+
+personal_pension_down_button.addEventListener(
+  "click",
+  personal_pension_down_button1
+);
+
+function personal_pension_down_button1() {
+  if (personal_pension_down_content.style.display == "none") {
+    personal_pension_down_content.style.display = "block";
+  } else {
+    personal_pension_down_content.style.display = "none";
+  }
+}
+
+//금융자산 button으로 위아래
+var financial_pension_down_button = document.getElementById(
+  "financial_pension_down_button"
+);
+var financial_pension_down_content = document.getElementById(
+  "financial_pension_down_content"
+);
+
+financial_pension_down_button.addEventListener(
+  "click",
+  financial_pension_down_button1
+);
+
+function financial_pension_down_button1() {
+  if (financial_pension_down_content.style.display == "none") {
+    financial_pension_down_content.style.display = "block";
+  } else {
+    financial_pension_down_content.style.display = "none";
+  }
+}
+
+const pension_array = [
+  {
+    type: "국민연금",
+    list: [{ name: "국민연금", amount: "48477420", used: true }],
+  },
+  {
+    type: "퇴직연금",
+    list: [
+      {
+        name: "AB미국그로스(주식-재간접)",
+        amount: "44415792",
+        used: true,
+      },
+      {
+        name: "AB베트남(주식-재간접",
+        amount: "12345678",
+        used: true,
+      },
+    ],
+    sums: function () {
+      var sum = 0;
+      for (var i = 0; i < this.list.length; ++i) {
+        if (this.list[i].used == true) {
+          sum += Number(this.list[i].amount);
+        }
+      }
+      return sum;
+    },
+  },
+  {
+    type: "개인연금",
+    list: [
+      { name: "KB실버웰빙 연금신탁(채권형)", amount: "28497190", used: true },
+      // { name: "CHN중국펀드", amount: "523272", used: true },
+    ],
+  },
+  {
+    type: "금융자산",
+    list: [
+      { name: "직장인우대통장-저축예금", amount: "200000000", used: true },
+    ],
+  },
+  {
+    type: "기타자산",
+    list: [
+      { name: "금", amount: "888888", used: true },
+      { name: "은", amount: "343333", used: true },
+    ],
+  },
+];
+
+//pension_array값을 납부총액, 평가금액 등 detail에 넣기
+var pension_array_0_0 = document.getElementById("pension_array_0_0");
+pension_array_0_0.innerHTML =
+  "납부총액 : " + numberWithCommas(pension_array[0].list[0].amount) + "원";
+
+var pension_array_1_0 = document.getElementById("pension_array_1_0");
+pension_array_1_0.innerHTML =
+  "평가금액 : " + numberWithCommas(pension_array[1].list[0].amount) + "원";
+
+var pension_array_1_1 = document.getElementById("pension_array_1_1");
+pension_array_1_1.innerHTML =
+  "평가금액 : " + numberWithCommas(pension_array[1].list[1].amount) + "원";
+
+var pension_array_2_0 = document.getElementById("pension_array_2_0");
+pension_array_2_0.innerHTML =
+  "평가금액 : " + numberWithCommas(pension_array[2].list[0].amount) + "원";
+
+var pension_array_3_0 = document.getElementById("pension_array_3_0");
+pension_array_3_0.innerHTML =
+  "평가금액 : " + numberWithCommas(pension_array[3].list[0].amount) + "원";
+
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+var toggle_array = document.getElementsByClassName(
+  "national_pension_down_toggle_whole"
+);
+
+calculator();
+function calculator() {
+  // console.log(pension_array[1].list.length);
+
+  //국민연금 총액 national_pension_total_sum
+  var national_pension_total_sum = 0;
+  if (pension_array[0].list[0].used == true) {
+    national_pension_total_sum = pension_array[0].list[0].amount;
+  }
+  var national_pension_calculate2 = document.getElementById(
+    "national_pension_calculate2"
+  );
+  national_pension_calculate2.innerHTML =
+    numberWithCommas(national_pension_total_sum) + "원";
+
+  //퇴직연금 총액 retire_pension_total_sum
+  var retire_pension_total_sum = 0;
+  for (var i = 0; i < pension_array[1].list.length; ++i) {
+    if (pension_array[1].list[i].used == true) {
+      retire_pension_total_sum += Number(pension_array[1].list[i].amount);
+    }
+  }
+  var national_pension_calculate1 = document.getElementById(
+    "national_pension_calculate1"
+  );
+  national_pension_calculate1.innerHTML =
+    numberWithCommas(retire_pension_total_sum) + "원";
+
+  //연금성 총액 다 더한값 pension_total_sum
+  var pension_total_sum = 0;
+  for (var i = 0; i < 3; ++i) {
+    for (var j = 0; j < pension_array[i].list.length; ++j) {
+      if (pension_array[i].list[j].used == true) {
+        pension_total_sum += Number(pension_array[i].list[j].amount);
+      }
+    }
+  }
+  console.log("연금총액 총 값 :", pension_total_sum);
+  var national_pension_calculate3 = document.getElementById(
+    "national_pension_calculate3"
+  );
+  national_pension_calculate3.innerHTML = "만원";
+  national_pension_calculate3.innerHTML =
+    numberWithCommas(Math.floor(pension_total_sum / 10000)) +
+    national_pension_calculate3.innerHTML;
+
+  //개인연금 personal_total_sum
+  var personal_total_sum = 0;
+  for (var i = 0; i < pension_array[2].list.length; ++i) {
+    if (pension_array[2].list[i].used == true) {
+      personal_total_sum += Number(pension_array[2].list[i].amount);
+    }
+  }
+  console.log("개인연금 총 값 :", personal_total_sum);
+  var personal_pension_calculate = document.getElementById(
+    "personal_pension_calculate"
+  );
+  personal_pension_calculate.innerHTML =
+    numberWithCommas(personal_total_sum) + "원";
+
+  //금융자산(위)  financial_total_sum
+  var financial_total_sum = 0;
+  for (var i = 0; i < pension_array[3].list.length; ++i) {
+    if (pension_array[3].list[i].used == true) {
+      financial_total_sum += Number(pension_array[3].list[i].amount);
+    }
+  }
+  console.log("금융자산 총 값 :", financial_total_sum);
+  var national_pension_calculate4 = document.getElementById(
+    "national_pension_calculate4"
+  );
+  var hs_asset_list_financial_pension_money_1 = document.getElementById(
+    "hs_asset_list_financial_pension_money_1"
+  );
+
+  national_pension_calculate4.innerHTML = "만원";
+  national_pension_calculate4.innerHTML =
+    numberWithCommas(financial_total_sum / 10000) +
+    national_pension_calculate4.innerHTML;
+  hs_asset_list_financial_pension_money_1.innerHTML = "원";
+  hs_asset_list_financial_pension_money_1.innerHTML =
+    numberWithCommas(financial_total_sum) +
+    hs_asset_list_financial_pension_money_1.innerHTML;
+
+  //은퇴준비 자산총액 = 연금성 자산+ 금융자산   total_sum
+  var total_sum = Math.floor(
+    Number(pension_total_sum / 10000) + Number(financial_total_sum / 10000)
+  );
+  var national_pension_calculate5 = document.getElementById(
+    "national_pension_calculate5"
+  );
+  national_pension_calculate5.innerHTML = "만원";
+  national_pension_calculate5.innerHTML =
+    numberWithCommas(total_sum) + national_pension_calculate5.innerHTML;
+}
+
+function ho(event) {
+  console.log(event.target.id);
+
+  switch (event.target.id) {
+    case "national_pension_down_toggle_circle_id_1":
+      //id로,
+      var a = document.getElementById(
+        "national_pension_down_toggle_circle_id_1"
+      );
+      var b = document.getElementById(
+        "national_pension_down_toggle_whole_id_1"
+      );
+
+      var left = a.style.left;
+      if (left == "" || left == "40px") {
+        b.style.background = "#CCCCCC";
+        a.style.left = "0px";
+        console.log("1번 토글 off");
+        pension_array[0].list[0].used = false;
+
+        calculator();
+      } else if (left == "0px") {
+        b.style.background = "#53FF4C";
+        a.style.left = "40px";
+        console.log("1번 토글 on");
+        pension_array[0].list[0].used = true;
+        calculator();
+      }
+      break;
+    case "national_pension_down_toggle_circle_id_2":
+      var a = document.getElementById(
+        "national_pension_down_toggle_circle_id_2"
+      );
+      var b = document.getElementById(
+        "national_pension_down_toggle_whole_id_2"
+      );
+
+      var left = a.style.left;
+      if (left == "" || left == "40px") {
+        b.style.background = "#CCCCCC";
+        a.style.left = "0px";
+        console.log("2번 토글 off");
+        pension_array[1].list[0].used = false;
+        calculator();
+      } else if (left == "0px") {
+        b.style.background = "#53FF4C";
+        a.style.left = "40px";
+        console.log("2번 토글 on");
+        pension_array[1].list[0].used = true;
+        calculator();
+      }
+      break;
+    case "national_pension_down_toggle_circle_id_3":
+      var a = document.getElementById(
+        "national_pension_down_toggle_circle_id_3"
+      );
+      var b = document.getElementById(
+        "national_pension_down_toggle_whole_id_3"
+      );
+
+      var left = a.style.left;
+      if (left == "" || left == "40px") {
+        console.log("3번 토글 off");
+        b.style.background = "#CCCCCC";
+        a.style.left = "0px";
+        pension_array[1].list[1].used = false;
+        calculator();
+      } else if (left == "0px") {
+        b.style.background = "#53FF4C";
+        a.style.left = "40px";
+        console.log("3번 토글 on");
+        pension_array[1].list[1].used = true;
+        calculator();
+      }
+      break;
+    case "national_pension_down_toggle_circle_id_4":
+      //id로,
+      var a = document.getElementById(
+        "national_pension_down_toggle_circle_id_4"
+      );
+      var b = document.getElementById(
+        "national_pension_down_toggle_whole_id_4"
+      );
+
+      var left = a.style.left;
+      if (left == "" || left == "40px") {
+        b.style.background = "#CCCCCC";
+        a.style.left = "0px";
+        console.log("4번 토글 off");
+        pension_array[2].list[0].used = false;
+        calculator();
+      } else if (left == "0px") {
+        b.style.background = "#53FF4C";
+        a.style.left = "40px";
+        console.log("4번 토글 on");
+        pension_array[2].list[0].used = true;
+        calculator();
+      }
+      break;
+    case "national_pension_down_toggle_circle_id_5":
+      //id로,
+      var a = document.getElementById(
+        "national_pension_down_toggle_circle_id_5"
+      );
+      var b = document.getElementById(
+        "national_pension_down_toggle_whole_id_5"
+      );
+
+      var left = a.style.left;
+      if (left == "" || left == "40px") {
+        b.style.background = "#CCCCCC";
+        a.style.left = "0px";
+        console.log("5번 토글 off");
+        pension_array[3].list[0].used = false;
+        calculator();
+      } else if (left == "0px") {
+        b.style.background = "#53FF4C";
+        a.style.left = "40px";
+        console.log("5번 토글 on");
+        pension_array[3].list[0].used = true;
+        calculator();
+      }
+      break;
+  }
+}
+
+toggle_array[0].addEventListener("click", ho);
+toggle_array[1].addEventListener("click", ho);
+toggle_array[2].addEventListener("click", ho);
+toggle_array[3].addEventListener("click", ho);
+toggle_array[4].addEventListener("click", ho);
+
+//range 버튼
+var national_pension_range = document.getElementById("national_pension_range");
+national_pension_range.addEventListener("click", range_start_0_0);
+var retire_pension_range_1_0 = document.getElementById(
+  "retire_pension_range_1_0"
+);
+retire_pension_range_1_0.addEventListener("click", range_start_1_0);
+var retire_pension_range_1_1 = document.getElementById(
+  "retire_pension_range_1_1"
+);
+retire_pension_range_1_1.addEventListener("click", range_start_1_1);
+var retire_pension_range_2_0 = document.getElementById(
+  "retire_pension_range_2_0"
+);
+retire_pension_range_2_0.addEventListener("click", range_start_2_0);
+
+//modal contents display on/off
+var modal_pension_array_0_0 = document.getElementById(
+  "modal_pension_array_0_0"
+);
+var modal_pension_array_0_0_close = document.getElementById(
+  "modal_pension_array_0_0_close"
+);
+modal_pension_array_0_0.style.display = "none";
+//range 1_0
+var modal_pension_array_1_0 = document.getElementById(
+  "modal_pension_array_1_0"
+);
+var modal_pension_array_1_0_close = document.getElementById(
+  "modal_pension_array_1_0_close"
+);
+modal_pension_array_1_0.style.display = "none";
+//range 1_1
+var modal_pension_array_1_1 = document.getElementById(
+  "modal_pension_array_1_1"
+);
+modal_pension_array_1_1.style.display = "none";
+var modal_pension_array_1_1_close = document.getElementById(
+  "modal_pension_array_1_1_close"
+);
+//range 2_0
+var modal_pension_array_2_0 = document.getElementById(
+  "modal_pension_array_2_0"
+);
+modal_pension_array_2_0.style.display = "none";
+var modal_pension_array_2_0_close = document.getElementById(
+  "modal_pension_array_2_0_close"
+);
+
+function range_close() {
+  console.log("rance close");
+  modal_pension_array_0_0.style.display = "none";
+  modal_pension_array_1_0.style.display = "none";
+  modal_pension_array_1_1.style.display = "none";
+  modal_pension_array_2_0.style.display = "none";
+}
+function range_start_0_0() {
+  console.log("range");
+  modal_pension_array_0_0.style.display = "block";
+}
+function range_start_1_0() {
+  console.log("range");
+  modal_pension_array_1_0.style.display = "block";
+}
+function range_start_1_1() {
+  console.log("range");
+  modal_pension_array_1_1.style.display = "block";
+}
+function range_start_2_0() {
+  console.log("range");
+  modal_pension_array_2_0.style.display = "block";
+}
+// modal 시작
+var pension_array_0_0_slider = document.getElementById(
+  "pension_array_0_0_slider"
+);
+var slider_range = document.getElementById("slider_range_0_0");
+slider_range.innerHTML = "60";
+// pension_array_0_0_slider.addEventListener("input", function () {
+//   slider_range.innerHTML = pension_array_0_0_slider.value;
+// });
+modal_pension_array_0_0_close.addEventListener("click", range_close);
+
+// modal 1_0
+var pension_array_1_0_slider = document.getElementById(
+  "pension_array_1_0_slider"
+);
+var slider_range_1_0 = document.getElementById("slider_range_1_0");
+slider_range_1_0.innerHTML = "60";
+// pension_array_1_0_slider.addEventListener("input", function () {
+//   slider_range_1_0.innerHTML = pension_array_1_0_slider.value;
+// });
+
+var pension_array_1_0_slider_2 = document.getElementById(
+  "pension_array_1_0_slider_2"
+);
+var slider_range_1_0_2 = document.getElementById("slider_range_1_0_2");
+slider_range_1_0_2.innerHTML = "60";
+// pension_array_1_0_slider_2.addEventListener("input", function () {
+//   slider_range_1_0_2.innerHTML = pension_array_1_0_slider_2.value;
+// });
+modal_pension_array_1_0_close.addEventListener("click", range_close);
+
+//modal 1_1
+var pension_array_1_1_slider = document.getElementById(
+  "pension_array_1_1_slider"
+);
+var slider_range_1_1 = document.getElementById("slider_range_1_1");
+slider_range_1_1.innerHTML = "60";
+// pension_array_1_1_slider.addEventListener("input", function () {
+//   slider_range_1_1.innerHTML = pension_array_1_1_slider.value;
+// });
+
+var pension_array_1_1_slider_2 = document.getElementById(
+  "pension_array_1_1_slider_2"
+);
+var slider_range_1_1_2 = document.getElementById("slider_range_1_1_2");
+slider_range_1_1_2.innerHTML = "60";
+// pension_array_1_1_slider_2.addEventListener("input", function () {
+//   slider_range_1_1_2.innerHTML = pension_array_1_1_slider_2.value;
+// });
+modal_pension_array_1_1_close.addEventListener("click", range_close);
+
+//modal 2_0
+var pension_array_2_0_slider = document.getElementById(
+  "pension_array_2_0_slider"
+);
+var slider_range_2_0 = document.getElementById("slider_range_2_0");
+slider_range_2_0.innerHTML = "60";
+// pension_array_2_0_slider.addEventListener("input", function () {
+//   slider_range_2_0.innerHTML = slider_range_2_0.value;
+// });
+
+var pension_array_2_0_slider_2 = document.getElementById(
+  "pension_array_2_0_slider_2"
+);
+var slider_range_2_0_2 = document.getElementById("slider_range_2_0_2");
+slider_range_2_0_2.innerHTML = "60";
+// pension_array_2_0_slider_2.addEventListener("input", function () {
+//   slider_range_2_0_2.innerHTML = pension_array_2_0_slider_2.value;
+// });
+modal_pension_array_2_0_close.addEventListener("click", range_close);
+
+//새로운 modal range
+//modal 0_0
+var slider_0_0 = document.getElementById("slider_0_0");
+noUiSlider.create(slider_0_0, {
+  // start: [55, 90],
+  start: [55],
+  connect: [true, false],
+  step: 1,
+  orientation: "horizontal", // 'horizontal' or 'vertical'
+  range: {
+    min: [55],
+    max: [65],
+  },
+  // Move handle on tap, bars are draggable
+  // behaviour: "tap-drag",
+  //tooltips: true,
+  // pips: {
+  //   mode: "steps",
+  //   stepped: true,
+  //   density: 2,
+  // },
+});
+
+//modal 1_0
+// window.onload = () => {
+var slider_1_0 = document.getElementById("slider_1_0");
+noUiSlider.create(slider_1_0, {
+  start: [55, 90],
+  connect: true,
+  step: 1,
+  orientation: "horizontal", // 'horizontal' or 'vertical'
+  range: {
+    min: 55,
+    max: 90,
+  },
+  // pips: {
+  //   mode: "steps",
+  //   stepped: true,
+  //   density: 2,
+  // },
+});
+
+//modal 1_1
+var slider_1_1 = document.getElementById("slider_1_1");
+noUiSlider.create(slider_1_1, {
+  start: [55, 90],
+  connect: true,
+  step: 1,
+  orientation: "horizontal", // 'horizontal' or 'vertical'
+  range: {
+    min: 55,
+    max: 90,
+  },
+  // pips: {
+  //   mode: "steps",
+  //   stepped: true,
+  //   density: 2,
+  // },
+});
+
+//modal 2_0
+var slider_2_0 = document.getElementById("slider_2_0");
+noUiSlider.create(slider_2_0, {
+  start: [55, 90],
+  connect: true,
+  step: 1,
+  orientation: "horizontal", // 'horizontal' or 'vertical'
+  range: {
+    min: 55,
+    max: 90,
+  },
+  // pips: {
+  //   mode: "steps",
+  //   stepped: true,
+  //   density: 2,
+  // },
+});
+
+var slider_range_0_0 = document.getElementById("slider_range_0_0");
+var slider_range_1_0 = document.getElementById("slider_range_1_0");
+var slider_range_1_0_2 = document.getElementById("slider_range_1_0_2");
+var slider_range_1_1 = document.getElementById("slider_range_1_1");
+var slider_range_2_0 = document.getElementById("slider_range_2_0");
+
+//초기화 값
+slider_range_0_0.innerHTML = "55";
+slider_range_1_0.innerHTML = "55";
+slider_range_1_0_2.innerHTML = "90";
+slider_range_1_1.innerHTML = "55";
+slider_range_1_1_2.innerHTML = "90";
+slider_range_2_0.innerHTML = "55";
+slider_range_2_0_2.innerHTML = "90";
+
+slider_0_0.noUiSlider.on("slide.one", slider_0_0_func);
+// slider_0_0.addEventListener("update", slider_0_0_func);
+function slider_0_0_func() {
+  console.log("0_0");
+  slider_range_0_0.innerHTML = Math.floor(slider_0_0.noUiSlider.get());
+
+  var pension_0_0_range_start_text2 = document.getElementById(
+    "pension_0_0_range_start_text2"
+  );
+  pension_0_0_range_start_text2.innerHTML = Math.floor(
+    slider_0_0.noUiSlider.get()
+  );
+
+  var pension_0_0_range_start_text = document.getElementById(
+    "pension_0_0_range_start_text"
+  );
+  pension_0_0_range_start_text.innerHTML =
+    38 + Math.floor(slider_0_0.noUiSlider.get()) - 55;
+  var slider_range_0_0_1 = document.getElementById("slider_range_0_0_1");
+  slider_range_0_0_1.innerHTML =
+    38 + Math.floor(slider_0_0.noUiSlider.get()) - 55;
+}
+
+slider_1_0.noUiSlider.on("slide.one", slider_1_0_func);
+//slider_1_0.addEventListener("click", slider_1_0_func);
+function slider_1_0_func() {
+  console.log("1_0");
+  slider_range_1_0.innerHTML = Math.floor(slider_1_0.noUiSlider.get()[0]);
+  slider_range_1_0_2.innerHTML = Math.floor(slider_1_0.noUiSlider.get()[1]);
+
+  var pension_1_0_range_start_text2 = document.getElementById(
+    "pension_1_0_range_start_text2"
+  );
+  pension_1_0_range_start_text2.innerHTML = Math.floor(
+    slider_1_0.noUiSlider.get()[0]
+  );
+  var pension_1_0_range_start_text = document.getElementById(
+    "pension_1_0_range_start_text"
+  );
+  pension_1_0_range_start_text.innerHTML =
+    38 + Math.floor(slider_1_0.noUiSlider.get()[0]) - 55;
+  var slider_range_1_0_a = document.getElementById("slider_range_1_0_a");
+  slider_range_1_0_a.innerHTML =
+    38 + Math.floor(slider_1_0.noUiSlider.get()[0]) - 55;
+  var slider_range_1_0_b = document.getElementById("slider_range_1_0_b");
+  slider_range_1_0_b.innerHTML =
+    38 + Math.floor(slider_1_0.noUiSlider.get()[1]) - 55;
+}
+
+slider_1_1.noUiSlider.on("slide.one", slider_1_1_func);
+//slider_1_1.addEventListener("click", slider_1_1_func);
+function slider_1_1_func() {
+  console.log("1_1");
+  slider_range_1_1.innerHTML = Math.floor(slider_1_1.noUiSlider.get()[0]);
+  slider_range_1_1_2.innerHTML = Math.floor(slider_1_1.noUiSlider.get()[1]);
+
+  var pension_1_1_range_start_text2 = document.getElementById(
+    "pension_1_1_range_start_text2"
+  );
+  pension_1_1_range_start_text2.innerHTML = Math.floor(
+    slider_1_1.noUiSlider.get()[0]
+  );
+  var pension_1_1_range_start_text = document.getElementById(
+    "pension_1_1_range_start_text"
+  );
+  pension_1_1_range_start_text.innerHTML =
+    38 + Math.floor(slider_1_1.noUiSlider.get()[0]) - 55;
+
+  var slider_range_1_1_a = document.getElementById("slider_range_1_1_a");
+  slider_range_1_1_a.innerHTML =
+    38 + Math.floor(slider_1_1.noUiSlider.get()[0]) - 55;
+  var slider_range_1_1_b = document.getElementById("slider_range_1_1_b");
+  slider_range_1_1_b.innerHTML =
+    38 + Math.floor(slider_1_1.noUiSlider.get()[1]) - 55;
+}
+
+slider_2_0.noUiSlider.on("slide.one", slider_2_0_func);
+//slider_2_0.addEventListener("click", slider_2_0_func);
+function slider_2_0_func() {
+  console.log("2_0");
+  slider_range_2_0.innerHTML = Math.floor(slider_2_0.noUiSlider.get()[0]);
+  slider_range_2_0_2.innerHTML = Math.floor(slider_2_0.noUiSlider.get()[1]);
+
+  var pension_2_0_range_start_text2 = document.getElementById(
+    "pension_2_0_range_start_text2"
+  );
+  pension_2_0_range_start_text2.innerHTML = Math.floor(
+    slider_2_0.noUiSlider.get()[0]
+  );
+  var pension_2_0_range_start_text = document.getElementById(
+    "pension_2_0_range_start_text"
+  );
+  pension_2_0_range_start_text.innerHTML =
+    38 + Math.floor(slider_2_0.noUiSlider.get()[0]) - 55;
+
+  var slider_range_2_0_a = document.getElementById("slider_range_2_0_a");
+  slider_range_2_0_a.innerHTML =
+    38 + Math.floor(slider_2_0.noUiSlider.get()[0]) - 55;
+
+  var slider_range_2_0_b = document.getElementById("slider_range_2_0_b");
+  slider_range_2_0_b.innerHTML =
+    38 + Math.floor(slider_2_0.noUiSlider.get()[1]) - 55;
+}

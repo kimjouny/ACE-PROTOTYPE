@@ -1,193 +1,909 @@
-.carousel_container{
-    overflow:hidden;
-    width:100%;
-    height:100%;
-    display:flex;
-    flex-direction: column;  
-    align-items: center;
-    justify-content: center;
+.carousel_container {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.carousel_wrapper{
-    width:100%;
-    height:100%;
-    position: relative;
-    margin:0;       
-    padding:0;
-    list-style:none;
-    transition:transform 0.5s;
+.carousel_wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  transition: transform 0.5s;
 }
 
-.carousel_el{
-    position: absolute;
-    width:100%;
-    height: 100%;
-    overflow-y:scroll;
-    overflow-x:hidden;
-    /* display:flex;
+.carousel_el {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  /* display:flex;
     flex-direction: column;
     align-items: center; */
-    /* flex-direction: column; */
+  /* flex-direction: column; */
 }
 
-.carousel_btn_wrapper{
-    width:100%;
-    margin:0;
-    padding: 3rem 0;
-    list-style:none;
-    display:flex;
-    justify-content: center;
-    align-items: center;
+.carousel_btn_wrapper {
+  width: 100%;
+  margin: 0;
+  padding: 3rem 0;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.carousel_btn{
-    margin : 0 2%;
-    width: 3rem;
-    height: 3rem;
-    background-color: silver;
-    border-radius: 100%;
-    transition: width 0.5s;
+.carousel_btn {
+  margin: 0 2%;
+  width: 3rem;
+  height: 3rem;
+  background-color: silver;
+  border-radius: 100%;
+  transition: width 0.5s;
 }
 
-.caro_btn_focused{
-    width:8rem;
-    border-radius: 3rem;
-    background-color: #65C3EC;
+.caro_btn_focused {
+  width: 8rem;
+  border-radius: 3rem;
+  background-color: #65c3ec;
 }
 
-.totalincome_container{
-    margin-top: 5%;
-    margin-left: 5%;
-    width:80%;
-    height: auto;
-    border:1px solid silver;
-    border-radius: 3rem;
-    padding : 5%;
-    display:flex;
-    flex-direction: column;
-    align-items: center;
+.totalincome_container {
+  margin-top: 5%;
+  margin-left: 5%;
+  width: 80%;
+  height: auto;
+  border: 1px solid silver;
+  border-radius: 3rem;
+  padding: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.totalincome_month{
-    font-size: 8rem;
-    color: #007acc;
-    font-weight: bold;
+.totalincome_month {
+  font-size: 8rem;
+  color: #007acc;
+  font-weight: bold;
 }
 
-.ti_textsub{
-    width:100%;
-    text-align: center;
-    margin-top: 2%;
-    padding-bottom: 2%;
-    font-size: 4rem;
-    color:silver;
-    border-bottom: 2px solid #007acc;
+.ti_textsub {
+  width: 100%;
+  text-align: center;
+  margin-top: 2%;
+  padding-bottom: 2%;
+  font-size: 4rem;
+  color: silver;
+  border-bottom: 2px solid #007acc;
 }
 
-.totaldetail_wrapper{
-    margin-top: 5%;
-    width:100%;
-    display:flex;
+.totaldetail_wrapper {
+  margin-top: 5%;
+  width: 100%;
+  display: flex;
 }
 
-.total_detail{
-    width:50%;
-    border-right: 2px solid #007acc;
+.total_detail {
+  width: 50%;
+  border-right: 2px solid #007acc;
 }
 
-.td_amount{
-    width:100%;
-    font-size: 6rem;
-    font-weight: bold;
-    text-align: center;
-    color:#65C3EC;
+.td_amount {
+  width: 100%;
+  font-size: 6rem;
+  font-weight: bold;
+  text-align: center;
+  color: #65c3ec;
 }
 
-.td_subtitle{
-    margin-top: 2%;
-    width:100%;
-    text-align: center;
-    font-size: 3rem;
-    color:silver;
+.td_subtitle {
+  margin-top: 2%;
+  width: 100%;
+  text-align: center;
+  font-size: 3rem;
+  color: silver;
 }
 
-.td_last{
-    border-right:none;
+.td_last {
+  border-right: none;
 }
 
-.graph_toggle_container{
-    overflow:hidden;
-    margin: 2% 0 2% 5%;
-    width:90%;
-    display:flex;
-    background-color: white;
-    border:1px solid silver;
-    border-radius: 2rem;
-    list-style: none;
-    padding:0;
+.graph_toggle_container {
+  overflow: hidden;
+  margin: 2% 0 2% 5%;
+  width: 90%;
+  display: flex;
+  background-color: white;
+  border: 1px solid silver;
+  border-radius: 2rem;
+  list-style: none;
+  padding: 0;
 }
 
-.graph_toggle{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width:50%;
-    height:8rem;
-    font-size: 4rem;
+.graph_toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 8rem;
+  font-size: 4rem;
 }
 
-.gt_focused{
-    background-color: lightgray;
-    color:white;
+.gt_focused {
+  background-color: lightgray;
+  color: white;
 }
 
-.graph_list{
-    position: relative;
-    width:100%;
-    height:fit-content;
+.graph_list {
+  position: relative;
+  width: 100%;
+  height: fit-content;
 }
 
-.graph_element{
-    position: absolute;
-    width:100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition:left 0.5s;
+.graph_element {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: left 0.5s;
 }
 
-.graph_segment_wrapper{
-    width:90%;
-    padding:5% 0;
-    background-color: white;
-    border: 1px solid silver;
-    border-radius: 3rem;
-    margin-bottom: 3%;
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
+.graph_segment_wrapper {
+  width: 90%;
+  padding: 5% 0;
+  background-color: white;
+  border: 1px solid silver;
+  border-radius: 3rem;
+  margin-bottom: 3%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.segment_texts{
-    margin-left: 10%;
-    color:silver;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size:3rem;
+.segment_texts {
+  margin-left: 10%;
+  color: silver;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 3rem;
 }
 
-.segment_age{
-    font-size:4rem;
-    color:black;
+.segment_age {
+  font-size: 4rem;
+  color: black;
 }
 
-.segment_amount_wrapper{
-    font-size: 7rem;
-    color: #007acc;
+.segment_amount_wrapper {
+  font-size: 7rem;
+  color: #007acc;
 }
 
-.seggraph_wrapper{
-    width:30%;
-    margin-right: 10%;
+.seggraph_wrapper {
+  width: 30%;
+  margin-right: 10%;
+}
+
+/* HOSUNG INTEGRATION */
+.hs_container {
+  width: 105%;
+  height: 40%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-left: 2.5%;
+}
+
+.hs_national_pension {
+  box-shadow: 0.1px 2px 1px 0.1px gray;
+  background-color: #f8766d;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 0%;
+  height: 100%;
+}
+
+.hs_retire_pension {
+  box-shadow: 0.1px 2px 1px 0.1px gray;
+  background-color: #f8766d;
+  bottom: 0;
+  left: 0;
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 30%;
+}
+
+.hs_personal_pension {
+  box-shadow: 0.1px 2px 1px 0.1px gray;
+  background-color: #f8766d;
+  bottom: 0;
+  left: 0;
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 60%;
+}
+
+.hs_three_card_show_color {
+  position: absolute;
+  left: 5%;
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hs_three_card_predict_money_korean {
+  margin-right: 20px;
+}
+
+.hs_three_card_predict_money_korean,
+.hs_three_card_total_money_korean {
+  font-size: 3rem;
+  margin-left: 5px;
+}
+
+.hs_three_card_predict_money_box {
+  width: 5%;
+  height: 55%;
+  border: 1px solid #f8766d;
+  background-color: #f8766d;
+}
+.hs_three_card_total_money_box {
+  width: 5%;
+  height: 55%;
+  border: 1px solid #00bfc4;
+  background-color: #00bfc4;
+}
+
+/* 테이블 */
+.hs_pension_below_text table {
+  margin-left: 3%;
+  margin-right: 3%;
+  left: 2%;
+  vertical-align: middle;
+  width: 90%;
+  height: 13%;
+  font-size: 4rem;
+  position: absolute;
+  top: 86%;
+  background-color: #f0eeee;
+  text-align: center;
+  border-collapse: collapse;
+  border-radius: 3rem;
+}
+
+.hs_pension_below_text table thead {
+  background-color: lightblue;
+}
+
+/*연금, 금융자산, 기타자산 리스트 */
+
+.hs_asset_list_detail {
+  display: block;
+  position: relative;
+  /* top: 36%; */
+  width: 95%;
+  height: 70%;
+}
+
+.hs_asset_list_national_pension,
+.hs_asset_list_retire_pension,
+.hs_asset_list_personal_pension,
+.hs_asset_list_financial_pension,
+.hs_asset_list_etc_pension {
+  width: 90%;
+  height: 50%;
+  background-color: #eee;
+  border: 1px solid #eee;
+  border-radius: 1rem;
+  font-size: 4rem;
+  display: flex;
+  margin-top: 3%;
+}
+
+.hs_asset_list_national_pension_korean,
+.hs_asset_list_retire_pension_korean,
+.hs_asset_list_personal_pension_korean,
+.hs_asset_list_financial_pension_korean,
+.hs_asset_list_etc_pension_korean {
+  font-size: 6.5rem;
+  margin-top: 4%;
+  margin-left: 4%;
+}
+
+.hs_asset_list_national_pension_money,
+.hs_asset_list_retire_pension_money,
+.hs_asset_list_personal_pension_money,
+.hs_asset_list_financial_pension_money,
+.hs_asset_list_etc_pension_money {
+  margin-left: 12%;
+  margin-top: 2%;
+}
+
+.hs_asset_list_national_pension_money_1,
+.hs_asset_list_retire_pension_money_1,
+.hs_asset_list_personal_pension_money_1,
+.hs_asset_list_financial_pension_money_1,
+.hs_asset_list_etc_pension_money_1 {
+  font-size: 6rem;
+}
+
+/* 토글에 따른 원, 한글 고정 */
+/* 국민연금 고정 */
+.hs_asset_list_national_pension_money .hs_asset_list_national_pension_money_1 {
+  position: absolute;
+  right: 22%;
+}
+.hs_asset_list_national_pension_money .hs_asset_list_national_pension_money_2 {
+  position: absolute;
+  right: 33%;
+  top: 38%;
+}
+
+/* 퇴직연금 고정 */
+.hs_asset_list_retire_pension_korean {
+  width: 70%;
+}
+.hs_asset_list_retire_pension_money {
+  width: 100%;
+  position: relative;
+}
+.retire_button .retire_pension_down_button {
+  left: -15%;
+}
+.hs_asset_list_retire_pension_money .hs_asset_list_retire_pension_money_1 {
+  width: 100%;
+  position: absolute;
+  text-align: right;
+  right: 11%;
+}
+.hs_asset_list_retire_pension_money .hs_asset_list_retire_pension_money_2 {
+  position: absolute;
+  right: 36%;
+  top: 55%;
+}
+
+/* 개인연금 고정 */
+.hs_asset_list_personal_pension_korean {
+  width: 70%;
+}
+.hs_asset_list_personal_pension_money {
+  width: 100%;
+  position: relative;
+}
+.pension_button2 .personal_pension_down_button {
+  left: -125%;
+}
+.hs_asset_list_personal_pension_money_1 {
+  width: 100%;
+  position: absolute;
+  right: 19%;
+  text-align: right;
+}
+.hs_asset_list_personal_pension_money_2 {
+  position: absolute;
+  right: 41%;
+  bottom: 10%;
+}
+
+/* 금융자산 고정 */
+
+.hs_asset_list_financial_pension_korean {
+  width: 45%;
+}
+.hs_asset_list_financial_pension_money {
+  position: relative;
+  width: 70%;
+}
+
+.pension_button_financial {
+  left: -5%;
+}
+
+.hs_asset_list_financial_pension_money_1 {
+  width: 100%;
+  position: absolute;
+  right: 15%;
+  text-align: right;
+}
+.hs_asset_list_financial_pension_money_2 {
+  position: absolute;
+  text-align: center;
+  right: 35%;
+  bottom: 15%;
+}
+
+/* 기타자산 고정 */
+.hs_asset_list_etc_pension_korean {
+  width: 100%;
+}
+.hs_asset_list_etc_pension_money {
+  position: relative;
+  width: 100%;
+}
+.hs_asset_list_etc_pension_money_1 {
+  position: absolute;
+  right: 17%;
+}
+.hs_asset_list_etc_pension_money_2 {
+  position: absolute;
+  right: 43%;
+  top: 50%;
+}
+.etc_pension_down_button {
+  left: -35%;
+}
+
+.hs_asset_list_national_pension_money_2,
+.hs_asset_list_retire_pension_money_2,
+.hs_asset_list_personal_pension_money_2,
+.hs_asset_list_financial_pension_money_2,
+.hs_asset_list_etc_pension_money_2 {
+  font-size: 4.5rem;
+  opacity: 50%;
+  text-align: center;
+  align-items: center;
+}
+
+/* 국민연금 down up 버튼 */
+.national_pension_down_button {
+  width: 7%;
+  height: 3%;
+  position: absolute;
+  right: 12%;
+  top: 25%;
+  font-size: 6rem;
+  border: none;
+}
+
+/* 국민연금 contents*/
+.national_pension_down_content {
+  background-color: white;
+  margin-right: 10%;
+  padding: 3%;
+  border: 0.1px solid gray;
+}
+
+.national_pension_down_content_up_korean {
+  font-size: 3rem;
+  display: inline-block;
+  opacity: 70%;
+}
+
+.national_pension_down_content_down {
+  font-size: 3.5rem;
+  /* display: inline-block; */
+  opacity: 70%;
+  margin-top: 5%;
+  text-align: right;
+}
+
+.national_pension_down_content_up {
+  display: flex;
+}
+
+/* 국민연금 toggle 버튼 */
+.nation_pension_toggle_location {
+  position: absolute;
+  right: 18%;
+}
+.national_pension_down_toggle_whole {
+  background: #53ff4c;
+  width: 70px;
+  height: 30px;
+  border: 1px solid #cccccc;
+  border-radius: 15px;
+}
+
+.national_pension_down_toggle_circle {
+  background: #ffffff;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 15px;
+  position: relative;
+  left: 40px;
+}
+
+/* 퇴직연금 컨텐츠  */
+.retire_button {
+  width: 20%;
+  position: relative;
+}
+
+.retire_button .retire_pension_down_button {
+  width: 7%;
+  height: 7%;
+  position: absolute;
+  font-size: 6rem;
+  right: -138%;
+  top: 25%;
+  border: none;
+}
+
+.retire_pension_down_content_up_1,
+.retire_pension_down_content_up_2 {
+  border: 0.1px solid gray;
+  margin-bottom: 3%;
+  padding: 3%;
+}
+.retire_pension_down_content {
+  margin-right: 10%;
+  background-color: white;
+}
+
+.retire_pension_down_content_up_korean {
+  font-size: 3rem;
+  display: inline-block;
+  opacity: 70%;
+}
+
+.retire_pension_down_content_down {
+  font-size: 3.5rem;
+  text-align: right;
+  opacity: 70%;
+  margin-top: 5%;
+}
+
+.retire_pension_down_content_up {
+  display: flex;
+}
+
+.retire_pension_down_content_down {
+}
+
+/* 국민연금 range 버튼 */
+.hs_asset_list_national_range_location {
+}
+
+.national_pension_range {
+  right: 11%;
+  background-color: white;
+  border: 0;
+  outline: 0;
+  position: absolute;
+  width: 5%;
+  height: 5%;
+  font-size: 4.3rem;
+  top: 66%;
+}
+
+.hs_asset_list_personal_range_locationqqq {
+  position: relative;
+  left: 41%;
+}
+
+/* 개인연금 range버튼 */
+.personal_pension_range_1 {
+  background-color: white;
+  border: 0;
+  outline: 0;
+  position: absolute;
+  width: 5%;
+  height: 5%;
+  font-size: 4.3rem;
+}
+
+/* 국민연금 modal */
+.modal_pension_array_0_0 {
+  width: 80%;
+}
+.modal_pension_array_0_0_total {
+  background-color: #e2d9d9;
+  position: fixed;
+  width: 80%;
+  height: 30%;
+  top: 50%;
+  right: 106%;
+  padding-left: 7%;
+  padding-top: 15%;
+}
+
+.modal_pension_array_0_0_korean {
+  font-size: 5rem;
+  position: absolute;
+  top: 30%;
+  margin-top: 3%;
+}
+
+.modal_pension_array_0_0_start {
+  position: relative;
+  top: 10%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 50%;
+  appearance: none;
+  border-radius: 5px;
+  height: 5px; /* Specified height */
+  color: rgb(223, 186, 186);
+  outline: none; /* Remove outline */
+  position: absolute;
+  right: 25%;
+  top: 50%;
+  border-width: 30px;
+}
+
+.modal_pension_array_0_0_close {
+  font-size: 7rem;
+  position: absolute;
+  right: 5%;
+  top: 1%;
+}
+
+/*퇴직연금 range 버튼 */
+.retire_pension_range_1,
+.retire_pension_range_2,
+.retire_pension_range_3 {
+  right: 11%;
+  background-color: white;
+  border: 0;
+  outline: 0;
+  position: absolute;
+  width: 5%;
+  height: 5%;
+  font-size: 4.3rem;
+}
+
+/*퇴직연금 1번째 modal */
+.modal_pension_array_1_0,
+.modal_pension_array_2_0,
+.modal_pension_array_1_1 {
+  /* width: 100%; */
+  position: fixed;
+  right: 30%;
+  width: 80%;
+  height: 50%;
+  top: 50%;
+}
+
+.modal_pension_array_1_0_total,
+.modal_pension_array_2_0_total {
+  background-color: #e2d9d9;
+  width: 80%;
+  height: 30%;
+  padding-left: 7%;
+  padding-top: 15%;
+  right: 106%;
+  position: fixed;
+}
+
+.modal_pension_array_1_0_korean {
+  margin-top: 20%;
+  font-size: 5rem;
+  position: absolute;
+  top: 23%;
+}
+.modal_pension_array_1_0_korean2 {
+  margin-top: 22%;
+  font-size: 5rem;
+  position: absolute;
+  top: 30%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 50%;
+  appearance: none;
+  border-radius: 5px;
+  height: 1px; /* Specified height */
+  background: white;
+  outline: none; /* Remove outline */
+}
+
+.modal_pension_array_1_0_close {
+  font-size: 6rem;
+  position: absolute;
+  right: 4%;
+  top: 3%;
+}
+
+/* 개인연금 컨텐츠  */
+.pension_button2 {
+  width: 10%;
+  position: relative;
+}
+
+.pension_button2 .personal_pension_down_button {
+  width: 7%;
+  height: 7%;
+  position: absolute;
+  right: -380%;
+  top: 27%;
+  font-size: 6rem;
+  border: none;
+}
+
+.personal_pension_down_content_up_1qq {
+  border: 0.1px solid gray;
+  margin-bottom: 3%;
+  padding: 3%;
+}
+
+.personal_pension_down_contentqq {
+  background-color: white;
+  margin: 0;
+  margin-right: 10%;
+}
+
+.personal_pension_down_content_up_korean {
+  font-size: 3rem;
+  display: inline-block;
+  opacity: 70%;
+}
+
+.personal_pension_down_content_down11 {
+  font-size: 3.5rem;
+  opacity: 70%;
+  margin-top: 5%;
+  text-align: right;
+}
+
+/* 개인연금 range */
+
+/*금융자산*/
+.pension_button_financial {
+  width: 10%;
+  position: relative;
+}
+
+/* 금융자산 버튼 */
+.pension_button_financial .financial_pension_down_button {
+  width: 7%;
+  height: 7%;
+  position: absolute;
+  left: 15%;
+  top: 31%;
+  font-size: 6rem;
+  border: none;
+}
+
+.financial_pension_down_content_up {
+  display: flex;
+}
+.financial_pension_down_content_up_1 {
+  border: 0.1px solid gray;
+  margin-bottom: 3%;
+  padding: 3%;
+}
+
+.financial_pension_down_content {
+  margin-right: 10%;
+  background-color: white;
+}
+
+.financial_pension_down_content_up_korean {
+  font-size: 3rem;
+  display: inline-block;
+  opacity: 70%;
+}
+
+.financial_pension_down_content_down {
+  font-size: 3.5rem;
+  opacity: 70%;
+  margin-top: 5%;
+  text-align: right;
+}
+
+/* 개인연금 */
+.personal_pension_down_content_up_1 {
+  border: 0.1px solid gray;
+  margin-bottom: 3%;
+  padding: 3%;
+}
+
+.personal_pension_down_content {
+  margin-left: 5%;
+  margin-right: 5%;
+  background-color: white;
+}
+
+.personal_pension_down_content_up_korean {
+  font-size: 3rem;
+  display: inline-block;
+  opacity: 70%;
+}
+
+.personal_pension_down_content_down {
+  font-size: 2rem;
+  display: inline-block;
+  opacity: 70%;
+  margin-top: 5%;
+  text-align: right;
+}
+
+/*기타자산*/
+.pension_button_etc {
+  width: 20%;
+  position: relative;
+}
+
+.pension_button_etc .etc_pension_down_button {
+  position: absolute;
+  width: 7%;
+  height: 7%;
+  border: none;
+  font-size: 6rem;
+  right: -50%;
+  top: 30%;
+}
+
+.personal_pension_down_content_up_1 {
+  border: 0.1px solid gray;
+  margin-bottom: 3%;
+  padding: 3%;
+}
+
+.personal_pension_down_content {
+  margin-left: 5%;
+  margin-right: 5%;
+  background-color: white;
+}
+.personal_pension_down_content_up {
+  display: flex;
+}
+.personal_pension_down_content_up_korean {
+  font-size: 3rem;
+  display: inline-block;
+  opacity: 70%;
+}
+
+.personal_pension_down_content_down {
+  font-size: 2rem;
+  display: inline-block;
+  opacity: 70%;
+  margin-top: 5%;
+  text-align: right;
+}
+
+.hs_asset_list_etc_pension {
+  margin-bottom: 10%;
+}
+
+/* modal/range 새로운것 */
+
+.modal_pension_array_1_0_start {
+  margin-top: 5%;
+  width: 100%;
+  position: relative;
+}
+
+.slider_1_0,
+.slider_1_1 {
+  position: absolute;
+  width: 90%;
+  height: 100px;
+  margin-top: 10%;
+  margin-right: 10%;
+}
+
+.modal_pension_array_0_0_start {
+  margin-top: 5%;
+  width: 100%;
+  position: relative;
+}
+.modal_pension_array_0_0_korean {
+  position: absolute;
+  top: 25%;
+}
+.slider_0_0 {
+  position: absolute;
+  width: 90%;
+  height: 100px;
+
+  margin-right: 10%;
 }

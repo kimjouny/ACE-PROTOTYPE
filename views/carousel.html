@@ -15,6 +15,14 @@
     <script src="javascripts/vendor/pie/animated.js"></script>
     <script src="javascripts/vendor/barChart.js"></script>
     <link rel="stylesheet" type="text/css" href="stylesheets/pie.css">
+    <!-- HOSUNG DEPENDENCY -->
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
+  />
+    <link rel="stylesheet" type="text/css" href="stylesheets/nouislider.css" />
+    <script type="text/javascript" src="javascripts/nouislider.js"></script> 
+    
   </head>
   <body>
     <!-- HEADER -->
@@ -35,8 +43,385 @@
         <section class="carousel_container">
           <ul class="carousel_wrapper">
             <!-- ACTIVITY1 -->
-            <li class="carousel_el" style="left:-100%;background-color: chartreuse;"></li>
-            <li class="carousel_el">
+            <li class="carousel_el" style="left:-100%;">
+              <div class="totalincome_container">
+                <div class="totalincome_month">
+                  <span class="ti_text" id="national_pension_calculate5"></span>
+                </div>
+                <div class="ti_textsub">현재 은퇴준비 자산총액</div>
+                <div class="totaldetail_wrapper">
+                  <div class="total_detail">
+                    <div class="td_amount">
+                      <span class="td_amount_input"  id="national_pension_calculate3"></span>
+                    </div>
+                    <div class="td_subtitle">
+                      연금성 <span>자산</span>
+                    </div>
+                  </div>
+                  <div class="total_detail td_last">
+                    <div class="td_amount">
+                      <span class="td_amount_input" id="national_pension_calculate4"></span>
+                    </div>
+                    <div class="td_subtitle">
+                      금융 <span>자산</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 국민연금, 퇴직연금 리스트들 -->
+              <div class="hs_container">
+              <div class="hs_asset_list_detail">
+                <div class="hs_asset_list_national_pension">
+                  <div class="hs_asset_list_national_pension_korean">
+                    국민연금
+                  </div>
+                  <div class="hs_asset_list_national_pension_money">
+                    <div class="hs_asset_list_national_pension_money_1"
+                    id="national_pension_calculate2">원</div>
+                    <div class="hs_asset_list_national_pension_money_2">납입금액</div>
+                  </div>
+                  <div class="hs_asset_list_national_show_list pension_button1">
+                    <button  
+                    type="button" 
+                    id="national_pension_down_button" 
+                    class="national_pension_down_button"                  
+                    >                          
+                      <i class="fas fa-chevron-down" id="national_pension_down"></i>
+                    </button>
+                  </div>                       
+                </div>
+              <!-- 국민연금 세부컨텐츠 up and down -->
+              <div class="national_pension_down_content" id="national_pension_down_content" >
+                <div class= "national_pension_down_content_up">
+                  <div class="national_pension_down_content_up_korean">
+                    <div>납부월수 : 148개월</div>
+                    <div>예상 총 납부월수 : 316개월</div>
+                    <div>수급개시년월 : 20<span id="pension_0_0_range_start_text">43</span>년 5월(만<span id="pension_0_0_range_start_text2">55</span>세)</div>
+                  </div>
+                  <!-- 토글버튼 -->
+                  <div class="nation_pension_toggle_location">
+                    <div class="national_pension_down_toggle_whole"
+                      id="national_pension_down_toggle_whole_id_1">
+                      <button class='national_pension_down_toggle_circle'
+                      id="national_pension_down_toggle_circle_id_1"></button>
+                    </div>
+                   </div>
+                  <div class="hs_asset_list_national_range_location">                    
+                      <button
+                      type = "button"
+                      id="national_pension_range"
+                      class="national_pension_range">
+                        <i class="fas fa-ellipsis-v"></i>
+                      </button>                        
+                  </div>
+                </div>
+                <div class= "national_pension_down_content_down">
+                    <div id= "pension_array_0_0">납부총액 : </div>
+                    <div>예상 총 보험료 총액 : 144,902,280원</div>
+                </div>
+              </div>
+              <!-- 퇴직연금 -->
+                <div class="hs_asset_list_retire_pension">
+                  <div class="hs_asset_list_retire_pension_korean">
+                    퇴직연금
+                  </div>
+                  <div class="hs_asset_list_retire_pension_money">
+                    <div class="hs_asset_list_retire_pension_money_1"
+                    id= "national_pension_calculate1"></div>
+                    
+                    <div class="hs_asset_list_retire_pension_money_2">평가금액</div>
+                  </div>
+                  <div class="hs_asset_list_retire_show_list retire_button">
+                    <button 
+                    type="button" 
+                    id="retire_pension_down_button" 
+                    class="retire_pension_down_button"                  
+                    >                          
+                    <i class="fas fa-chevron-down" id="retire_pension_down"></i>
+                   </button>
+                  </div>
+                 
+                </div>
+
+              <!--퇴직연금 컨텐츠-->
+              <div class="retire_pension_down_content" id="retire_pension_down_content" >
+                 <!--퇴직연금 1번째 컨텐츠-->
+               <div class="retire_pension_down_content_up_1">
+                  <div class= "retire_pension_down_content_up ">
+                    <div class="retire_pension_down_content_up_korean">
+                      <div>가입회사 : 국민은행</div>
+                      <div>상품명 : AB미국그로스(주식-재간접)</div>
+                      <div>가입일 : 2015년 03월 05일</div>
+                      <div>수급개시년월 : 20<span id="pension_1_0_range_start_text">38</span>년 4월(만<span id="pension_1_0_range_start_text2">55</span>세)</div>
+                    </div>                  
+                    <!-- 토글버튼 -->
+                    <div class="nation_pension_toggle_location">
+                      <div class="national_pension_down_toggle_whole"
+                        id="national_pension_down_toggle_whole_id_2">
+                        <button class='national_pension_down_toggle_circle'
+                        id="national_pension_down_toggle_circle_id_2"></button>
+                      </div>
+                    </div>
+                    <!-- range버튼 -->
+                    <div class="hs_asset_list_personal_range_location">                    
+                      <button
+                      type = "button"
+                      id="retire_pension_range_1_0"
+                      class="retire_pension_range_1">
+                        <i class="fas fa-ellipsis-v"></i>
+                      </button>                        
+                    </div>
+                  </div>
+                  <div class= "retire_pension_down_content_down">
+                      <div id="pension_array_1_0">평가금액 : </div>
+                      <div>수익률 : 87.16%</div>
+                      <div>납입금액 : 34,651,000원</div>
+                  </div>
+              </div>
+                <!-- 퇴직연금 2번째 콘텐츠 -->
+                <div class="retire_pension_down_content_up_2" >
+                <div class= "retire_pension_down_content_up">                 
+                  <div class="retire_pension_down_content_up_korean">
+                    <div>가입회사 : 국민은행</div>
+                    <div>상품명 : VT베트남(주식-재간접)</div>
+                    <div>가입일 : 2016년 04월 11일</div>
+                    <div>수급개시년월 : 20<span id="pension_1_1_range_start_text">38</span>년 7월(만<span id="pension_1_1_range_start_text2">55</span>세)</div>
+                  </div>                  
+                  <!-- 토글버튼 -->
+                  <div class="nation_pension_toggle_location">
+                    <div class="national_pension_down_toggle_whole"
+                      id="national_pension_down_toggle_whole_id_3">
+                      <button class='national_pension_down_toggle_circle'
+                      id="national_pension_down_toggle_circle_id_3"></button>
+                    </div>
+                  </div>
+                  <div class="hs_asset_list_personal_range_location">                    
+                    <button
+                    type = "button"
+                    id="retire_pension_range_1_1"
+                    class="retire_pension_range_2">
+                      <i class="fas fa-ellipsis-v"></i>
+                    </button>                        
+                  </div>
+                </div>
+                <div class= "retire_pension_down_content_down">
+                    <div id="pension_array_1_1">평가금액 : </div>
+                    <div>수익률 : 41.22%</div>
+                    <div>납입금액 : 29,231,000원</div>
+                </div>
+                </div>
+              </div>
+
+              <!-- 개인연금 컨텐츠 -->
+                <div class="hs_asset_list_personal_pension">
+                  <div class="hs_asset_list_personal_pension_korean">
+                    개인연금
+                  </div>
+                  <div class="hs_asset_list_personal_pension_money">
+                    <div class="hs_asset_list_personal_pension_money_1" id=personal_pension_calculate>원</div>
+                    <div class="hs_asset_list_personal_pension_money_2" >평가금액</div>
+                  </div>
+                  <div class="hs_asset_list_personal_show_list pension_button2">
+                    <button 
+                    type="button" 
+                    id="personal_pension_down_button" 
+                    class="personal_pension_down_button"                  
+                    >       
+                    <i class="fas fa-chevron-down" id="personal_pension_down"></i>
+                  </button>
+                  </div>
+                </div>
+            
+            <!--개인연금 1번째 컨텐츠-->
+            <div class="personal_pension_down_contentqq" id="personal_pension_down_content">
+              <div class="personal_pension_down_content_up_1qq">
+                <div class= "personal_pension_down_content_up ">
+                  <div class="personal_pension_down_content_up_korean">
+                    <div>가입회사 : 국민은행</div>
+                    <div>상품명 : KB실버웰빙 연금신탁(채권형)</div>
+                    <div>가입일 : 2011년 02월 21일</div>
+                    <div>수급개시년월 : 20<span id="pension_2_0_range_start_text">34</span>년 2월(만<span id="pension_2_0_range_start_text2">58</span>세)</div>
+                  </div>                  
+                  <!-- 토글버튼 -->
+                  <div class="nation_pension_toggle_location">
+                    <div class="national_pension_down_toggle_whole"
+                      id="national_pension_down_toggle_whole_id_4">
+                      <button class='national_pension_down_toggle_circle'
+                      id="national_pension_down_toggle_circle_id_4"></button>
+                    </div>
+                  </div>
+                  <div class="hs_asset_list_personal_range_locationqqq">                    
+                    <button
+                    type = "button"
+                    id="retire_pension_range_2_0"
+                    class="personal_pension_range_1">
+                      <i class="fas fa-ellipsis-v"></i>
+                    </button>                        
+                  </div>
+                </div>
+                <div class= "personal_pension_down_content_down11">
+                    <div id="pension_array_2_0">평가금액 : </div>
+                    <div>수익률 : 15.51%</div>
+                    <div>납입금액 : 24,680,000원</div>
+                </div>
+              </div>
+            </div>
+
+
+                <div class="hs_asset_list_financial_pension">
+                  <div class="hs_asset_list_financial_pension_korean">
+                   금융자산
+                  </div>
+                  <div class="hs_asset_list_financial_pension_money">
+                    <div class="hs_asset_list_financial_pension_money_1" id="hs_asset_list_financial_pension_money_1" >원</div>
+                    <div class="hs_asset_list_financial_pension_money_2">평가금액</div>
+                  </div>
+                  <div class="hs_asset_list_financial_show_list pension_button_financial">
+                    <button 
+                    type="button" 
+                    id="financial_pension_down_button" 
+                    class="financial_pension_down_button"                  
+                    > 
+                    <i class="fas fa-chevron-down" id="financial_pension_down"></i>
+                  </button>
+                  </div>
+                </div>
+
+              <!--금융자산 컨텐츠-->
+              <div class="financial_pension_down_content" id="financial_pension_down_content" >
+               <!--금융자산 1번째 컨텐츠-->
+              <div class="financial_pension_down_content_up_1">
+                 <div class= "financial_pension_down_content_up ">
+                   <div class="financial_pension_down_content_up_korean">
+                     <div>가입회사 : 국민은행</div>
+                     <div>상품명 : 직장인우대통장-저축예금</div>
+                     <div>가입일 : 2017년 07월 01일</div>                    
+                   </div>                  
+                   <!-- 토글버튼 -->
+                   <div class="nation_pension_toggle_location">
+                     <div class="national_pension_down_toggle_whole"
+                       id="national_pension_down_toggle_whole_id_5">
+                       <button class='national_pension_down_toggle_circle'
+                       id="national_pension_down_toggle_circle_id_5"></button>
+                     </div>
+                   </div>
+                   <!-- range버튼 -->
+                   <!-- <div class="hs_asset_list_personal_range_location">                    
+                     <button
+                     type = "button"
+                     id="retire_pension_range_3_0"
+                     class="retire_pension_range_3">
+                       <i class="fas fa-ellipsis-v"></i>
+                     </button>                        
+                   </div> -->
+                 </div>
+                 <div class= "financial_pension_down_content_down">
+                     <div id="pension_array_3_0">평가금액 : </div>                   
+                 </div>
+             </div>
+            </div>
+
+                <div class="hs_asset_list_etc_pension">
+                  <div class="hs_asset_list_etc_pension_korean">
+                   기타자산
+                  </div>
+                  <div class="hs_asset_list_etc_pension_money">
+                    <div class="hs_asset_list_etc_pension_money_1">-원</div>
+                    <div class="hs_asset_list_etc_pension_money_2">평가금액</div>
+                  </div>
+                  <div class="hs_asset_list_etc_show_list pension_button_etc">
+                    <button 
+                    type="button" 
+                    id="etc_pension_down_button" 
+                    class="etc_pension_down_button"                  
+                    >       
+                    <i class="fas fa-chevron-down" id="etc_pension_down"></i>
+                  </button>
+                  </div>
+                </div>              
+              </div>
+            </div>
+              <!-- modal시작 -->
+              <!-- modal 0_0 -->
+            
+              <div class="modal_pension_array_0_0" id="modal_pension_array_0_0" style="left:-100%">
+                <div class="modal_pension_array_0_0_total">
+                  <div class="modal_pension_array_0_0_start">
+                    <!-- <input type="range" class="slider" id="pension_array_0_0_slider" value="60" min="60" max="70" > -->
+                    <div id="slider_0_0" class="slider_0_0"></div>
+                  </div>
+                  <div class="modal_pension_array_0_0_korean">
+                    수급개시년 : 20<span id="slider_range_0_0_1">38</span>년 (만 <span id="slider_range_0_0"></span>세)
+                  </div>
+                  
+                  <div class="modal_pension_array_0_0_close" id="modal_pension_array_0_0_close"><i class="fas fa-times"></i></div>
+                </div>                
+              </div>
+             
+              <!-- modal 1_0 -->
+              <div class="modal_pension_array_1_0" id="modal_pension_array_1_0" style="left:-100%">
+                <div class="modal_pension_array_1_0_total">
+                  <div class="modal_pension_array_1_0_start">
+                    <!-- <input type="range" class="slider" id="pension_array_1_0_slider" value="60" min="60" max="70" > -->
+                    <div id="slider_1_0" class = "slider_1_0"></div>
+                  </div>
+                  <div class="modal_pension_array_1_0_korean">
+                    수급개시년 : 20<span id="slider_range_1_0_a">38</span>년 (만 <span id="slider_range_1_0"></span>세)
+                  </div>                  
+                  <div class="modal_pension_array_1_0_korean2">
+                    수급종료년 : 20<span id="slider_range_1_0_b">58</span>년 (만 <span id="slider_range_1_0_2"></span>세)
+                  </div>
+                  <div class="modal_pension_array_1_0_start">
+                    <!-- <input type="range" class="slider" id="pension_array_1_0_slider_2" value="60" min="60" max="70" > -->
+                  </div>
+                  <div class="modal_pension_array_1_0_close" id="modal_pension_array_1_0_close"><i class="fas fa-times"></i></div>
+                </div>                
+              </div>
+
+                <!-- modal 1_1 -->
+                <div class="modal_pension_array_1_1" id="modal_pension_array_1_1" style="left:-100%">
+                  <div class="modal_pension_array_1_0_total">
+                    <div class="modal_pension_array_1_0_start">
+                      <!-- <input type="range" class="slider" id="pension_array_1_1_slider" value="60" min="60" max="70" > -->
+                      <div id="slider_1_1" class = "slider_1_1"></div>
+                    </div>
+                    <div class="modal_pension_array_1_0_korean">
+                      수급개시년 : 20<span id="slider_range_1_1_a">38</span>년 (만 <span id="slider_range_1_1"></span>세)
+                    </div>                    
+                    <div class="modal_pension_array_1_0_korean2">
+                      수급종료년 : 20<span id="slider_range_1_1_b"></span>년 (만 <span id="slider_range_1_1_2"></span>세)
+                    </div>
+                    <!-- <div class="modal_pension_array_1_0_start">
+                      <input type="range" class="slider" id="pension_array_1_1_slider_2" value="60" min="60" max="70" >
+                    </div> -->
+                    <div class="modal_pension_array_1_0_close" id="modal_pension_array_1_1_close"><i class="fas fa-times"></i></div>
+                  </div>                
+                </div>
+
+                <!-- modal 2_0 -->
+                <div class="modal_pension_array_2_0" id="modal_pension_array_2_0" style="left:-100%">
+                  <div class="modal_pension_array_1_0_total">
+                    <div class="modal_pension_array_1_0_start">
+                      <!-- <input type="range" class="slider" id="pension_array_2_0_slider" value="60" min="60" max="70" > -->
+                      <div id="slider_2_0" class = "slider_1_0"></div>
+                    </div>
+                    <div class="modal_pension_array_1_0_korean">
+                      수급개시년 : 20<span id="slider_range_2_0_a">38</span>년 (만 <span id="slider_range_2_0"></span>세)
+                    </div>                 
+                    <div class="modal_pension_array_1_0_korean2">
+                      수급종료년 : 20<span id="slider_range_2_0_b">58</span>년 (만 <span id="slider_range_2_0_2"></span>세)
+                    </div>
+                    <div class="modal_pension_array_1_0_start">
+                      <!-- <input type="range" class="slider" id="pension_array_2_0_slider_2" value="60" min="60" max="70" > -->
+                    </div>
+                    <div class="modal_pension_array_1_0_close" id="modal_pension_array_2_0_close"><i class="fas fa-times"></i></div>
+                  </div>                
+                </div>        
+            
+            </li>
+          
+            <li class="carousel_el" >
               <div class="totalincome_container">
                 <div class="totalincome_month">
                   <span class="ti_text">230</span>만원
