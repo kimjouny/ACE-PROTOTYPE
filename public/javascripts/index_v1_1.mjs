@@ -197,6 +197,7 @@ let SEGCHART=buildChart(SEG1,data1);
 
 
 /** HOSUNG MIGRATION */
+/** HOSUNG MIGRATION */
 //국민연금 button으로 위아래
 var national_pension_down_content = document.getElementById(
   "national_pension_down_content"
@@ -292,11 +293,11 @@ const pension_array = [
         amount: "44415792",
         used: true,
       },
-      {
-        name: "AB베트남(주식-재간접",
-        amount: "12345678",
-        used: true,
-      },
+      // {
+      //   name: "AB베트남(주식-재간접",
+      //   amount: "12345678",
+      //   used: true,
+      // },
     ],
     sums: function () {
       var sum = 0;
@@ -318,7 +319,11 @@ const pension_array = [
   {
     type: "금융자산",
     list: [
-      { name: "직장인우대통장-저축예금", amount: "200000000", used: true },
+      {
+        name: "마이다스 미소 중소형주 투자신탁",
+        amount: "200000000",
+        used: true,
+      },
     ],
   },
   {
@@ -339,9 +344,10 @@ var pension_array_1_0 = document.getElementById("pension_array_1_0");
 pension_array_1_0.innerHTML =
   "평가금액 : " + numberWithCommas(pension_array[1].list[0].amount) + "원";
 
-var pension_array_1_1 = document.getElementById("pension_array_1_1");
-pension_array_1_1.innerHTML =
-  "평가금액 : " + numberWithCommas(pension_array[1].list[1].amount) + "원";
+//khs
+// var pension_array_1_1 = document.getElementById("pension_array_1_1");
+// pension_array_1_1.innerHTML =
+//   "평가금액 : " + numberWithCommas(pension_array[1].list[1].amount) + "원";
 
 var pension_array_2_0 = document.getElementById("pension_array_2_0");
 pension_array_2_0.innerHTML =
@@ -396,13 +402,14 @@ function calculator() {
       }
     }
   }
+  // khs 이 계산 함수 전체
   console.log("연금총액 총 값 :", pension_total_sum);
   var national_pension_calculate3 = document.getElementById(
     "national_pension_calculate3"
   );
-  national_pension_calculate3.innerHTML = "만원";
+  national_pension_calculate3.innerHTML = "원";
   national_pension_calculate3.innerHTML =
-    numberWithCommas(Math.floor(pension_total_sum / 10000)) +
+    numberWithCommas(Math.floor(pension_total_sum)) +
     national_pension_calculate3.innerHTML;
 
   //개인연금 personal_total_sum
@@ -434,9 +441,9 @@ function calculator() {
     "hs_asset_list_financial_pension_money_1"
   );
 
-  national_pension_calculate4.innerHTML = "만원";
+  national_pension_calculate4.innerHTML = "원";
   national_pension_calculate4.innerHTML =
-    numberWithCommas(financial_total_sum / 10000) +
+    numberWithCommas(financial_total_sum) +
     national_pension_calculate4.innerHTML;
   hs_asset_list_financial_pension_money_1.innerHTML = "원";
   hs_asset_list_financial_pension_money_1.innerHTML =
@@ -445,12 +452,12 @@ function calculator() {
 
   //은퇴준비 자산총액 = 연금성 자산+ 금융자산   total_sum
   var total_sum = Math.floor(
-    Number(pension_total_sum / 10000) + Number(financial_total_sum / 10000)
+    Number(pension_total_sum) + Number(financial_total_sum)
   );
   var national_pension_calculate5 = document.getElementById(
     "national_pension_calculate5"
   );
-  national_pension_calculate5.innerHTML = "만원";
+  national_pension_calculate5.innerHTML = "원";
   national_pension_calculate5.innerHTML =
     numberWithCommas(total_sum) + national_pension_calculate5.innerHTML;
 }
@@ -507,29 +514,29 @@ function ho(event) {
         calculator();
       }
       break;
-    case "national_pension_down_toggle_circle_id_3":
-      var a = document.getElementById(
-        "national_pension_down_toggle_circle_id_3"
-      );
-      var b = document.getElementById(
-        "national_pension_down_toggle_whole_id_3"
-      );
+    // case "national_pension_down_toggle_circle_id_3":
+    //   var a = document.getElementById(
+    //     "national_pension_down_toggle_circle_id_3"
+    //   );
+    //   var b = document.getElementById(
+    //     "national_pension_down_toggle_whole_id_3"
+    //   );
 
-      var left = a.style.left;
-      if (left == "" || left == "40px") {
-        console.log("3번 토글 off");
-        b.style.background = "#CCCCCC";
-        a.style.left = "0px";
-        pension_array[1].list[1].used = false;
-        calculator();
-      } else if (left == "0px") {
-        b.style.background = "#53FF4C";
-        a.style.left = "40px";
-        console.log("3번 토글 on");
-        pension_array[1].list[1].used = true;
-        calculator();
-      }
-      break;
+    //   var left = a.style.left;
+    //   if (left == "" || left == "40px") {
+    //     console.log("3번 토글 off");
+    //     b.style.background = "#CCCCCC";
+    //     a.style.left = "0px";
+    //     pension_array[1].list[1].used = false;
+    //     calculator();
+    //   } else if (left == "0px") {
+    //     b.style.background = "#53FF4C";
+    //     a.style.left = "40px";
+    //     console.log("3번 토글 on");
+    //     pension_array[1].list[1].used = true;
+    //     calculator();
+    //   }
+    //   break;
     case "national_pension_down_toggle_circle_id_4":
       //id로,
       var a = document.getElementById(
@@ -585,7 +592,7 @@ toggle_array[0].addEventListener("click", ho);
 toggle_array[1].addEventListener("click", ho);
 toggle_array[2].addEventListener("click", ho);
 toggle_array[3].addEventListener("click", ho);
-toggle_array[4].addEventListener("click", ho);
+// toggle_array[4].addEventListener("click", ho);
 
 //range 버튼
 var national_pension_range = document.getElementById("national_pension_range");
@@ -594,10 +601,10 @@ var retire_pension_range_1_0 = document.getElementById(
   "retire_pension_range_1_0"
 );
 retire_pension_range_1_0.addEventListener("click", range_start_1_0);
-var retire_pension_range_1_1 = document.getElementById(
-  "retire_pension_range_1_1"
-);
-retire_pension_range_1_1.addEventListener("click", range_start_1_1);
+// var retire_pension_range_1_1 = document.getElementById(
+//   "retire_pension_range_1_1"
+// );
+// retire_pension_range_1_1.addEventListener("click", range_start_1_1);
 var retire_pension_range_2_0 = document.getElementById(
   "retire_pension_range_2_0"
 );
@@ -620,13 +627,14 @@ var modal_pension_array_1_0_close = document.getElementById(
 );
 modal_pension_array_1_0.style.display = "none";
 //range 1_1
-var modal_pension_array_1_1 = document.getElementById(
-  "modal_pension_array_1_1"
-);
-modal_pension_array_1_1.style.display = "none";
-var modal_pension_array_1_1_close = document.getElementById(
-  "modal_pension_array_1_1_close"
-);
+//khs
+// var modal_pension_array_1_1 = document.getElementById(
+//   "modal_pension_array_1_1"
+// );
+// modal_pension_array_1_1.style.display = "none";
+// var modal_pension_array_1_1_close = document.getElementById(
+//   "modal_pension_array_1_1_close"
+// );
 //range 2_0
 var modal_pension_array_2_0 = document.getElementById(
   "modal_pension_array_2_0"
@@ -640,7 +648,8 @@ function range_close() {
   console.log("rance close");
   modal_pension_array_0_0.style.display = "none";
   modal_pension_array_1_0.style.display = "none";
-  modal_pension_array_1_1.style.display = "none";
+  //khs
+  //modal_pension_array_1_1.style.display = "none";
   modal_pension_array_2_0.style.display = "none";
 }
 function range_start_0_0() {
@@ -651,10 +660,11 @@ function range_start_1_0() {
   console.log("range");
   modal_pension_array_1_0.style.display = "block";
 }
-function range_start_1_1() {
-  console.log("range");
-  modal_pension_array_1_1.style.display = "block";
-}
+//khs
+// function range_start_1_1() {
+//   console.log("range");
+//   modal_pension_array_1_1.style.display = "block";
+// }
 function range_start_2_0() {
   console.log("range");
   modal_pension_array_2_0.style.display = "block";
@@ -690,32 +700,33 @@ slider_range_1_0_2.innerHTML = "60";
 // });
 modal_pension_array_1_0_close.addEventListener("click", range_close);
 
+//khs
 //modal 1_1
-var pension_array_1_1_slider = document.getElementById(
-  "pension_array_1_1_slider"
-);
-var slider_range_1_1 = document.getElementById("slider_range_1_1");
-slider_range_1_1.innerHTML = "60";
+// var pension_array_1_1_slider = document.getElementById(
+//   "pension_array_1_1_slider"
+// );
+// var slider_range_1_1 = document.getElementById("slider_range_1_1");
+// slider_range_1_1.innerHTML = "60";
 // pension_array_1_1_slider.addEventListener("input", function () {
 //   slider_range_1_1.innerHTML = pension_array_1_1_slider.value;
 // });
 
-var pension_array_1_1_slider_2 = document.getElementById(
-  "pension_array_1_1_slider_2"
-);
-var slider_range_1_1_2 = document.getElementById("slider_range_1_1_2");
-slider_range_1_1_2.innerHTML = "60";
-// pension_array_1_1_slider_2.addEventListener("input", function () {
-//   slider_range_1_1_2.innerHTML = pension_array_1_1_slider_2.value;
-// });
-modal_pension_array_1_1_close.addEventListener("click", range_close);
+// var pension_array_1_1_slider_2 = document.getElementById(
+//   "pension_array_1_1_slider_2"
+// );
+// var slider_range_1_1_2 = document.getElementById("slider_range_1_1_2");
+// slider_range_1_1_2.innerHTML = "60";
+// // pension_array_1_1_slider_2.addEventListener("input", function () {
+// //   slider_range_1_1_2.innerHTML = pension_array_1_1_slider_2.value;
+// // });
+// modal_pension_array_1_1_close.addEventListener("click", range_close);
 
 //modal 2_0
 var pension_array_2_0_slider = document.getElementById(
   "pension_array_2_0_slider"
 );
 var slider_range_2_0 = document.getElementById("slider_range_2_0");
-slider_range_2_0.innerHTML = "60";
+slider_range_2_0.innerHTML = "58";
 // pension_array_2_0_slider.addEventListener("input", function () {
 //   slider_range_2_0.innerHTML = slider_range_2_0.value;
 // });
@@ -735,7 +746,7 @@ modal_pension_array_2_0_close.addEventListener("click", range_close);
 var slider_0_0 = document.getElementById("slider_0_0");
 noUiSlider.create(slider_0_0, {
   // start: [55, 90],
-  start: [55],
+  start: [60],
   connect: [true, false],
   step: 1,
   orientation: "horizontal", // 'horizontal' or 'vertical'
@@ -772,28 +783,29 @@ noUiSlider.create(slider_1_0, {
   // },
 });
 
+//khs
 //modal 1_1
-var slider_1_1 = document.getElementById("slider_1_1");
-noUiSlider.create(slider_1_1, {
-  start: [55, 90],
-  connect: true,
-  step: 1,
-  orientation: "horizontal", // 'horizontal' or 'vertical'
-  range: {
-    min: 55,
-    max: 90,
-  },
-  // pips: {
-  //   mode: "steps",
-  //   stepped: true,
-  //   density: 2,
-  // },
-});
+// var slider_1_1 = document.getElementById("slider_1_1");
+// noUiSlider.create(slider_1_1, {
+//   start: [55, 90],
+//   connect: true,
+//   step: 1,
+//   orientation: "horizontal", // 'horizontal' or 'vertical'
+//   range: {
+//     min: 55,
+//     max: 90,
+//   },
+//   // pips: {
+//   //   mode: "steps",
+//   //   stepped: true,
+//   //   density: 2,
+//   // },
+// });
 
 //modal 2_0
 var slider_2_0 = document.getElementById("slider_2_0");
 noUiSlider.create(slider_2_0, {
-  start: [55, 90],
+  start: [58, 90],
   connect: true,
   step: 1,
   orientation: "horizontal", // 'horizontal' or 'vertical'
@@ -811,16 +823,18 @@ noUiSlider.create(slider_2_0, {
 var slider_range_0_0 = document.getElementById("slider_range_0_0");
 var slider_range_1_0 = document.getElementById("slider_range_1_0");
 var slider_range_1_0_2 = document.getElementById("slider_range_1_0_2");
-var slider_range_1_1 = document.getElementById("slider_range_1_1");
+//khs
+// var slider_range_1_1 = document.getElementById("slider_range_1_1");
 var slider_range_2_0 = document.getElementById("slider_range_2_0");
 
 //초기화 값
-slider_range_0_0.innerHTML = "55";
+slider_range_0_0.innerHTML = "60";
 slider_range_1_0.innerHTML = "55";
 slider_range_1_0_2.innerHTML = "90";
-slider_range_1_1.innerHTML = "55";
-slider_range_1_1_2.innerHTML = "90";
-slider_range_2_0.innerHTML = "55";
+//khs
+// slider_range_1_1.innerHTML = "55";
+// slider_range_1_1_2.innerHTML = "90";
+slider_range_2_0.innerHTML = "58";
 slider_range_2_0_2.innerHTML = "90";
 
 slider_0_0.noUiSlider.on("slide.one", slider_0_0_func);
@@ -872,32 +886,33 @@ function slider_1_0_func() {
     38 + Math.floor(slider_1_0.noUiSlider.get()[1]) - 55;
 }
 
-slider_1_1.noUiSlider.on("slide.one", slider_1_1_func);
-//slider_1_1.addEventListener("click", slider_1_1_func);
-function slider_1_1_func() {
-  console.log("1_1");
-  slider_range_1_1.innerHTML = Math.floor(slider_1_1.noUiSlider.get()[0]);
-  slider_range_1_1_2.innerHTML = Math.floor(slider_1_1.noUiSlider.get()[1]);
+//khs
+// slider_1_1.noUiSlider.on("slide.one", slider_1_1_func);
+// //slider_1_1.addEventListener("click", slider_1_1_func);
+// function slider_1_1_func() {
+//   console.log("1_1");
+//   slider_range_1_1.innerHTML = Math.floor(slider_1_1.noUiSlider.get()[0]);
+//   slider_range_1_1_2.innerHTML = Math.floor(slider_1_1.noUiSlider.get()[1]);
 
-  var pension_1_1_range_start_text2 = document.getElementById(
-    "pension_1_1_range_start_text2"
-  );
-  pension_1_1_range_start_text2.innerHTML = Math.floor(
-    slider_1_1.noUiSlider.get()[0]
-  );
-  var pension_1_1_range_start_text = document.getElementById(
-    "pension_1_1_range_start_text"
-  );
-  pension_1_1_range_start_text.innerHTML =
-    38 + Math.floor(slider_1_1.noUiSlider.get()[0]) - 55;
+//   var pension_1_1_range_start_text2 = document.getElementById(
+//     "pension_1_1_range_start_text2"
+//   );
+//   pension_1_1_range_start_text2.innerHTML = Math.floor(
+//     slider_1_1.noUiSlider.get()[0]
+//   );
+//   var pension_1_1_range_start_text = document.getElementById(
+//     "pension_1_1_range_start_text"
+//   );
+//   pension_1_1_range_start_text.innerHTML =
+//     38 + Math.floor(slider_1_1.noUiSlider.get()[0]) - 55;
 
-  var slider_range_1_1_a = document.getElementById("slider_range_1_1_a");
-  slider_range_1_1_a.innerHTML =
-    38 + Math.floor(slider_1_1.noUiSlider.get()[0]) - 55;
-  var slider_range_1_1_b = document.getElementById("slider_range_1_1_b");
-  slider_range_1_1_b.innerHTML =
-    38 + Math.floor(slider_1_1.noUiSlider.get()[1]) - 55;
-}
+//   var slider_range_1_1_a = document.getElementById("slider_range_1_1_a");
+//   slider_range_1_1_a.innerHTML =
+//     38 + Math.floor(slider_1_1.noUiSlider.get()[0]) - 55;
+//   var slider_range_1_1_b = document.getElementById("slider_range_1_1_b");
+//   slider_range_1_1_b.innerHTML =
+//     38 + Math.floor(slider_1_1.noUiSlider.get()[1]) - 55;
+// }
 
 slider_2_0.noUiSlider.on("slide.one", slider_2_0_func);
 //slider_2_0.addEventListener("click", slider_2_0_func);

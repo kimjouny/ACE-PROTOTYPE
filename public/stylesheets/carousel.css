@@ -335,7 +335,7 @@
 .hs_asset_list_personal_pension,
 .hs_asset_list_financial_pension,
 .hs_asset_list_etc_pension {
-  width: 90%;
+  width: 87%;
   height: 50%;
   background-color: #eee;
   border: 1px solid #eee;
@@ -343,6 +343,24 @@
   font-size: 4rem;
   display: flex;
   margin-top: 3%;
+}
+
+/* khs */
+/* 색 넣기 */
+.hs_asset_list_national_pension {
+  border-left: 25px solid #fa9f44;
+}
+.hs_asset_list_retire_pension {
+  border-left: 25px solid #1dcfc1;
+}
+.hs_asset_list_personal_pension {
+  border-left: 25px solid #cea974;
+}
+.hs_asset_list_financial_pension {
+  border-left: 25px solid #22cee9;
+}
+.hs_asset_list_etc_pension {
+  border-left: 25px solid #3bd186;
 }
 
 .hs_asset_list_national_pension_korean,
@@ -645,14 +663,13 @@
 
 .modal_pension_array_0_0_korean {
   font-size: 5rem;
-  position: absolute;
-  top: 30%;
+
   margin-top: 3%;
 }
 
 .modal_pension_array_0_0_start {
   position: relative;
-  top: 10%;
+  top: 3%;
 }
 
 .slider {
@@ -929,7 +946,7 @@
 }
 .modal_pension_array_0_0_korean {
   position: absolute;
-  top: 25%;
+  top: 50%;
 }
 .slider_0_0 {
   position: absolute;
