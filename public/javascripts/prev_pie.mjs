@@ -13,7 +13,7 @@ const totalAsset_pieChart=(retireAge, deadAge, reqAsset, finAsset, pubPention, r
 
       // 도넛차트 시작
       var chart = am4core.create("totalAsset_pieChart", am4charts.PieChart);
-      chart.innerRadius = am4core.percent(10);
+      chart.innerRadius = am4core.percent(20);
       chart.logo.disabled = true; //arm차트 로고 숨기기
 
       // 카테고리별 도넛차트 생성
@@ -21,38 +21,31 @@ const totalAsset_pieChart=(retireAge, deadAge, reqAsset, finAsset, pubPention, r
       pieSeries2.dataFields.value = "value";
       pieSeries2.slices.template.propertyFields.fill = "fill";
       pieSeries2.labels.template.fontSize = "30";
-
-      pieSeries2.ticks.template.disabled = true;
-      pieSeries2.alignLabels = false;
-      pieSeries2.labels.template.text = "{value.percent.formatNumber('#.0')}%";
-      pieSeries2.labels.template.radius = am4core.percent(-22);
-      pieSeries2.labels.template.fill = am4core.color("white");
-          
-      
+      pieSeries2.labels.template.propertyFields.disabled = "labelDisabled";  //조각 라벨
+      pieSeries2.ticks.template.propertyFields.disabled = "labelDisabled";   //조각 화살표
       // Add data
       pieSeries2.data = [{
         "category": "금융자산",
         "value": finAsset,
         "fill": "#22CEE9",
-        "labelDisabled" : true
         
       }, {
         "category": "공적연금",
         "value": pubPention,
         "fill": "#FA9F44",
-        "labelDisabled" : true
+        
       },
       {
         "category": "퇴직연금",
         "value": retirePention,
         "fill": "#1DCFC1",
-        "labelDisabled" : true
+        
       },
       {
         "category": "개인연금",
         "value": perPention,
         "fill": "#CEA974",
-        "labelDisabled" : true
+       
       },
 
       {
@@ -67,25 +60,12 @@ const totalAsset_pieChart=(retireAge, deadAge, reqAsset, finAsset, pubPention, r
       pieSeries.dataFields.value = "value";
       pieSeries.slices.template.stroke = am4core.color("#fff");
       pieSeries.slices.template.propertyFields.fill = "fill";
-      pieSeries.labels.template.fontSize = "37";
-      pieSeries.slices.template.strokeWidth = 7;  // 큰 조각 파이 테두리 여백
-     
-     
+      pieSeries.labels.template.fontSize = "23";
       pieSeries.slices.template.propertyFields.disabled = "labelDisabled2";
       pieSeries.labels.template.propertyFields.disabled = "labelDisabled";  //큰 조각 라벨
       pieSeries.ticks.template.propertyFields.disabled = "labelDisabled";   //큰 조각 화살표
 
-      //shortAmout 라벨
-      pieSeries.ticks.template.disabled = true;
-      pieSeries.alignLabels = false;
-      pieSeries.labels.template.text = "[bold]"+(shortAmount / 100000000).toFixed(1)+"억원 부족";
-      pieSeries.labels.template.radius = am4core.percent(-10);
-      pieSeries.labels.template.fill = am4core.color("red");
-
-      pieSeries.labels.template.adapter.add("radius", function(radius, target) {
-        
-        return 10;
-      });
+      pieSeries.labels.template.text= (shortAmount / 100000000).toFixed(1)+"억원 부족";
 
       pieSeries.data = [{
         "category": "",
@@ -96,24 +76,23 @@ const totalAsset_pieChart=(retireAge, deadAge, reqAsset, finAsset, pubPention, r
       }, {
         "category": "부족금액\n",
         "value": shortAmount,
-        "fill": "#FF4560",
-      
+        "fill": "#FF4560"
       }];
 
       pieSeries.adapter.add("innerRadius", function (innerRadius, target) {
-        return am4core.percent(45);
+        return am4core.percent(40);
       })
 
       pieSeries2.adapter.add("innerRadius", function (innerRadius, target) {
-        return am4core.percent(45);
+        return am4core.percent(60);
       })
 
       pieSeries.adapter.add("radius", function (innerRadius, target) {
-        return am4core.percent(110);
+        return am4core.percent(130);
       })
 
       pieSeries2.adapter.add("radius", function (innerRadius, target) {
-        return am4core.percent(90);
+        return am4core.percent(100);
       })
 
       //레전드 박스
@@ -137,8 +116,8 @@ const totalAsset_pieChart=(retireAge, deadAge, reqAsset, finAsset, pubPention, r
       label.text = futureScore+"%";
       label.horizontalCenter = "middle";
       label.verticalCenter = "middle";
-      label.fontSize = 80;  
-      
+      label.fontSize = 80;
+
       //애니메이션 효과
       pieSeries.hiddenState.properties.endAngle = -80;
       pieSeries2.hiddenState.properties.endAngle = -80;
@@ -180,7 +159,7 @@ const totalAsset_pieChart=(retireAge, deadAge, reqAsset, finAsset, pubPention, r
     var monthlyRetirePention = Math.round((payRetirePention+preRetirePention) / ageRange / 12 / 10000);
     var monthlyPerPention = Math.round((prePerPention+prePerPention) / ageRange / 12 / 10000);
 
-    //바 차트 옵션
+    //도넛 차트 옵션
     var options = {
       series: [{
         name: '현재 납입액',
