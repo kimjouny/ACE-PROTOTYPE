@@ -46,6 +46,10 @@
           <ul class="carousel_wrapper">
             <!-- ACTIVITY1 -->
             <li class="carousel_el" style="left:-100%;">
+              <div class="caro_header_container">
+                현재<br>
+                은퇴준비 자산
+              </div>
               <div class="totalincome_container">
                 <div class="totalincome_month">
                   <span class="ti_text" id="national_pension_calculate5"></span>
@@ -427,7 +431,7 @@
             <li class="carousel_el" >
               <div class="caro_header_container">
                 은퇴 후<br>
-                월평균 받을 수 있는 돈
+                월평균 수령액
               </div>
               <div class="totalincome_container">
                 <div class="totalincome_month">
@@ -569,6 +573,10 @@
               </section>
             </li>
             <li class="carousel_el" style="left:100%;">
+              <div class="caro_header_container">
+                은퇴 후<br>
+                예상 총 수입-지출
+              </div>
               <div class="totalincome_container">
                 <div class="totalincome_month">
                   <span id="totAsset" class="ti_text">
@@ -597,17 +605,17 @@
               <div class="totalAsset_chart">
                 <span style="font-size:4rem;"> <strong>미래준비율 <span id="future_span"></span> 달성하였습니다.</strong><br><br></span><!--jy// br태그 추가-->
                 <div id="totalAsset_pieChart"></div>
-                <div id="pie_legend_div">
-                  <div class="pie_legend_box" style="background-color:#22CEE9; float:left"> <!-- jy// div backgound-color, margin값 변경 변경-->
+                <div id="pie_legend_div" >
+                  <div class="pie_legend_box" style="background-color:#22CEE9; "> <!-- jy// div backgound-color, margin값 변경 변경-->
                     <p id="pie_legend_box1" class="legend_content"></p>
                   </div>
-                  <div class="pie_legend_box" style="background-color:#FA9F44; float:left; margin-left: 4%">
+                  <div class="pie_legend_box" style="background-color:#FA9F44;">
                     <p id="pie_legend_box2" class="legend_content"></p>
                   </div>
-                  <div class="pie_legend_box" style="background-color:#1DCFC1; float:left; margin-left: 4%;">
+                  <div class="pie_legend_box" style="background-color:#1DCFC1;">
                     <p id="pie_legend_box3" class="legend_content"></p>
                   </div>
-                  <div class="pie_legend_box" style="background-color:#CEA974; float:right;">
+                  <div class="pie_legend_box" style="background-color:#CEA974;">
                     <p id="pie_legend_box4" class="legend_content"></p>
                   </div>
                 </div>
