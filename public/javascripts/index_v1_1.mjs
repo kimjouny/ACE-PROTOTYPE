@@ -54,6 +54,21 @@ const buildChart=(context, inputData)=>{
   });
 }
 
+const buildpensionData=(dataLength,dataArray,colorInput)=>{
+  return {
+    labels: Array.apply(null, Array(dataLength)).map(function() {
+      return '';
+    }),
+    datasets: [{
+      data: dataArray,
+      pointRadius: 0,
+      borderWidth: 10,
+      borderColor: colorInput,
+      backgroundColor: 'transparent',
+    }]
+  }
+}
+
 
 const ctx = document.getElementById("myChart");
 let numDataPoints = 36;
@@ -74,20 +89,7 @@ for(let i=0;i<CUSTOMERS[0].pensions.length;i++){
 }
 
 temp_dataset=dataset;
-
-var data = {
-  labels: Array.apply(null, Array(numDataPoints)).map(function() {
-    return '';
-  }),
-  datasets: [{
-    data: temp_dataset,
-    pointRadius: 0,
-    borderWidth: 10,
-    borderColor: '#007acc',
-    backgroundColor: 'transparent',
-  }]
-};
-
+let data = buildpensionData(numDataPoints,temp_dataset,'#007acc')
 
 /**BUILD CHART */
 let CHARTJS=buildChart(ctx,data);
@@ -175,28 +177,33 @@ GRAPH_AREA.addEventListener('touchstart', handleStockTouchStart);
 GRAPH_AREA.addEventListener('touchmove', handleStockTouchMove);
 GRAPH_AREA.addEventListener('touchend', handleStockTouchEnd);
 
-let segdata=temp_dataset.slice(0,11).reduce((acc,v)=>{
+let segdata1=temp_dataset.slice(0,11).reduce((acc,v)=>{
   acc.push(Math.round(v/12));
   return acc;
 },[]);
+
+let segdata2=temp_dataset.slice(11,22).reduce((acc,v)=>{
+  acc.push(Math.round(v/12));
+  return acc;
+},[]);
+
+let segdata3=temp_dataset.slice(21,35).reduce((acc,v)=>{
+  acc.push(Math.round(v/12));
+  return acc;
+},[]);
+
+/*SEGMENT CHART */
 const SEG1=document.getElementById('segment_graph1');
-let data1 = {
-  labels: Array.apply(null, Array(segdata.length)).map(function() {
-    return '';
-  }),
-  datasets: [{
-    data: segdata,
-    pointRadius: 0,
-    borderWidth: 10,
-    borderColor: '#50953a',
-    backgroundColor: 'transparent',
-  }]
-};
-/**SEGMENT CHART */
-let SEGCHART=buildChart(SEG1,data1);
+const SEG2=document.getElementById('segment_graph2');
+const SEG3=document.getElementById('segment_graph3');
+let data1 =buildpensionData(segdata1.length,segdata1,'#50953a')
+let data2 =buildpensionData(segdata2.length,segdata2,'#50953a')
+let data3 =buildpensionData(segdata3.length,segdata3,'#50953a')
+let SEGCHART1=buildChart(SEG1,data1);
+let SEGCHART2=buildChart(SEG2,data2);
+let SEGCHART3=buildChart(SEG3,data3);
 
 
-/** HOSUNG MIGRATION */
 /** HOSUNG MIGRATION */
 //국민연금 button으로 위아래
 var national_pension_down_content = document.getElementById(
