@@ -1,6 +1,6 @@
 @font-face{
     font-family: KB;
-    src: url('../fonts/KBFGTextL.woff') format('woff')
+    src: local('KB'),url('../fonts/KBFGTextL.woff') format('woff')
 }
 
 html,body{
