@@ -5,6 +5,7 @@ const CUSTOMERS=[
         pensions : [
             {
                 type : '국민연금',
+                category: "국민연금",
                 product_name : '노령연금(개시전, 현재가치 0%',
                 receipt_date :'2043-05',
                 receipts:[
@@ -19,6 +20,7 @@ const CUSTOMERS=[
             },
             {
                 type : '국민은행',
+                category: "퇴직연금",
                 product_name : 'AB미국그로스(주식-재간접)CE-P2 외',
                 receipt_date : '2038',
                 receipts : [
@@ -33,6 +35,7 @@ const CUSTOMERS=[
             },
             {
                 type : '국민은행',
+                category: "개인연금",
                 product_name : '연금신탁',
                 receipt_date : '2037-02',
                 receipts : [
@@ -47,6 +50,7 @@ const CUSTOMERS=[
             },
             {
                 type : '본인',
+                category: "금융자산",
                 product_name : '자산',
                 receipt_date : '2033',
                 receipts : [

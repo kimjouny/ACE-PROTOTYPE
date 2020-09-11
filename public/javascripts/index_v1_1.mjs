@@ -114,7 +114,7 @@ const buildPensionInfo=(age)=>{
     const CONCATTED=`
       <ul class="STpension_wrap">
           <li class="STpension_label" style="background-color:${COLORS[idx]}"></li>
-          <li class="STpension_type">${v.product_name}</li>
+          <li class="STpension_type">${v.category}</li>
           <li class="STpension_amt">${Math.floor(v.receipts[age-55]/120)}만원</li>
       </ul>
     `;

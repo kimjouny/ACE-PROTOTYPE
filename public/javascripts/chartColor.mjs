@@ -1,3 +1,3 @@
-const COLORS=['#0b98d9','#33b779','#3e51b5','#ad1456','#4285f4'];
+const COLORS=['#FA9F44,','##1DCFC1,','#CEA974','#22CEE9','#3BD186'];
 
 export {COLORS};
