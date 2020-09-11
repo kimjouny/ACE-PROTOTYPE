@@ -470,10 +470,11 @@ function calculator() {
 }
 
 function ho(event) {
-  console.log(event.target.id);
+  console.log(event.currentTarget.id);
 
-  switch (event.target.id) {
-    case "national_pension_down_toggle_circle_id_1":
+  //national_pension_down_toggle_whole_id_1
+  switch (event.currentTarget.id) {
+    case "national_pension_down_toggle_whole_id_1":
       //id로,
       var a = document.getElementById(
         "national_pension_down_toggle_circle_id_1"
@@ -498,7 +499,8 @@ function ho(event) {
         calculator();
       }
       break;
-    case "national_pension_down_toggle_circle_id_2":
+    //national_pension_down_toggle_whole_id_2
+    case "national_pension_down_toggle_whole_id_2":
       var a = document.getElementById(
         "national_pension_down_toggle_circle_id_2"
       );
@@ -544,7 +546,8 @@ function ho(event) {
     //     calculator();
     //   }
     //   break;
-    case "national_pension_down_toggle_circle_id_4":
+    //national_pension_down_toggle_whole_id_4
+    case "national_pension_down_toggle_whole_id_4":
       //id로,
       var a = document.getElementById(
         "national_pension_down_toggle_circle_id_4"
@@ -568,7 +571,8 @@ function ho(event) {
         calculator();
       }
       break;
-    case "national_pension_down_toggle_circle_id_5":
+    //national_pension_down_toggle_whole_id_5
+    case "national_pension_down_toggle_whole_id_5":
       //id로,
       var a = document.getElementById(
         "national_pension_down_toggle_circle_id_5"
