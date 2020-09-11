@@ -323,213 +323,12 @@
   background-color: lightblue;
 }
 
-/*연금, 금융자산, 기타자산 리스트 */
-
-.hs_asset_list_detail {
-  display: block;
-  position: relative;
-  /* top: 36%; */
-  width: 95%;
-  height: 70%;
-}
-
-.hs_asset_list_national_pension,
-.hs_asset_list_retire_pension,
-.hs_asset_list_personal_pension,
-.hs_asset_list_financial_pension,
-.hs_asset_list_etc_pension {
-  width: 87%;
-  height: 50%;
-  /* background-color: #eee; */
-  background-color: white;
-  border: 1px solid gray;
-  border-radius: 1rem;
-  font-size: 4rem;
-  display: flex;
-  margin-top: 3%;
-}
-
-/* khs */
-/* 색 넣기 */
-.hs_asset_list_national_pension {
-  border-left: 25px solid #fa9f44;
-}
-.hs_asset_list_retire_pension {
-  border-left: 25px solid #1dcfc1;
-}
-.hs_asset_list_personal_pension {
-  border-left: 25px solid #cea974;
-}
-.hs_asset_list_financial_pension {
-  border-left: 25px solid #22cee9;
-}
-.hs_asset_list_etc_pension {
-  border-left: 25px solid #3bd186;
-}
-
-.hs_asset_list_national_pension_korean,
-.hs_asset_list_retire_pension_korean,
-.hs_asset_list_personal_pension_korean,
-.hs_asset_list_financial_pension_korean,
-.hs_asset_list_etc_pension_korean {
-  font-size: 5.5rem;
-  margin-top: 4%;
-  margin-left: 4%;
-}
-
-.hs_asset_list_national_pension_money,
-.hs_asset_list_retire_pension_money,
-.hs_asset_list_personal_pension_money,
-.hs_asset_list_financial_pension_money,
-.hs_asset_list_etc_pension_money {
-  margin-left: 12%;
-  margin-top: 2%;
-}
-
-.hs_asset_list_national_pension_money_1,
-.hs_asset_list_retire_pension_money_1,
-.hs_asset_list_personal_pension_money_1,
-.hs_asset_list_financial_pension_money_1,
-.hs_asset_list_etc_pension_money_1 {
-  font-size: 5rem;
-}
-
-/* 토글에 따른 원, 한글 고정 */
-/* 국민연금 고정 */
-.hs_asset_list_national_pension_money .hs_asset_list_national_pension_money_1 {
-  position: absolute;
-  right: 26%;
-}
-.hs_asset_list_national_pension_money .hs_asset_list_national_pension_money_2 {
-  position: absolute;
-  right: 26%;
-  top: 42%;
-}
-
-/* 퇴직연금 고정 */
-.hs_asset_list_retire_pension_korean {
-  width: 70%;
-}
-.hs_asset_list_retire_pension_money {
-  width: 100%;
-  position: relative;
-}
-.retire_button .retire_pension_down_button {
-  left: -15%;
-}
-.hs_asset_list_retire_pension_money .hs_asset_list_retire_pension_money_1 {
-  width: 100%;
-  position: absolute;
-  text-align: right;
-  right: 20%;
-}
-.hs_asset_list_retire_pension_money .hs_asset_list_retire_pension_money_2 {
-  position: absolute;
-  right: 20%;
-  top: 65%;
-}
-
-/* 개인연금 고정 */
-.hs_asset_list_personal_pension_korean {
-  width: 70%;
-}
-.hs_asset_list_personal_pension_money {
-  width: 100%;
-  position: relative;
-}
-.pension_button2 .personal_pension_down_button {
-  left: -125%;
-}
-.hs_asset_list_personal_pension_money_1 {
-  width: 100%;
-  position: absolute;
-  right: 28%;
-  text-align: right;
-}
-.hs_asset_list_personal_pension_money_2 {
-  position: absolute;
-  right: 28%;
-  bottom: 6%;
-}
-
-/* 금융자산 고정 */
-
-.hs_asset_list_financial_pension_korean {
-  width: 45%;
-}
-.hs_asset_list_financial_pension_money {
-  position: relative;
-  width: 70%;
-}
-
-.pension_button_financial {
-  left: -5%;
-}
-
-.hs_asset_list_financial_pension_money_1 {
-  width: 100%;
-  position: absolute;
-  right: 24%;
-  text-align: right;
-}
-.hs_asset_list_financial_pension_money_2 {
-  position: absolute;
-  text-align: center;
-  right: 24%;
-  bottom: 7%;
-}
-
-/* 기타자산 고정 */
-.hs_asset_list_etc_pension_korean {
-  width: 100%;
-}
-.hs_asset_list_etc_pension_money {
-  position: relative;
-  width: 100%;
-}
-.hs_asset_list_etc_pension_money_1 {
-  position: absolute;
-  right: 28%;
-}
-.hs_asset_list_etc_pension_money_2 {
-  position: absolute;
-  right: 28%;
-  top: 64%;
-}
-.etc_pension_down_button {
-  left: -35%;
-}
-
-.hs_asset_list_national_pension_money_2,
-.hs_asset_list_retire_pension_money_2,
-.hs_asset_list_personal_pension_money_2,
-.hs_asset_list_financial_pension_money_2,
-.hs_asset_list_etc_pension_money_2 {
-  /* khs */
-  font-size: 4rem;
-  opacity: 50%;
-  text-align: center;
-  align-items: center;
-}
-
-/* 국민연금 down up 버튼 */
-.national_pension_down_button {
-  background-color: white;
-  width: 7%;
-  height: 17%;
-  position: absolute;
-  right: 12.5%;
-  top: 25%;
-  font-size: 6rem;
-  border: none;
-}
-
 /* 국민연금 contents*/
 .national_pension_down_content {
   background-color: white;
-  margin-right: 10%;
+  margin-right: 12%;
   padding: 3%;
-  border: 0.1px solid gray;
+  border: 1px solid gray;
   border-radius: 3rem;
 }
 
@@ -554,7 +353,7 @@
 /* 국민연금 toggle 버튼 */
 .nation_pension_toggle_location {
   position: absolute;
-  right: 22%;
+  right: 17%;
 }
 .national_pension_down_toggle_whole {
   background: #53ff4c;
@@ -574,23 +373,6 @@
   left: 40px;
 }
 
-/* 퇴직연금 컨텐츠  */
-.retire_button {
-  width: 20%;
-  position: relative;
-}
-
-.retire_button .retire_pension_down_button {
-  background-color: white;
-  width: 18%;
-  height: 32%;
-  position: absolute;
-  font-size: 6rem;
-  right: -138%;
-  top: 25%;
-  border: none;
-}
-
 .retire_pension_down_content_up_1,
 .retire_pension_down_content_up_2 {
   border: 0.1px solid gray;
@@ -599,7 +381,7 @@
   padding: 3%;
 }
 .retire_pension_down_content {
-  margin-right: 10%;
+  margin-right: 12%;
   background-color: white;
 }
 
@@ -618,25 +400,6 @@
 
 .retire_pension_down_content_up {
   display: flex;
-}
-
-.retire_pension_down_content_down {
-}
-
-/* 국민연금 range 버튼 */
-.hs_asset_list_national_range_location {
-}
-
-.national_pension_range {
-  right: 14%;
-  background-color: white;
-  border: 0;
-  outline: 0;
-  position: absolute;
-  width: 5%;
-  height: 20%;
-  font-size: 4.3rem;
-  top: 65%;
 }
 
 .hs_asset_list_personal_range_locationqqq {
@@ -769,23 +532,6 @@
   top: 3%;
 }
 
-/* 개인연금 컨텐츠  */
-.pension_button2 {
-  width: 10%;
-  position: relative;
-}
-
-.pension_button2 .personal_pension_down_button {
-  background-color: white;
-  width: 17%;
-  height: 17%;
-  position: absolute;
-  right: -380%;
-  top: 27%;
-  font-size: 6rem;
-  border: none;
-}
-
 .personal_pension_down_content_up_1qq {
   border: 0.1px solid gray;
   border-radius: 3rem;
@@ -796,7 +542,7 @@
 .personal_pension_down_contentqq {
   background-color: white;
   margin: 0;
-  margin-right: 10%;
+  margin-right: 12%;
 }
 
 .personal_pension_down_content_up_korean {
@@ -812,26 +558,6 @@
   text-align: right;
 }
 
-/* 개인연금 range */
-
-/*금융자산*/
-.pension_button_financial {
-  width: 10%;
-  position: relative;
-}
-
-/* 금융자산 버튼 */
-.pension_button_financial .financial_pension_down_button {
-  background-color: white;
-  width: 17%;
-  height: 17%;
-  position: absolute;
-  left: 15%;
-  top: 31%;
-  font-size: 6rem;
-  border: none;
-}
-
 .financial_pension_down_content_up {
   display: flex;
 }
@@ -843,7 +569,7 @@
 }
 
 .financial_pension_down_content {
-  margin-right: 10%;
+  margin-right: 12%;
   background-color: white;
 }
 
@@ -887,23 +613,6 @@
   text-align: right;
 }
 
-/*기타자산*/
-.pension_button_etc {
-  width: 20%;
-  position: relative;
-}
-
-.pension_button_etc .etc_pension_down_button {
-  background-color: white;
-  position: absolute;
-  width: 17%;
-  height: 17%;
-  border: none;
-  font-size: 6rem;
-  right: -50%;
-  top: 30%;
-}
-
 .personal_pension_down_content_up_1 {
   border: 0.1px solid gray;
   margin-bottom: 3%;
@@ -930,10 +639,6 @@
   opacity: 70%;
   margin-top: 5%;
   text-align: right;
-}
-
-.hs_asset_list_etc_pension {
-  margin-bottom: 10%;
 }
 
 /* modal/range 새로운것 */
@@ -968,4 +673,101 @@
   height: 100px;
 
   margin-right: 10%;
+}
+
+/* 연금카드 재구성 */
+.hs_asset_list {
+  width: 98%;
+  height: 70%;
+  margin: 2% -2% 0 0%;
+}
+
+.hs_asset_list_card {
+  background-color: white;
+  width: 85%;
+  height: 50%;
+  border: 1px solid gray;
+  border-radius: 1rem;
+  margin-top: 3%;
+  justify-content: space-between;
+  display: flex;
+  font-size: 4rem;
+}
+
+.hs_asset_list_card_name {
+  font-size: 5rem;
+  margin-left: 3%;
+  margin-top: 3.5%;
+  margin-bottom: 2.5%;
+}
+
+.hs_asset_list_card_middle_money_name {
+  font-size: 3.5rem;
+  margin-top: 2%;
+}
+
+.hs_asset_list_card_middle {
+  text-align: right;
+  width: 62%;
+  margin-top: 3%;
+  margin-bottom: 2%;
+  font-size: 4rem;
+}
+
+.hs_asset_list_card_right {
+  width: 8%;
+  height: 45%;
+  margin-top: 4%;
+}
+
+.hs_asset_list_card_right_button {
+  background-color: white;
+  border: none;
+  width: 65%;
+  height: 65%;
+  -webkit-text-stroke: thin;
+}
+
+.fa-ellipsis-v {
+  font-size: 3.5rem;
+}
+
+.fa-chevron-up,
+.fa-chevron-down,
+.fa-plus {
+  /* font-size: 40px; */
+  font-size: 3.5rem;
+  opacity: 50%;
+}
+
+/* 왼쪽 바 색 넣기 */
+.hs_asset_list_card_national_barcolor {
+  border-left: 25px solid #fa9f44;
+}
+.hs_asset_list_card_retire_barcolor {
+  border-left: 25px solid #1dcfc1;
+}
+.hs_asset_list_card_personal_barcolor {
+  border-left: 25px solid #cea974;
+}
+.hs_asset_list_card_financial_barcolor {
+  border-left: 25px solid #22cee9;
+}
+.hs_asset_list_card_etc_barcolor {
+  border-left: 25px solid #3bd186;
+}
+
+/* range버튼 */
+.pension_range_location {
+  width: 6%;
+  height: 5%;
+  position: absolute;
+  right: 9%;
+}
+
+.pension_range_button {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border: none;
 }

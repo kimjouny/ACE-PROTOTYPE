@@ -88,6 +88,20 @@ for(let i=0;i<CUSTOMERS[0].pensions.length;i++){
     }
 }
 
+
+// dataset=PERSONA[0].persona_lists.reduce((acc,asset,idx)=>{
+//   asset.reduce((acc,product,pidx)=>{
+
+//   },)
+// },[
+//   0, 0, 0, 0, 0, 0,
+//   0, 0, 0, 0, 0, 0,
+//   0, 0, 0, 0, 0, 0,
+//   0, 0, 0, 0, 0, 0,
+//   0, 0, 0, 0, 0, 0,
+//   0, 0, 0, 0, 0, 0
+// ]);
+
 temp_dataset=dataset;
 let data = buildpensionData(numDataPoints,temp_dataset,'#007acc')
 
@@ -205,7 +219,6 @@ let SEGCHART3=buildChart(SEG3,data3);
 
 
 /** HOSUNG MIGRATION */
-//국민연금 button으로 위아래
 var national_pension_down_content = document.getElementById(
   "national_pension_down_content"
 );
@@ -219,8 +232,16 @@ national_pension_down_button.addEventListener(
 function national_pension_content() {
   if (national_pension_down_content.style.display == "none") {
     national_pension_down_content.style.display = "block";
+    national_pension_down_button.childNodes[1].className = national_pension_down_button.childNodes[1].className.replace(
+      "fa-chevron-down",
+      "fa-chevron-up"
+    );
   } else {
     national_pension_down_content.style.display = "none";
+    national_pension_down_button.childNodes[1].className = national_pension_down_button.childNodes[1].className.replace(
+      "fa-chevron-up",
+      "fa-chevron-down"
+    );
   }
 }
 
@@ -240,8 +261,18 @@ retire_pension_down_button.addEventListener(
 function retire_pension_down_button1() {
   if (retire_pension_down_content.style.display == "none") {
     retire_pension_down_content.style.display = "block";
+
+    retire_pension_down_button.childNodes[1].className = retire_pension_down_button.childNodes[1].className.replace(
+      "fa-chevron-down",
+      "fa-chevron-up"
+    );
+    retire_pension_down_content.style.display = "block";
   } else {
     retire_pension_down_content.style.display = "none";
+    retire_pension_down_button.childNodes[1].className = retire_pension_down_button.childNodes[1].className.replace(
+      "fa-chevron-up",
+      "fa-chevron-down"
+    );
   }
 }
 
@@ -261,8 +292,16 @@ personal_pension_down_button.addEventListener(
 function personal_pension_down_button1() {
   if (personal_pension_down_content.style.display == "none") {
     personal_pension_down_content.style.display = "block";
+    personal_pension_down_button.childNodes[1].className = personal_pension_down_button.childNodes[1].className.replace(
+      "fa-chevron-down",
+      "fa-chevron-up"
+    );
   } else {
     personal_pension_down_content.style.display = "none";
+    personal_pension_down_button.childNodes[1].className = personal_pension_down_button.childNodes[1].className.replace(
+      "fa-chevron-up",
+      "fa-chevron-down"
+    );
   }
 }
 
