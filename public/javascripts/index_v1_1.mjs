@@ -1,28 +1,45 @@
+
 import {initCarousel} from './carousel.mjs'
-// import {graphToggle} from './graphToggle.mjs'
 import {CUSTOMERS,PERSONA,OPTIMIZED_PERSONA} from './pensionData.mjs'
 import {COLORS} from './chartColor.mjs'
 import {counterAnimation} from './counterAnimation.mjs'
 
+
 /* PIE INTEGRATION  */
-import {totalAsset_pieChart} from './pie.mjs'
-import {monthlyPention_chart} from './pie.mjs'
+import { totalAsset_pieChart } from "./pie.mjs";
+import { monthlyPention_chart } from "./pie.mjs";
 
 /* PIE PART */
-window.onload=()=>{
-  totalAsset_pieChart(55, 90, 2650000, 239143000, 429051000, 289444000, 55788000);  //jy 파라미터 변경
-  monthlyPention_chart(55, 90, 27000000, 200000000, 429051000, 130485000, 199140000,112312312);
-}
+window.onload = () => {
+  totalAsset_pieChart(
+    55,
+    90,
+    2650000,
+    239143000,
+    429051000,
+    289444000,
+    55788000
+  ); //jy 파라미터 변경
+  monthlyPention_chart(
+    55,
+    90,
+    27000000,
+    200000000,
+    429051000,
+    130485000,
+    199140000,
+    112312312
+  );
+};
 
 /* PACHINCO INTERACTION */
-counterAnimation('.pc_amount');
-counterAnimation('.pc_ratio');
-
+counterAnimation(".pc_amount");
+counterAnimation(".pc_ratio");
 
 /*CAROUSEL LAYOUT INTERACTION */
-const CAROUSEL_BTNS=document.getElementsByClassName('carousel_btn_wrapper');
-const CAROUSEL_WRAP=document.getElementsByClassName('carousel_wrapper');
-initCarousel(CAROUSEL_WRAP,CAROUSEL_BTNS);
+const CAROUSEL_BTNS = document.getElementsByClassName("carousel_btn_wrapper");
+const CAROUSEL_WRAP = document.getElementsByClassName("carousel_wrapper");
+initCarousel(CAROUSEL_WRAP, CAROUSEL_BTNS);
 
 /**INIT CHART */
 Chart.defaults.global.defaultFontColor = 'black';
@@ -84,8 +101,9 @@ const buildChart=(context, inputData)=>{
         }],
       }
     }
+
   });
-}
+};
 
 const ageArr=(startAge, endAge)=>{
   let ages=[];
@@ -114,85 +132,128 @@ const dataset=reduceData(PERSONA[0]);
 let temp_dataset=dataset
 let data = buildpensionData(numDataPoints,ageArr(55,90),temp_dataset,'#007acc','rgba(78,171,243,0.5)',7)
 
-
 /**BUILD CHART */
-let CHARTJS=buildChart(ctx,data);
+let CHARTJS = buildChart(ctx, data);
 
 /** STOCK INTERACTION */
-const STOCK_EL=document.createElement('div');
-const STOCK_AGE=document.createElement('div');
-const STOCK_POPUP=document.getElementsByClassName('stockdisplay_container')[0];
-const STPOP_AGE=STOCK_POPUP.getElementsByClassName('stockdisplay_agecontrol')[0];
-const STPOP_INCOME=STOCK_POPUP.getElementsByClassName('stockdisplay_month_income')[0];
-const CHART_HEAD=document.getElementsByClassName('chartJS_text')[0];
-const ST_PRODUCT=STOCK_POPUP.getElementsByClassName('STpension_container')[0];
-STOCK_EL.classList.add('chartJS_stockline');
-STOCK_AGE.classList.add('chartJS_stockage');
+const STOCK_EL = document.createElement("div");
+const STOCK_AGE = document.createElement("div");
+const STOCK_POPUP = document.getElementsByClassName(
+  "stockdisplay_container"
+)[0];
+const STPOP_AGE = STOCK_POPUP.getElementsByClassName(
+  "stockdisplay_agecontrol"
+)[0];
+const STPOP_INCOME = STOCK_POPUP.getElementsByClassName(
+  "stockdisplay_month_income"
+)[0];
+const CHART_HEAD = document.getElementsByClassName("chartJS_text")[0];
+const ST_PRODUCT = STOCK_POPUP.getElementsByClassName("STpension_container")[0];
+STOCK_EL.classList.add("chartJS_stockline");
+STOCK_AGE.classList.add("chartJS_stockage");
 
-const getPensionIncome=()=>{return (document.getElementsByClassName('pension_used').length)?46:0;}
+const getPensionIncome = () => {
+  return document.getElementsByClassName("pension_used").length ? 46 : 0;
+};
 
-
-const buildPensionInfo=(age)=>{
-  const pensionInfo=CUSTOMERS[0].pensions.reduce((acc,v,idx)=>{
-    if(!v.receipts[age-55])return acc;
-    const CONCATTED=`
+const buildPensionInfo = (age) => {
+  const pensionInfo = CUSTOMERS[0].pensions.reduce(
+    (acc, v, idx) => {
+      if (!v.receipts[age - 55]) return acc;
+      const CONCATTED = `
       <ul class="STpension_wrap">
-          <li class="STpension_label" style="background-color:${COLORS[idx]}"></li>
+          <li class="STpension_label" style="background-color:${
+            COLORS[idx]
+          }"></li>
           <li class="STpension_type">${v.category}</li>
-          <li class="STpension_amt">${Math.floor(v.receipts[age-55]/120)}만원</li>
+          <li class="STpension_amt">${Math.floor(
+            v.receipts[age - 55] / 120
+          )}만원</li>
       </ul>
     `;
-    return [acc[0]+CONCATTED,acc[1]+1];
-  },['',0]);
-  if(getPensionIncome())pensionInfo[0]=pensionInfo[0].concat(`
+      return [acc[0] + CONCATTED, acc[1] + 1];
+    },
+    ["", 0]
+  );
+  if (getPensionIncome())
+    pensionInfo[0] = pensionInfo[0].concat(`
     <ul class="STpension_wrap">
-      <li class="STpension_label" style="background-color:${COLORS[CUSTOMERS[0].pensions.length]}"></li>
+      <li class="STpension_label" style="background-color:${
+        COLORS[CUSTOMERS[0].pensions.length]
+      }"></li>
       <li class="STpension_type">주택연금</li>
       <li class="STpension_amt">46만원</li>
     </ul>
-  `)
-  ST_PRODUCT.innerHTML=pensionInfo[0]; 
-}
+  `);
+  ST_PRODUCT.innerHTML = pensionInfo[0];
+};
 
-const handleStockTouchStart=(e)=>{
-  if(e.touches[0].pageY-e.currentTarget.getBoundingClientRect().y<CANVAS_CONTAINER.offsetTop)return;
+const handleStockTouchStart = (e) => {
+  if (
+    e.touches[0].pageY - e.currentTarget.getBoundingClientRect().y <
+    CANVAS_CONTAINER.offsetTop
+  )
+    return;
   /* VALIDATE GRAPH SECTION */
-  if(e.touches[0].clientX<e.currentTarget.offsetWidth*0.1+e.currentTarget.offsetLeft)return;
-  const graphRatio=(e.touches[0].clientX-e.currentTarget.offsetLeft-(e.currentTarget.offsetWidth*0.12))/(e.currentTarget.offsetWidth*0.88);
-  const currentAge=Math.round(55+graphRatio*(numDataPoints));
-  STOCK_EL.style.left=`${e.touches[0].clientX}px`
-  STOCK_AGE.style.left=`${e.touches[0].clientX}px`
-  STOCK_AGE.innerHTML=`${currentAge}`;
-  GRAPH_AREA.appendChild(STOCK_EL)
+  if (
+    e.touches[0].clientX <
+    e.currentTarget.offsetWidth * 0.1 + e.currentTarget.offsetLeft
+  )
+    return;
+  const graphRatio =
+    (e.touches[0].clientX -
+      e.currentTarget.offsetLeft -
+      e.currentTarget.offsetWidth * 0.12) /
+    (e.currentTarget.offsetWidth * 0.88);
+  const currentAge = Math.round(55 + graphRatio * numDataPoints);
+  STOCK_EL.style.left = `${e.touches[0].clientX}px`;
+  STOCK_AGE.style.left = `${e.touches[0].clientX}px`;
+  STOCK_AGE.innerHTML = `${currentAge}`;
+  GRAPH_AREA.appendChild(STOCK_EL);
   GRAPH_AREA.appendChild(STOCK_AGE);
-  STPOP_AGE.innerHTML=currentAge;
-  STPOP_INCOME.innerHTML=`${Math.floor(temp_dataset[currentAge-55]/120)+getPensionIncome()}만원`;
-  CHART_HEAD.style.visibility="hidden";
-  STOCK_POPUP.style.visibility="visible";
+  STPOP_AGE.innerHTML = currentAge;
+  STPOP_INCOME.innerHTML = `${
+    Math.floor(temp_dataset[currentAge - 55] / 120) + getPensionIncome()
+  }만원`;
+  CHART_HEAD.style.visibility = "hidden";
+  STOCK_POPUP.style.visibility = "visible";
   buildPensionInfo(currentAge);
-}
+};
 
-const handleStockTouchMove=(e)=>{
-    if(e.touches[0].pageY-e.currentTarget.getBoundingClientRect().y<CANVAS_CONTAINER.offsetTop)return;
-    if(e.touches[0].clientX<e.currentTarget.offsetWidth*0.1+e.currentTarget.offsetLeft)return;
-    const graphRatio=(e.touches[0].clientX-e.currentTarget.offsetLeft-(e.currentTarget.offsetWidth*0.12))/(e.currentTarget.offsetWidth*0.88);
-    const currentAge=Math.round(55+graphRatio*(numDataPoints));
-    if(currentAge<55||currentAge>90)return;
-    STOCK_EL.style.left=`${e.touches[0].clientX}px`
-    STOCK_AGE.style.left=`${e.touches[0].clientX}px`
-    STOCK_AGE.innerHTML=`${currentAge}`;
-    STPOP_AGE.innerHTML=currentAge;
-    STPOP_INCOME.innerHTML=`${Math.floor(temp_dataset[currentAge-55]/120)+getPensionIncome()}만원`;
-    buildPensionInfo(currentAge);
-}
+const handleStockTouchMove = (e) => {
+  if (
+    e.touches[0].pageY - e.currentTarget.getBoundingClientRect().y <
+    CANVAS_CONTAINER.offsetTop
+  )
+    return;
+  if (
+    e.touches[0].clientX <
+    e.currentTarget.offsetWidth * 0.1 + e.currentTarget.offsetLeft
+  )
+    return;
+  const graphRatio =
+    (e.touches[0].clientX -
+      e.currentTarget.offsetLeft -
+      e.currentTarget.offsetWidth * 0.12) /
+    (e.currentTarget.offsetWidth * 0.88);
+  const currentAge = Math.round(55 + graphRatio * numDataPoints);
+  if (currentAge < 55 || currentAge > 90) return;
+  STOCK_EL.style.left = `${e.touches[0].clientX}px`;
+  STOCK_AGE.style.left = `${e.touches[0].clientX}px`;
+  STOCK_AGE.innerHTML = `${currentAge}`;
+  STPOP_AGE.innerHTML = currentAge;
+  STPOP_INCOME.innerHTML = `${
+    Math.floor(temp_dataset[currentAge - 55] / 120) + getPensionIncome()
+  }만원`;
+  buildPensionInfo(currentAge);
+};
 
-const handleStockTouchEnd=(e)=>{
-  
+const handleStockTouchEnd = (e) => {
   GRAPH_AREA.removeChild(STOCK_EL);
   GRAPH_AREA.removeChild(STOCK_AGE);
-  CHART_HEAD.style.visibility="visible";
-  STOCK_POPUP.style.visibility="hidden";
-}
+  CHART_HEAD.style.visibility = "visible";
+  STOCK_POPUP.style.visibility = "hidden";
+};
 
 /* STOCK INTERACTION */
 const CANVAS_CONTAINER=document.getElementsByClassName('canvas_container')[0];
@@ -331,8 +392,16 @@ financial_pension_down_button.addEventListener(
 function financial_pension_down_button1() {
   if (financial_pension_down_content.style.display == "none") {
     financial_pension_down_content.style.display = "block";
+    financial_pension_down_button.childNodes[1].className = financial_pension_down_button.childNodes[1].className.replace(
+      "fa-chevron-down",
+      "fa-chevron-up"
+    );
   } else {
     financial_pension_down_content.style.display = "none";
+    financial_pension_down_button.childNodes[1].className = financial_pension_down_button.childNodes[1].className.replace(
+      "fa-chevron-up",
+      "fa-chevron-down"
+    );
   }
 }
 
@@ -670,6 +739,11 @@ var retire_pension_range_2_0 = document.getElementById(
 );
 retire_pension_range_2_0.addEventListener("click", range_start_2_0);
 
+var retire_pension_range_3_0 = document.getElementById(
+  "retire_pension_range_3_0"
+);
+retire_pension_range_3_0.addEventListener("click", range_start_3_0);
+
 //modal contents display on/off
 var modal_pension_array_0_0 = document.getElementById(
   "modal_pension_array_0_0"
@@ -704,6 +778,15 @@ var modal_pension_array_2_0_close = document.getElementById(
   "modal_pension_array_2_0_close"
 );
 
+//range 3_0
+var modal_pension_array_3_0 = document.getElementById(
+  "modal_pension_array_3_0"
+);
+modal_pension_array_3_0.style.display = "none";
+var modal_pension_array_3_0_close = document.getElementById(
+  "modal_pension_array_3_0_close"
+);
+
 function range_close() {
   console.log("rance close");
   modal_pension_array_0_0.style.display = "none";
@@ -711,13 +794,13 @@ function range_close() {
   //khs
   //modal_pension_array_1_1.style.display = "none";
   modal_pension_array_2_0.style.display = "none";
+  modal_pension_array_3_0.style.display = "none";
 }
 function range_start_0_0() {
   console.log("range");
   modal_pension_array_0_0.style.display = "block";
 }
 function range_start_1_0() {
-  console.log("range");
   modal_pension_array_1_0.style.display = "block";
 }
 //khs
@@ -726,18 +809,19 @@ function range_start_1_0() {
 //   modal_pension_array_1_1.style.display = "block";
 // }
 function range_start_2_0() {
-  console.log("range");
   modal_pension_array_2_0.style.display = "block";
 }
-// modal 시작
+
+function range_start_3_0() {
+  modal_pension_array_3_0.style.display = "block";
+}
+
+// modal 0_0
 var pension_array_0_0_slider = document.getElementById(
   "pension_array_0_0_slider"
 );
 var slider_range = document.getElementById("slider_range_0_0");
 slider_range.innerHTML = "60";
-// pension_array_0_0_slider.addEventListener("input", function () {
-//   slider_range.innerHTML = pension_array_0_0_slider.value;
-// });
 modal_pension_array_0_0_close.addEventListener("click", range_close);
 
 // modal 1_0
@@ -746,18 +830,12 @@ var pension_array_1_0_slider = document.getElementById(
 );
 var slider_range_1_0 = document.getElementById("slider_range_1_0");
 slider_range_1_0.innerHTML = "60";
-// pension_array_1_0_slider.addEventListener("input", function () {
-//   slider_range_1_0.innerHTML = pension_array_1_0_slider.value;
-// });
 
 var pension_array_1_0_slider_2 = document.getElementById(
   "pension_array_1_0_slider_2"
 );
 var slider_range_1_0_2 = document.getElementById("slider_range_1_0_2");
 slider_range_1_0_2.innerHTML = "60";
-// pension_array_1_0_slider_2.addEventListener("input", function () {
-//   slider_range_1_0_2.innerHTML = pension_array_1_0_slider_2.value;
-// });
 modal_pension_array_1_0_close.addEventListener("click", range_close);
 
 //khs
@@ -787,19 +865,25 @@ var pension_array_2_0_slider = document.getElementById(
 );
 var slider_range_2_0 = document.getElementById("slider_range_2_0");
 slider_range_2_0.innerHTML = "58";
-// pension_array_2_0_slider.addEventListener("input", function () {
-//   slider_range_2_0.innerHTML = slider_range_2_0.value;
-// });
-
 var pension_array_2_0_slider_2 = document.getElementById(
   "pension_array_2_0_slider_2"
 );
 var slider_range_2_0_2 = document.getElementById("slider_range_2_0_2");
 slider_range_2_0_2.innerHTML = "60";
-// pension_array_2_0_slider_2.addEventListener("input", function () {
-//   slider_range_2_0_2.innerHTML = pension_array_2_0_slider_2.value;
-// });
 modal_pension_array_2_0_close.addEventListener("click", range_close);
+
+//modal 3_0
+var pension_array_3_0_slider = document.getElementById(
+  "pension_array_3_0_slider"
+);
+var slider_range_3_0 = document.getElementById("slider_range_3_0");
+slider_range_3_0.innerHTML = "58";
+var pension_array_3_0_slider_2 = document.getElementById(
+  "pension_array_3_0_slider_2"
+);
+var slider_range_3_0_2 = document.getElementById("slider_range_3_0_2");
+slider_range_3_0_2.innerHTML = "60";
+modal_pension_array_3_0_close.addEventListener("click", range_close);
 
 //새로운 modal range
 //modal 0_0
@@ -865,7 +949,25 @@ noUiSlider.create(slider_1_0, {
 //modal 2_0
 var slider_2_0 = document.getElementById("slider_2_0");
 noUiSlider.create(slider_2_0, {
-  start: [58, 90],
+  start: [55, 90],
+  connect: true,
+  step: 1,
+  orientation: "horizontal", // 'horizontal' or 'vertical'
+  range: {
+    min: 55,
+    max: 90,
+  },
+  // pips: {
+  //   mode: "steps",
+  //   stepped: true,
+  //   density: 2,
+  // },
+});
+
+//modal 3_0
+var slider_3_0 = document.getElementById("slider_3_0");
+noUiSlider.create(slider_3_0, {
+  start: [54, 90],
   connect: true,
   step: 1,
   orientation: "horizontal", // 'horizontal' or 'vertical'
@@ -886,6 +988,7 @@ var slider_range_1_0_2 = document.getElementById("slider_range_1_0_2");
 //khs
 // var slider_range_1_1 = document.getElementById("slider_range_1_1");
 var slider_range_2_0 = document.getElementById("slider_range_2_0");
+var slider_range_3_0 = document.getElementById("slider_range_3_0");
 
 //초기화 값
 slider_range_0_0.innerHTML = "60";
@@ -896,6 +999,8 @@ slider_range_1_0_2.innerHTML = "90";
 // slider_range_1_1_2.innerHTML = "90";
 slider_range_2_0.innerHTML = "58";
 slider_range_2_0_2.innerHTML = "90";
+slider_range_3_0.innerHTML = "54";
+slider_range_3_0_2.innerHTML = "90";
 
 slider_0_0.noUiSlider.on("slide.one", slider_0_0_func);
 // slider_0_0.addEventListener("update", slider_0_0_func);
@@ -975,7 +1080,6 @@ function slider_1_0_func() {
 // }
 
 slider_2_0.noUiSlider.on("slide.one", slider_2_0_func);
-//slider_2_0.addEventListener("click", slider_2_0_func);
 function slider_2_0_func() {
   console.log("2_0");
   slider_range_2_0.innerHTML = Math.floor(slider_2_0.noUiSlider.get()[0]);
@@ -1000,4 +1104,31 @@ function slider_2_0_func() {
   var slider_range_2_0_b = document.getElementById("slider_range_2_0_b");
   slider_range_2_0_b.innerHTML =
     38 + Math.floor(slider_2_0.noUiSlider.get()[1]) - 55;
+}
+
+slider_3_0.noUiSlider.on("slide.one", slider_3_0_func);
+function slider_3_0_func() {
+  console.log("3_0");
+  slider_range_3_0.innerHTML = Math.floor(slider_3_0.noUiSlider.get()[0]);
+  slider_range_3_0_2.innerHTML = Math.floor(slider_3_0.noUiSlider.get()[1]);
+
+  var pension_3_0_range_start_text2 = document.getElementById(
+    "pension_3_0_range_start_text2"
+  );
+  pension_3_0_range_start_text2.innerHTML = Math.floor(
+    slider_3_0.noUiSlider.get()[0]
+  );
+  var pension_3_0_range_start_text = document.getElementById(
+    "pension_3_0_range_start_text"
+  );
+  pension_3_0_range_start_text.innerHTML =
+    Math.floor(slider_3_0.noUiSlider.get()[0]) - 21;
+
+  var slider_range_3_0_a = document.getElementById("slider_range_3_0_a");
+  slider_range_3_0_a.innerHTML =
+    Math.floor(slider_3_0.noUiSlider.get()[0]) - 21;
+
+  var slider_range_3_0_b = document.getElementById("slider_range_3_0_b");
+  slider_range_3_0_b.innerHTML =
+    Math.floor(slider_3_0.noUiSlider.get()[1]) - 21;
 }

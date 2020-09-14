@@ -55,8 +55,7 @@
   background-color: #65c3ec;
 }
 
-
-.caro_header_container{
+.caro_header_container {
   margin: 5% 0 0 5%;
   font-weight: bolder;
   font-size: 6rem;
@@ -76,33 +75,33 @@
 }
 
 .totalincome_month {
-  width:100%;
-  text-align:center;
+  width: 100%;
+  text-align: center;
   font-size: 8rem;
   color: #007acc;
   font-weight: bold;
 }
 
-.pachinco_wrapper{
+.pachinco_wrapper {
   font-size: 4rem;
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
-  color:gray;
+  color: gray;
 }
 
-.pc_amount{
-  color:gray;
+.pc_amount {
+  color: gray;
 }
 
-.pc_arrow{
-  color:red;
+.pc_arrow {
+  color: red;
   font-size: 5rem;
   margin-right: 1%;
 }
 
-.pc_ratio{
-  color:red;
+.pc_ratio {
+  color: red;
 }
 
 .ti_textsub {
@@ -451,7 +450,8 @@
 /*퇴직연금 1번째 modal */
 .modal_pension_array_1_0,
 .modal_pension_array_2_0,
-.modal_pension_array_1_1 {
+.modal_pension_array_1_1,
+.modal_pension_array_3_0 {
   /* width: 100%; */
   position: fixed;
   right: 30%;
@@ -699,6 +699,7 @@
 
 .fa-ellipsis-v {
   font-size: 3.5rem;
+  opacity: 50%;
 }
 
 .fa-chevron-up,
