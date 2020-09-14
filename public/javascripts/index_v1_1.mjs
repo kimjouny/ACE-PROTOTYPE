@@ -1,8 +1,9 @@
-import { initCarousel } from "./carousel.mjs";
-import { graphToggle } from "./graphToggle.mjs";
-import { CUSTOMERS } from "./pensionData.mjs";
-import { COLORS } from "./chartColor.mjs";
-import { counterAnimation } from "./counterAnimation.mjs";
+
+import {initCarousel} from './carousel.mjs'
+import {CUSTOMERS,PERSONA,OPTIMIZED_PERSONA} from './pensionData.mjs'
+import {COLORS} from './chartColor.mjs'
+import {counterAnimation} from './counterAnimation.mjs'
+
 
 /* PIE INTEGRATION  */
 import { totalAsset_pieChart } from "./pie.mjs";
@@ -40,17 +41,37 @@ const CAROUSEL_BTNS = document.getElementsByClassName("carousel_btn_wrapper");
 const CAROUSEL_WRAP = document.getElementsByClassName("carousel_wrapper");
 initCarousel(CAROUSEL_WRAP, CAROUSEL_BTNS);
 
-/* TOGGLE INTERACTION */
-const TOGGLE_ELES = document.getElementsByClassName("graph_element");
-const GRAPH_TOGGLES = document.getElementsByClassName(
-  "graph_toggle_container"
-)[0];
-GRAPH_TOGGLES.addEventListener("click", (e) => graphToggle(e, TOGGLE_ELES));
-
 /**INIT CHART */
-const buildChart = (context, inputData) => {
-  return new Chart(context, {
-    type: "line",
+Chart.defaults.global.defaultFontColor = 'black';
+Chart.defaults.global.defaultFontSize = 30;
+Chart.defaults.global.defaultFontFamily = 'KB';
+
+const reduceData=(originData)=>{
+  return originData.assets.reduce((asset_acc,asset)=>{
+    asset.product_lists.reduce((product_acc,product)=>{
+        product.receipts.reduce((receipt_acc,receipt,idx)=>{
+          receipt_acc[idx]+=receipt;
+          return receipt_acc;
+        },product_acc);
+        return product_acc;
+    },asset_acc);
+    return asset_acc;
+  },[
+    0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0
+  ]).reduce((acc,v)=>{
+    acc.push(v/1000);
+    return acc;
+  },[]);
+}
+
+const buildChart=(context, inputData)=>{
+  return new Chart(context,{
+    type: 'line',
     data: inputData,
     options: {
       tooltips: {
@@ -59,103 +80,57 @@ const buildChart = (context, inputData) => {
       legend: {
         display: false,
       },
-      pointDot: false,
+      pointDot: true,
       scales: {
-        xAxes: [
-          {
-            display: false,
-          },
-        ],
-        yAxes: [
-          {
-            display: false,
-          },
-        ],
-      },
-    },
+        xAxes: [{
+          display: true,
+          ticks:{
+            autoSkip:true,
+            autoSkipPadding:60,
+            maxRotation:0,
+            labelOffset:5,
+          }
+        }],
+        yAxes: [{
+          display: true,
+          ticks:{
+            suggestedMin:15,
+            suggestedMax:45,
+            stepSize:5
+          }
+        }],
+      }
+    }
+
   });
 };
 
-const buildpensionData = (dataLength, dataArray, colorInput) => {
+const ageArr=(startAge, endAge)=>{
+  let ages=[];
+  while(startAge<=endAge)ages.push(startAge++);
+  return ages;
+}
+
+const buildpensionData=(dataLength,xArray,dataArray,colorInput,pointColor,pointRad)=>{
   return {
-    labels: Array.apply(null, Array(dataLength)).map(function () {
-      return "";
-    }),
-    datasets: [
-      {
-        data: dataArray,
-        pointRadius: 0,
-        borderWidth: 10,
-        borderColor: colorInput,
-        backgroundColor: "transparent",
-      },
-    ],
-  };
-};
-
-const ctx = document.getElementById("myChart");
-let numDataPoints = 36;
-let dataset = [
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-  0,
-];
-let temp_dataset;
-
-for (let i = 0; i < CUSTOMERS[0].pensions.length; i++) {
-  for (let j = 0; j < numDataPoints; j++) {
-    dataset[j] += CUSTOMERS[0].pensions[i].receipts[j];
+    labels: xArray,
+    datasets: [{
+      data: dataArray,
+      pointRadius: pointRad,
+      pointBackgroundColor:pointColor,
+      pointBorderColor:pointColor,
+      borderWidth: 10,
+      borderColor: colorInput,
+      backgroundColor: 'transparent',
+    }]
   }
 }
 
-// dataset=PERSONA[0].persona_lists.reduce((acc,asset,idx)=>{
-//   asset.reduce((acc,product,pidx)=>{
-
-//   },)
-// },[
-//   0, 0, 0, 0, 0, 0,
-//   0, 0, 0, 0, 0, 0,
-//   0, 0, 0, 0, 0, 0,
-//   0, 0, 0, 0, 0, 0,
-//   0, 0, 0, 0, 0, 0,
-//   0, 0, 0, 0, 0, 0
-// ]);
-
-temp_dataset = dataset;
-let data = buildpensionData(numDataPoints, temp_dataset, "#007acc");
+const ctx = document.getElementById("myChart");
+let numDataPoints = 36;
+const dataset=reduceData(PERSONA[0]);
+let temp_dataset=dataset
+let data = buildpensionData(numDataPoints,ageArr(55,90),temp_dataset,'#007acc','rgba(78,171,243,0.5)',7)
 
 /**BUILD CHART */
 let CHARTJS = buildChart(ctx, data);
@@ -281,37 +256,38 @@ const handleStockTouchEnd = (e) => {
 };
 
 /* STOCK INTERACTION */
-const CANVAS_CONTAINER = document.getElementsByClassName("canvas_container")[0];
-const GRAPH_AREA = document.getElementsByClassName("chartJS_wrapper")[0];
-GRAPH_AREA.addEventListener("touchstart", handleStockTouchStart);
-GRAPH_AREA.addEventListener("touchmove", handleStockTouchMove);
-GRAPH_AREA.addEventListener("touchend", handleStockTouchEnd);
+const CANVAS_CONTAINER=document.getElementsByClassName('canvas_container')[0];
+const GRAPH_AREA=document.getElementsByClassName('chartJS_wrapper')[0];
+// GRAPH_AREA.addEventListener('touchstart', handleStockTouchStart);
+// GRAPH_AREA.addEventListener('touchmove', handleStockTouchMove);
+// GRAPH_AREA.addEventListener('touchend', handleStockTouchEnd);
 
-let segdata1 = temp_dataset.slice(0, 11).reduce((acc, v) => {
-  acc.push(Math.round(v / 12));
-  return acc;
-}, []);
+const optimizeHandler=()=>{
+  data.datasets=[
+    {
+      data: reduceData(OPTIMIZED_PERSONA[0]),
+      pointRadius: 7,
+      pointBackgroundColor:'rgba(78,171,243,0.5)',
+      pointBorderColor:'rgba(78,171,243,0.5)',
+      borderWidth: 10,
+      borderColor: '#007acc',
+      backgroundColor: 'transparent',
+    },
+    {
+      data: reduceData(PERSONA[0]),
+      pointRadius: 0,
+      pointBackgroundColor:'transparent',
+      pointBorderColor:'transparent',
+      borderWidth: 10,
+      borderColor: 'rgb(200,200,200,0.6)',
+      backgroundColor: 'transparent',
+    },
+  ]
+  CHARTJS.update();
+}
 
-let segdata2 = temp_dataset.slice(11, 22).reduce((acc, v) => {
-  acc.push(Math.round(v / 12));
-  return acc;
-}, []);
-
-let segdata3 = temp_dataset.slice(21, 35).reduce((acc, v) => {
-  acc.push(Math.round(v / 12));
-  return acc;
-}, []);
-
-/*SEGMENT CHART */
-const SEG1 = document.getElementById("segment_graph1");
-const SEG2 = document.getElementById("segment_graph2");
-const SEG3 = document.getElementById("segment_graph3");
-let data1 = buildpensionData(segdata1.length, segdata1, "#50953a");
-let data2 = buildpensionData(segdata2.length, segdata2, "#50953a");
-let data3 = buildpensionData(segdata3.length, segdata3, "#50953a");
-let SEGCHART1 = buildChart(SEG1, data1);
-let SEGCHART2 = buildChart(SEG2, data2);
-let SEGCHART3 = buildChart(SEG3, data3);
+const OPTIMIZE_BTN=document.getElementsByClassName('optimize_container')[0];
+OPTIMIZE_BTN.addEventListener('click',optimizeHandler);
 
 /** HOSUNG MIGRATION */
 var national_pension_down_content = document.getElementById(
