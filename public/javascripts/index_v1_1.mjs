@@ -85,10 +85,8 @@ const buildChart=(context, inputData)=>{
         xAxes: [{
           display: true,
           ticks:{
-            autoSkip:true,
-            autoSkipPadding:60,
             maxRotation:0,
-            labelOffset:5,
+            maxTicksLimit:8
           }
         }],
         yAxes: [{
