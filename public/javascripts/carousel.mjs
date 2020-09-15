@@ -15,7 +15,6 @@ const handleTouchStart=(evt,idx)=>{
 const handleTouchMove=(evt,idx)=> {
     if (!xDown || carouselRun )return;
     if(document.getElementsByClassName('chartJS_text')[0].style.visibility=="hidden")return;
-    console.log(document.getElementsByClassName('option_contents')[0].classList.length)
     if(SCROLL_FLAG.classList.length>1)return;
     var xUp = evt.touches[0].clientX;        
     let yUp = evt.touches[0].clientY;                            
