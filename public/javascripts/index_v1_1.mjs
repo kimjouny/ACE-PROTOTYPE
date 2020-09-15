@@ -245,7 +245,11 @@ const optimizeHandler=()=>{
 const OPTIMIZE_BTN=document.getElementsByClassName('optimize_container')[0];
 OPTIMIZE_BTN.addEventListener('click',optimizeHandler);
 
-
+const OPTIONS=document.getElementsByClassName('option_contents');
+OPTIONS.forEach(ele=>{
+  ele.addEventListener('touchstart',ele.classList.add('scroll_mutex'))
+  ele.addEventListener('touchend',ele.classList.remove('scroll_mutex'))
+})
 
 /** HOSUNG MIGRATION */
 var national_pension_down_content = document.getElementById(
