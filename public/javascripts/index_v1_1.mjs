@@ -1,5 +1,5 @@
 
-import {initCarousel, setRun} from './carousel.mjs'
+import {initCarousel} from './carousel.mjs'
 import {KB_SPENDINDEX,CUSTOMERS,PERSONA,OPTIMIZED_PERSONA} from './pensionData.mjs'
 import {COLORS} from './chartColor.mjs'
 import {counterAnimation} from './counterAnimation.mjs'
@@ -192,21 +192,9 @@ const handleStockTouchStart = (e) => {
 };
 
 const handleStockTouchMove = (e) => {
-  if (
-    e.touches[0].pageY - e.currentTarget.getBoundingClientRect().y <
-    CANVAS_CONTAINER.offsetTop
-  )
-    return;
-  if (
-    e.touches[0].clientX <
-    e.currentTarget.offsetWidth * 0.1 + e.currentTarget.offsetLeft
-  )
-    return;
-  const graphRatio =
-    (e.touches[0].clientX -
-      e.currentTarget.offsetLeft -
-      e.currentTarget.offsetWidth * 0.12) /
-    (e.currentTarget.offsetWidth * 0.88);
+  if (e.touches[0].pageY - e.currentTarget.getBoundingClientRect().y <CANVAS_CONTAINER.offsetTop)return;
+  if (e.touches[0].clientX <e.currentTarget.offsetWidth * 0.1 + e.currentTarget.offsetLeft)return;
+  const graphRatio =(e.touches[0].clientX -e.currentTarget.offsetLeft -e.currentTarget.offsetWidth * 0.12) /(e.currentTarget.offsetWidth * 0.88);
   const currentAge = Math.round(55 + graphRatio * numDataPoints);
   if (currentAge < 55 || currentAge > 90) return;
   STOCK_EL.style.left = `${e.touches[0].clientX}px`;
@@ -242,15 +230,17 @@ const optimizeHandler=()=>{
   CHARTJS.update();
 }
 
+const SCROLL_FLAG=document.getElementsByClassName('prev_btn')[0];
 const OPTIMIZE_BTN=document.getElementsByClassName('optimize_container')[0];
 OPTIMIZE_BTN.addEventListener('click',optimizeHandler);
 
 const OPTIONS=document.getElementsByClassName('option_contents');
-OPTIONS.forEach(ele=>{
-  ele.addEventListener('touchstart',setRun(true))
-  ele.addEventListener('touchend',setRun(false))
+OPTIONS[0].addEventListener('touchstart',(e)=>{
+  SCROLL_FLAG.classList.add('scroll_act');
 })
-
+OPTIONS[0].addEventListener('touchend',(e)=>{
+  SCROLL_FLAG.classList.remove('scroll_act');
+})
 /** HOSUNG MIGRATION */
 var national_pension_down_content = document.getElementById(
   "national_pension_down_content"
