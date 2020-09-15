@@ -13,6 +13,7 @@ const handleTouchStart=(evt,idx)=>{
 
 const handleTouchMove=(evt,idx)=> {
     if (!xDown || carouselRun )return;
+    if(document.getElementsByClassName('scroll_mutex'))return;
     if(document.getElementsByClassName('chartJS_text')[0].style.visibility=="hidden")return;
     var xUp = evt.touches[0].clientX;        
     let yUp = evt.touches[0].clientY;                            
