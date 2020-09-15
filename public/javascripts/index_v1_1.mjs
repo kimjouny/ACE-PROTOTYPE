@@ -1,5 +1,5 @@
 
-import {initCarousel} from './carousel.mjs'
+import {initCarousel, setRun} from './carousel.mjs'
 import {KB_SPENDINDEX,CUSTOMERS,PERSONA,OPTIMIZED_PERSONA} from './pensionData.mjs'
 import {COLORS} from './chartColor.mjs'
 import {counterAnimation} from './counterAnimation.mjs'
@@ -247,8 +247,8 @@ OPTIMIZE_BTN.addEventListener('click',optimizeHandler);
 
 const OPTIONS=document.getElementsByClassName('option_contents');
 OPTIONS.forEach(ele=>{
-  ele.addEventListener('touchstart',ele.classList.add('scroll_mutex'))
-  ele.addEventListener('touchend',ele.classList.remove('scroll_mutex'))
+  ele.addEventListener('touchstart',setRun(true))
+  ele.addEventListener('touchend',setRun(false))
 })
 
 /** HOSUNG MIGRATION */
