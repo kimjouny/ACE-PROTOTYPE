@@ -580,9 +580,9 @@
 }
 
 .option_container{
-  width:95%;
+  width:90%;
   margin-left: 5%;
-  margin-bottom: 5%;
+  margin-bottom: 2%;
   background-color: transparent;
   padding : 1% 0;
   display: flex;
@@ -592,10 +592,15 @@
 
 .option_text{
   font-size: 4rem;
+  width:15%;
   font-weight: bold;
-  padding-right :3%;
-  border-right: 2px solid black;
-  color:black;
+  padding :1% 2%; 
+  border: 1px #007acc solid;
+  border-radius: 2rem;
+  color:#007acc;
+  display:flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .option_contents{

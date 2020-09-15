@@ -233,14 +233,33 @@ const optimizeHandler=()=>{
 const SCROLL_FLAG=document.getElementsByClassName('prev_btn')[0];
 const OPTIMIZE_BTN=document.getElementsByClassName('optimize_container')[0];
 OPTIMIZE_BTN.addEventListener('click',optimizeHandler);
-
+/**SEGMENT OPTION */
 const OPTIONS=document.getElementsByClassName('option_contents');
-OPTIONS[0].addEventListener('touchstart',(e)=>{
-  SCROLL_FLAG.classList.add('scroll_act');
+for(let i=0;i<OPTIONS.length;i++){
+  OPTIONS[i].addEventListener('touchstart',(e)=>{SCROLL_FLAG.classList.add('scroll_act');})
+  OPTIONS[i].addEventListener('touchend',(e)=>{SCROLL_FLAG.classList.remove('scroll_act');})
+}
+OPTIONS[0].addEventListener('click',(e)=>{
+  if(e.target.tagName!=='LI')return;
+  const prevFocused=document.getElementsByClassName('option_focused')[0];
+  if(e.target===prevFocused)return;
+  prevFocused.classList.remove('option_focused');
+  e.target.classList.add('option_focused');
 })
-OPTIONS[0].addEventListener('touchend',(e)=>{
-  SCROLL_FLAG.classList.remove('scroll_act');
+
+OPTIONS[1].addEventListener('click',(e)=>{
+  if(e.target.tagName!=='LI')return;
+  if(e.target.style.backgroundColor=="white"){
+    e.target.style.backgroundColor=e.target.dataset.bg;
+    e.target.style.color="white";
+  }
+  else{
+    e.target.style.backgroundColor="white";
+    e.target.style.color="black";
+  }
 })
+
+
 /** HOSUNG MIGRATION */
 var national_pension_down_content = document.getElementById(
   "national_pension_down_content"
