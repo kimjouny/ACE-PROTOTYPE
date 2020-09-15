@@ -1,6 +1,6 @@
 
 import {initCarousel} from './carousel.mjs'
-import {CUSTOMERS,PERSONA,OPTIMIZED_PERSONA} from './pensionData.mjs'
+import {KB_SPENDINDEX,CUSTOMERS,PERSONA,OPTIMIZED_PERSONA} from './pensionData.mjs'
 import {COLORS} from './chartColor.mjs'
 import {counterAnimation} from './counterAnimation.mjs'
 
@@ -11,25 +11,8 @@ import { monthlyPention_chart } from "./pie.mjs";
 
 /* PIE PART */
 window.onload = () => {
-  totalAsset_pieChart(
-    55,
-    90,
-    2650000,
-    239143000,
-    429051000,
-    289444000,
-    55788000
-  ); //jy 파라미터 변경
-  monthlyPention_chart(
-    55,
-    90,
-    27000000,
-    200000000,
-    429051000,
-    130485000,
-    199140000,
-    112312312
-  );
+  totalAsset_pieChart(55,90,2650000,239143000,429051000,289444000,55788000); //jy 파라미터 변경
+  monthlyPention_chart(55,90,27000000,200000000,429051000,130485000,199140000,112312312);
 };
 
 /* PACHINCO INTERACTION */
@@ -109,29 +92,33 @@ const ageArr=(startAge, endAge)=>{
   return ages;
 }
 
-const buildpensionData=(dataLength,xArray,dataArray,colorInput,pointColor,pointRad)=>{
+const buildpensionData=(xArray,dataArray,colorInput,pointColor,pointRad)=>{
   return {
     labels: xArray,
-    datasets: [{
-      data: dataArray,
-      pointRadius: pointRad,
-      pointBackgroundColor:pointColor,
-      pointBorderColor:pointColor,
-      borderWidth: 10,
-      borderColor: colorInput,
-      backgroundColor: 'transparent',
-    }]
+    datasets: dataArray
+  }
+}
+
+const buildPensionSet=(originArr,colorInput,pointColor,pointRad)=>{
+  return {
+    data: originArr,
+    pointRadius: pointRad,
+    pointBackgroundColor:pointColor,
+    pointBorderColor:pointColor,
+    borderWidth: 10,
+    borderColor: colorInput,
+    backgroundColor: 'transparent',
   }
 }
 
 const ctx = document.getElementById("myChart");
 let numDataPoints = 36;
-const dataset=reduceData(PERSONA[0]);
-let temp_dataset=dataset
-let data = buildpensionData(numDataPoints,ageArr(55,90),temp_dataset,'#007acc','rgba(78,171,243,0.5)',7)
-
+let pData=buildpensionData(ageArr(55,90),[
+  buildPensionSet(reduceData(PERSONA[0]),'#007acc','rgba(78,171,243,0.5)',7),
+  buildPensionSet(KB_SPENDINDEX,'#F6E04B','transparent',0)
+])
 /**BUILD CHART */
-let CHARTJS = buildChart(ctx, data);
+let CHARTJS = buildChart(ctx, pData);
 
 /** STOCK INTERACTION */
 const STOCK_EL = document.createElement("div");
@@ -149,10 +136,6 @@ const CHART_HEAD = document.getElementsByClassName("chartJS_text")[0];
 const ST_PRODUCT = STOCK_POPUP.getElementsByClassName("STpension_container")[0];
 STOCK_EL.classList.add("chartJS_stockline");
 STOCK_AGE.classList.add("chartJS_stockage");
-
-const getPensionIncome = () => {
-  return document.getElementsByClassName("pension_used").length ? 46 : 0;
-};
 
 const buildPensionInfo = (age) => {
   const pensionInfo = CUSTOMERS[0].pensions.reduce(
@@ -173,16 +156,6 @@ const buildPensionInfo = (age) => {
     },
     ["", 0]
   );
-  if (getPensionIncome())
-    pensionInfo[0] = pensionInfo[0].concat(`
-    <ul class="STpension_wrap">
-      <li class="STpension_label" style="background-color:${
-        COLORS[CUSTOMERS[0].pensions.length]
-      }"></li>
-      <li class="STpension_type">주택연금</li>
-      <li class="STpension_amt">46만원</li>
-    </ul>
-  `);
   ST_PRODUCT.innerHTML = pensionInfo[0];
 };
 
@@ -261,31 +234,18 @@ const GRAPH_AREA=document.getElementsByClassName('chartJS_wrapper')[0];
 // GRAPH_AREA.addEventListener('touchend', handleStockTouchEnd);
 
 const optimizeHandler=()=>{
-  data.datasets=[
-    {
-      data: reduceData(OPTIMIZED_PERSONA[0]),
-      pointRadius: 7,
-      pointBackgroundColor:'rgba(78,171,243,0.5)',
-      pointBorderColor:'rgba(78,171,243,0.5)',
-      borderWidth: 10,
-      borderColor: '#007acc',
-      backgroundColor: 'transparent',
-    },
-    {
-      data: reduceData(PERSONA[0]),
-      pointRadius: 0,
-      pointBackgroundColor:'transparent',
-      pointBorderColor:'transparent',
-      borderWidth: 10,
-      borderColor: 'rgb(200,200,200,0.6)',
-      backgroundColor: 'transparent',
-    },
+  pData.datasets=[
+    buildPensionSet(reduceData(OPTIMIZED_PERSONA[0]),'#007acc','rgba(78,171,243,0.5)',10),
+    buildPensionSet(reduceData(PERSONA[0]),'rgb(200,200,200,0.3)','transparent',0),
+    buildPensionSet(KB_SPENDINDEX,'#F6E04B','transparent',0),
   ]
   CHARTJS.update();
 }
 
 const OPTIMIZE_BTN=document.getElementsByClassName('optimize_container')[0];
 OPTIMIZE_BTN.addEventListener('click',optimizeHandler);
+
+
 
 /** HOSUNG MIGRATION */
 var national_pension_down_content = document.getElementById(
