@@ -1,8 +1,9 @@
-
 let xDown = [null,null];    
 let yDown=null;                                                   
 let xPos = [0,0];
 let carouselRun=false;
+const SCROLL_FLAG=document.getElementsByClassName('prev_btn')[0];
+
 const getTouches=(evt)=> {return evt.touches; }             // browser API}                                                     
 
 const handleTouchStart=(evt,idx)=>{
@@ -11,14 +12,11 @@ const handleTouchStart=(evt,idx)=>{
     yDown=firstTouch.clientY;                                                     
 };                                                
 
-const setRun=(booleans)=>{
-    carouselRun=booleans
-}
-
 const handleTouchMove=(evt,idx)=> {
     if (!xDown || carouselRun )return;
-    if(document.getElementsByClassName('scroll_mutex').length>0)return;
     if(document.getElementsByClassName('chartJS_text')[0].style.visibility=="hidden")return;
+    console.log(document.getElementsByClassName('option_contents')[0].classList.length)
+    if(SCROLL_FLAG.classList.length>1)return;
     var xUp = evt.touches[0].clientX;        
     let yUp = evt.touches[0].clientY;                            
     var xDiff = xDown[idx] - xUp;
@@ -67,4 +65,4 @@ const initCarousel=(CAROUSEL_WRAP,CAROUSEL_BTNS)=>{
     }
 }
 
-export {initCarousel, setRun}
+export {initCarousel}
