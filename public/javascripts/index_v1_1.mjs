@@ -782,43 +782,43 @@ toggle_array[2].addEventListener("click", ho);
 toggle_array[3].addEventListener("click", ho);
 // toggle_array[4].addEventListener("click", ho);
 
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 //range 버튼
 // var national_pension_range = document.getElementById("national_pension_range");
 // national_pension_range.addEventListener("click", range_start_0_0);
-var retire_pension_range_1_0 = document.getElementById(
-  "retire_pension_range_1_0"
-);
-retire_pension_range_1_0.addEventListener("click", range_start_1_0);
+// var retire_pension_range_1_0 = document.getElementById(
+//   "retire_pension_range_1_0"
+// );
+// retire_pension_range_1_0.addEventListener("click", range_start_1_0);
 // var retire_pension_range_1_1 = document.getElementById(
 //   "retire_pension_range_1_1"
 // );
 // retire_pension_range_1_1.addEventListener("click", range_start_1_1);
-var retire_pension_range_2_0 = document.getElementById(
-  "retire_pension_range_2_0"
-);
-retire_pension_range_2_0.addEventListener("click", range_start_2_0);
+// var retire_pension_range_2_0 = document.getElementById(
+//   "retire_pension_range_2_0"
+// );
+// retire_pension_range_2_0.addEventListener("click", range_start_2_0);
 
-var retire_pension_range_3_0 = document.getElementById(
-  "retire_pension_range_3_0"
-);
-retire_pension_range_3_0.addEventListener("click", range_start_3_0);
+// var retire_pension_range_3_0 = document.getElementById(
+//   "retire_pension_range_3_0"
+// );
+// retire_pension_range_3_0.addEventListener("click", range_start_3_0);
 
 //modal contents display on/off
 // var modal_pension_array_0_0 = document.getElementById(
 //   "modal_pension_array_0_0"
 // );
-// var modal_pension_array_0_0_close = document.getElementById(
-//   "modal_pension_array_0_0_close"
+
 // );
 // modal_pension_array_0_0.style.display = "none";
 //range 1_0
-var modal_pension_array_1_0 = document.getElementById(
-  "modal_pension_array_1_0"
-);
-var modal_pension_array_1_0_close = document.getElementById(
-  "modal_pension_array_1_0_close"
-);
-modal_pension_array_1_0.style.display = "none";
+// var modal_pension_array_1_0 = document.getElementById(
+//   "modal_pension_array_1_0"
+// );
+// var modal_pension_array_1_0_close = document.getElementById(
+//   "modal_pension_array_1_0_close"
+// );
+// modal_pension_array_1_0.style.display = "none";
 //range 1_1
 //khs
 // var modal_pension_array_1_1 = document.getElementById(
@@ -829,51 +829,48 @@ modal_pension_array_1_0.style.display = "none";
 //   "modal_pension_array_1_1_close"
 // );
 //range 2_0
-var modal_pension_array_2_0 = document.getElementById(
-  "modal_pension_array_2_0"
-);
-modal_pension_array_2_0.style.display = "none";
-var modal_pension_array_2_0_close = document.getElementById(
-  "modal_pension_array_2_0_close"
-);
+// var modal_pension_array_2_0 = document.getElementById(
+//   "modal_pension_array_2_0"
+// );
+// modal_pension_array_2_0.style.display = "none";
+// var modal_pension_array_2_0_close = document.getElementById(
+//   "modal_pension_array_2_0_close"
+// );
 
 //range 3_0
-var modal_pension_array_3_0 = document.getElementById(
-  "modal_pension_array_3_0"
-);
-modal_pension_array_3_0.style.display = "none";
-var modal_pension_array_3_0_close = document.getElementById(
-  "modal_pension_array_3_0_close"
-);
+// var modal_pension_array_3_0 = document.getElementById(
+//   "modal_pension_array_3_0"
+// );
+// modal_pension_array_3_0.style.display = "none";
+// var modal_pension_array_3_0_close = document.getElementById(
+//   "modal_pension_array_3_0_close"
+// );
 
-function range_close() {
-  console.log("rance close");
-  // modal_pension_array_0_0.style.display = "none";
-  modal_pension_array_1_0.style.display = "none";
-  //khs
-  //modal_pension_array_1_1.style.display = "none";
-  modal_pension_array_2_0.style.display = "none";
-  modal_pension_array_3_0.style.display = "none";
-}
+// modal_pension_array_1_0.style.display = "none";
+//khs
+//modal_pension_array_1_1.style.display = "none";
+// modal_pension_array_2_0.style.display = "none";
+// modal_pension_array_3_0.style.display = "none";
+
 // function range_start_0_0() {
 //   console.log("range");
 //   modal_pension_array_0_0.style.display = "block";
 // }
-function range_start_1_0() {
-  modal_pension_array_1_0.style.display = "block";
-}
+// function range_start_1_0() {
+//   modal_pension_array_1_0.style.display = "block";
+// }
 //khs
 // function range_start_1_1() {
 //   console.log("range");
 //   modal_pension_array_1_1.style.display = "block";
 // }
-function range_start_2_0() {
-  modal_pension_array_2_0.style.display = "block";
-}
+// function range_start_2_0() {
+//   modal_pension_array_2_0.style.display = "block";
+// }
 
-function range_start_3_0() {
-  modal_pension_array_3_0.style.display = "block";
-}
+// function range_start_3_0() {
+//   modal_pension_array_3_0.style.display = "block";
+// }
 
 // modal 0_0
 // var pension_array_0_0_slider = document.getElementById(
@@ -881,21 +878,20 @@ function range_start_3_0() {
 // );
 // var slider_range = document.getElementById("slider_range_0_0");
 // slider_range.innerHTML = "60";
-// modal_pension_array_0_0_close.addEventListener("click", range_close);
 
 // modal 1_0
-var pension_array_1_0_slider = document.getElementById(
-  "pension_array_1_0_slider"
-);
-var slider_range_1_0 = document.getElementById("slider_range_1_0");
-slider_range_1_0.innerHTML = "60";
+// var pension_array_1_0_slider = document.getElementById(
+//   "pension_array_1_0_slider"
+// );
+// var slider_range_1_0 = document.getElementById("slider_range_1_0");
+// slider_range_1_0.innerHTML = "60";
 
-var pension_array_1_0_slider_2 = document.getElementById(
-  "pension_array_1_0_slider_2"
-);
-var slider_range_1_0_2 = document.getElementById("slider_range_1_0_2");
-slider_range_1_0_2.innerHTML = "60";
-modal_pension_array_1_0_close.addEventListener("click", range_close);
+// var pension_array_1_0_slider_2 = document.getElementById(
+//   "pension_array_1_0_slider_2"
+// );
+// var slider_range_1_0_2 = document.getElementById("slider_range_1_0_2");
+// slider_range_1_0_2.innerHTML = "60";
+// modal_pension_array_1_0_close.addEventListener("click", range_close);
 
 //khs
 //modal 1_1
@@ -919,30 +915,30 @@ modal_pension_array_1_0_close.addEventListener("click", range_close);
 // modal_pension_array_1_1_close.addEventListener("click", range_close);
 
 //modal 2_0
-var pension_array_2_0_slider = document.getElementById(
-  "pension_array_2_0_slider"
-);
-var slider_range_2_0 = document.getElementById("slider_range_2_0");
-slider_range_2_0.innerHTML = "58";
-var pension_array_2_0_slider_2 = document.getElementById(
-  "pension_array_2_0_slider_2"
-);
-var slider_range_2_0_2 = document.getElementById("slider_range_2_0_2");
-slider_range_2_0_2.innerHTML = "60";
-modal_pension_array_2_0_close.addEventListener("click", range_close);
+// var pension_array_2_0_slider = document.getElementById(
+//   "pension_array_2_0_slider"
+// );
+// var slider_range_2_0 = document.getElementById("slider_range_2_0");
+// slider_range_2_0.innerHTML = "58";
+// var pension_array_2_0_slider_2 = document.getElementById(
+//   "pension_array_2_0_slider_2"
+// );
+// var slider_range_2_0_2 = document.getElementById("slider_range_2_0_2");
+// slider_range_2_0_2.innerHTML = "60";
+// modal_pension_array_2_0_close.addEventListener("click", range_close);
 
-//modal 3_0
-var pension_array_3_0_slider = document.getElementById(
-  "pension_array_3_0_slider"
-);
-var slider_range_3_0 = document.getElementById("slider_range_3_0");
-slider_range_3_0.innerHTML = "58";
-var pension_array_3_0_slider_2 = document.getElementById(
-  "pension_array_3_0_slider_2"
-);
-var slider_range_3_0_2 = document.getElementById("slider_range_3_0_2");
-slider_range_3_0_2.innerHTML = "60";
-modal_pension_array_3_0_close.addEventListener("click", range_close);
+// //modal 3_0
+// var pension_array_3_0_slider = document.getElementById(
+//   "pension_array_3_0_slider"
+// );
+// var slider_range_3_0 = document.getElementById("slider_range_3_0");
+// slider_range_3_0.innerHTML = "58";
+// var pension_array_3_0_slider_2 = document.getElementById(
+//   "pension_array_3_0_slider_2"
+// );
+// var slider_range_3_0_2 = document.getElementById("slider_range_3_0_2");
+// slider_range_3_0_2.innerHTML = "60";
+// modal_pension_array_3_0_close.addEventListener("click", range_close);
 
 //새로운 modal range
 //modal 0_0
@@ -962,22 +958,18 @@ modal_pension_array_3_0_close.addEventListener("click", range_close);
 
 //modal 1_0
 // window.onload = () => {
-var slider_1_0 = document.getElementById("slider_1_0");
-noUiSlider.create(slider_1_0, {
-  start: [55, 90],
-  connect: true,
-  step: 1,
-  orientation: "horizontal", // 'horizontal' or 'vertical'
-  range: {
-    min: 55,
-    max: 90,
-  },
-  // pips: {
-  //   mode: "steps",
-  //   stepped: true,
-  //   density: 2,
-  // },
-});
+// var slider_1_0 = document.getElementById("slider_1_0");
+// noUiSlider.create(slider_1_0, {
+//   start: [55, 90],
+//   connect: true,
+//   step: 1,
+//   orientation: "horizontal", // 'horizontal' or 'vertical'
+//   range: {
+//     min: 55,
+//     max: 90,
+//   },
+
+// });
 
 //khs
 //modal 1_1
@@ -999,60 +991,52 @@ noUiSlider.create(slider_1_0, {
 // });
 
 //modal 2_0
-var slider_2_0 = document.getElementById("slider_2_0");
-noUiSlider.create(slider_2_0, {
-  start: [55, 90],
-  connect: true,
-  step: 1,
-  orientation: "horizontal", // 'horizontal' or 'vertical'
-  range: {
-    min: 55,
-    max: 90,
-  },
-  // pips: {
-  //   mode: "steps",
-  //   stepped: true,
-  //   density: 2,
-  // },
-});
+// var slider_2_0 = document.getElementById("slider_2_0");
+// noUiSlider.create(slider_2_0, {
+//   start: [55, 90],
+//   connect: true,
+//   step: 1,
+//   orientation: "horizontal", // 'horizontal' or 'vertical'
+//   range: {
+//     min: 55,
+//     max: 90,
+//   },
+
+// });
 
 //modal 3_0
-var slider_3_0 = document.getElementById("slider_3_0");
-noUiSlider.create(slider_3_0, {
-  start: [54, 90],
-  connect: true,
-  step: 1,
-  orientation: "horizontal", // 'horizontal' or 'vertical'
-  range: {
-    min: 55,
-    max: 90,
-  },
-  // pips: {
-  //   mode: "steps",
-  //   stepped: true,
-  //   density: 2,
-  // },
-});
+// var slider_3_0 = document.getElementById("slider_3_0");
+// noUiSlider.create(slider_3_0, {
+//   start: [54, 90],
+//   connect: true,
+//   step: 1,
+//   orientation: "horizontal", // 'horizontal' or 'vertical'
+//   range: {
+//     min: 55,
+//     max: 90,
+//   },
+
+// });
 
 // var slider_range_0_0 = document.getElementById("slider_range_0_0");
-var slider_range_1_0 = document.getElementById("slider_range_1_0");
-var slider_range_1_0_2 = document.getElementById("slider_range_1_0_2");
+// var slider_range_1_0 = document.getElementById("slider_range_1_0");
+// var slider_range_1_0_2 = document.getElementById("slider_range_1_0_2");
 //khs
 // var slider_range_1_1 = document.getElementById("slider_range_1_1");
-var slider_range_2_0 = document.getElementById("slider_range_2_0");
-var slider_range_3_0 = document.getElementById("slider_range_3_0");
+// var slider_range_2_0 = document.getElementById("slider_range_2_0");
+// var slider_range_3_0 = document.getElementById("slider_range_3_0");
 
 //초기화 값
 // slider_range_0_0.innerHTML = "60";
-slider_range_1_0.innerHTML = "55";
-slider_range_1_0_2.innerHTML = "90";
+// slider_range_1_0.innerHTML = "55";
+// slider_range_1_0_2.innerHTML = "90";
 //khs
 // slider_range_1_1.innerHTML = "55";
 // slider_range_1_1_2.innerHTML = "90";
-slider_range_2_0.innerHTML = "58";
-slider_range_2_0_2.innerHTML = "90";
-slider_range_3_0.innerHTML = "54";
-slider_range_3_0_2.innerHTML = "90";
+// slider_range_2_0.innerHTML = "58";
+// slider_range_2_0_2.innerHTML = "90";
+// slider_range_3_0.innerHTML = "54";
+// slider_range_3_0_2.innerHTML = "90";
 
 // slider_0_0.noUiSlider.on("slide.one", slider_0_0_func);
 // // slider_0_0.addEventListener("update", slider_0_0_func);
@@ -1077,31 +1061,30 @@ slider_range_3_0_2.innerHTML = "90";
 //     38 + Math.floor(slider_0_0.noUiSlider.get()) - 55;
 // }
 
-slider_1_0.noUiSlider.on("slide.one", slider_1_0_func);
-//slider_1_0.addEventListener("click", slider_1_0_func);
-function slider_1_0_func() {
-  console.log("1_0");
-  slider_range_1_0.innerHTML = Math.floor(slider_1_0.noUiSlider.get()[0]);
-  slider_range_1_0_2.innerHTML = Math.floor(slider_1_0.noUiSlider.get()[1]);
+// slider_1_0.noUiSlider.on("slide.one", slider_1_0_func);
+// function slider_1_0_func() {
+//   console.log("1_0");
+//   slider_range_1_0.innerHTML = Math.floor(slider_1_0.noUiSlider.get()[0]);
+//   slider_range_1_0_2.innerHTML = Math.floor(slider_1_0.noUiSlider.get()[1]);
 
-  var pension_1_0_range_start_text2 = document.getElementById(
-    "pension_1_0_range_start_text2"
-  );
-  pension_1_0_range_start_text2.innerHTML = Math.floor(
-    slider_1_0.noUiSlider.get()[0]
-  );
-  var pension_1_0_range_start_text = document.getElementById(
-    "pension_1_0_range_start_text"
-  );
-  pension_1_0_range_start_text.innerHTML =
-    38 + Math.floor(slider_1_0.noUiSlider.get()[0]) - 55;
-  var slider_range_1_0_a = document.getElementById("slider_range_1_0_a");
-  slider_range_1_0_a.innerHTML =
-    38 + Math.floor(slider_1_0.noUiSlider.get()[0]) - 55;
-  var slider_range_1_0_b = document.getElementById("slider_range_1_0_b");
-  slider_range_1_0_b.innerHTML =
-    38 + Math.floor(slider_1_0.noUiSlider.get()[1]) - 55;
-}
+//   var pension_1_0_range_start_text2 = document.getElementById(
+//     "pension_1_0_range_start_text2"
+//   );
+//   pension_1_0_range_start_text2.innerHTML = Math.floor(
+//     slider_1_0.noUiSlider.get()[0]
+//   );
+//   var pension_1_0_range_start_text = document.getElementById(
+//     "pension_1_0_range_start_text"
+//   );
+//   pension_1_0_range_start_text.innerHTML =
+//     38 + Math.floor(slider_1_0.noUiSlider.get()[0]) - 55;
+//   var slider_range_1_0_a = document.getElementById("slider_range_1_0_a");
+//   slider_range_1_0_a.innerHTML =
+//     38 + Math.floor(slider_1_0.noUiSlider.get()[0]) - 55;
+//   var slider_range_1_0_b = document.getElementById("slider_range_1_0_b");
+//   slider_range_1_0_b.innerHTML =
+//     38 + Math.floor(slider_1_0.noUiSlider.get()[1]) - 55;
+// }
 
 //khs
 // slider_1_1.noUiSlider.on("slide.one", slider_1_1_func);
@@ -1131,79 +1114,140 @@ function slider_1_0_func() {
 //     38 + Math.floor(slider_1_1.noUiSlider.get()[1]) - 55;
 // }
 
-slider_2_0.noUiSlider.on("slide.one", slider_2_0_func);
-function slider_2_0_func() {
-  console.log("2_0");
-  slider_range_2_0.innerHTML = Math.floor(slider_2_0.noUiSlider.get()[0]);
-  slider_range_2_0_2.innerHTML = Math.floor(slider_2_0.noUiSlider.get()[1]);
+// slider_2_0.noUiSlider.on("slide.one", slider_2_0_func);
+// function slider_2_0_func() {
+//   console.log("2_0");
+//   slider_range_2_0.innerHTML = Math.floor(slider_2_0.noUiSlider.get()[0]);
+//   slider_range_2_0_2.innerHTML = Math.floor(slider_2_0.noUiSlider.get()[1]);
 
-  var pension_2_0_range_start_text2 = document.getElementById(
-    "pension_2_0_range_start_text2"
-  );
-  pension_2_0_range_start_text2.innerHTML = Math.floor(
-    slider_2_0.noUiSlider.get()[0]
-  );
-  var pension_2_0_range_start_text = document.getElementById(
-    "pension_2_0_range_start_text"
-  );
-  pension_2_0_range_start_text.innerHTML =
-    38 + Math.floor(slider_2_0.noUiSlider.get()[0]) - 55;
+//   var pension_2_0_range_start_text2 = document.getElementById(
+//     "pension_2_0_range_start_text2"
+//   );
+//   pension_2_0_range_start_text2.innerHTML = Math.floor(
+//     slider_2_0.noUiSlider.get()[0]
+//   );
+//   var pension_2_0_range_start_text = document.getElementById(
+//     "pension_2_0_range_start_text"
+//   );
+//   pension_2_0_range_start_text.innerHTML =
+//     38 + Math.floor(slider_2_0.noUiSlider.get()[0]) - 55;
 
-  var slider_range_2_0_a = document.getElementById("slider_range_2_0_a");
-  slider_range_2_0_a.innerHTML =
-    38 + Math.floor(slider_2_0.noUiSlider.get()[0]) - 55;
+//   var slider_range_2_0_a = document.getElementById("slider_range_2_0_a");
+//   slider_range_2_0_a.innerHTML =
+//     38 + Math.floor(slider_2_0.noUiSlider.get()[0]) - 55;
 
-  var slider_range_2_0_b = document.getElementById("slider_range_2_0_b");
-  slider_range_2_0_b.innerHTML =
-    38 + Math.floor(slider_2_0.noUiSlider.get()[1]) - 55;
-}
+//   var slider_range_2_0_b = document.getElementById("slider_range_2_0_b");
+//   slider_range_2_0_b.innerHTML =
+//     38 + Math.floor(slider_2_0.noUiSlider.get()[1]) - 55;
+// }
 
-slider_3_0.noUiSlider.on("slide.one", slider_3_0_func);
-function slider_3_0_func() {
-  console.log("3_0");
-  slider_range_3_0.innerHTML = Math.floor(slider_3_0.noUiSlider.get()[0]);
-  slider_range_3_0_2.innerHTML = Math.floor(slider_3_0.noUiSlider.get()[1]);
+// slider_3_0.noUiSlider.on("slide.one", slider_3_0_func);
+// function slider_3_0_func() {
+//   console.log("3_0");
+//   slider_range_3_0.innerHTML = Math.floor(slider_3_0.noUiSlider.get()[0]);
+//   slider_range_3_0_2.innerHTML = Math.floor(slider_3_0.noUiSlider.get()[1]);
 
-  var pension_3_0_range_start_text2 = document.getElementById(
-    "pension_3_0_range_start_text2"
-  );
-  pension_3_0_range_start_text2.innerHTML = Math.floor(
-    slider_3_0.noUiSlider.get()[0]
-  );
-  var pension_3_0_range_start_text = document.getElementById(
-    "pension_3_0_range_start_text"
-  );
-  pension_3_0_range_start_text.innerHTML =
-    Math.floor(slider_3_0.noUiSlider.get()[0]) - 21;
+//   var pension_3_0_range_start_text2 = document.getElementById(
+//     "pension_3_0_range_start_text2"
+//   );
+//   pension_3_0_range_start_text2.innerHTML = Math.floor(
+//     slider_3_0.noUiSlider.get()[0]
+//   );
+//   var pension_3_0_range_start_text = document.getElementById(
+//     "pension_3_0_range_start_text"
+//   );
+//   pension_3_0_range_start_text.innerHTML =
+//     Math.floor(slider_3_0.noUiSlider.get()[0]) - 21;
 
-  var slider_range_3_0_a = document.getElementById("slider_range_3_0_a");
-  slider_range_3_0_a.innerHTML =
-    Math.floor(slider_3_0.noUiSlider.get()[0]) - 21;
+//   var slider_range_3_0_a = document.getElementById("slider_range_3_0_a");
+//   slider_range_3_0_a.innerHTML =
+//     Math.floor(slider_3_0.noUiSlider.get()[0]) - 21;
 
-  var slider_range_3_0_b = document.getElementById("slider_range_3_0_b");
-  slider_range_3_0_b.innerHTML =
-    Math.floor(slider_3_0.noUiSlider.get()[1]) - 21;
-}
+//   var slider_range_3_0_b = document.getElementById("slider_range_3_0_b");
+//   slider_range_3_0_b.innerHTML =
+//     Math.floor(slider_3_0.noUiSlider.get()[1]) - 21;
+// }
 
-//새로운 modal시작
+// ver2.0 새로운 modal시작
+
+//modal 초기, 안보이게
 var modal_pension_container = document.getElementsByClassName(
   "modal_pension_container"
 );
-console.log(modal_pension_container.item(0).style.display);
 modal_pension_container.item(0).style.display = "none";
+modal_pension_container.item(1).style.display = "none";
+modal_pension_container.item(2).style.display = "none";
+modal_pension_container.item(3).style.display = "none";
 
+//range버튼 클릭 ->modal open
 var pension_range_button = document.getElementsByClassName(
   "pension_range_button"
 );
-pension_range_button[0].addEventListener("click", modal_click);
+pension_range_button[0].addEventListener("click", function () {
+  modal_click(0);
+});
+pension_range_button[1].addEventListener("click", function () {
+  modal_click(1);
+});
+pension_range_button[2].addEventListener("click", function () {
+  modal_click(2);
+});
+pension_range_button[3].addEventListener("click", function () {
+  modal_click(3);
+});
 
-function modal_click() {
-  console.log("0번째modal");
-  modal_pension_container.item(0).style.display = "block";
-  // 콤보박스
-  var modal_pension_boxlist = document.getElementsByClassName(
-    "modal_pension_boxlist"
+//modal open
+function modal_click(arg) {
+  modal_pension_container.item(arg).style.display = "block";
+}
+
+// modal 나이 버튼 클릭
+var modal_pension_boxlist = document.getElementsByClassName(
+  "modal_pension_boxlist"
+);
+
+//modal 0번째, button-text값 연동
+modal_pension_boxlist[0].addEventListener("click", get_selected_age);
+function get_selected_age() {
+  var slider_range_0_0 = document.getElementById("slider_range_0_0");
+  slider_range_0_0.innerHTML =
+    modal_pension_boxlist[0].options.selectedIndex + 60;
+
+  var slider_range_0_0_1 = document.getElementById("slider_range_0_0_1");
+  slider_range_0_0_1.innerHTML =
+    modal_pension_boxlist[0].options.selectedIndex + 60 - 17;
+
+  var pension_0_0_range_start_text = document.getElementById(
+    "pension_0_0_range_start_text"
   );
-  console.log(modal_pension_boxlist[0].options.selectedIndex);
-  //이 값가지고 이제 넣으면 끝.
+  pension_0_0_range_start_text.innerHTML =
+    modal_pension_boxlist[0].options.selectedIndex + 60 - 17;
+
+  var pension_0_0_range_start_text2 = document.getElementById(
+    "pension_0_0_range_start_text2"
+  );
+  pension_0_0_range_start_text2.innerHTML =
+    modal_pension_boxlist[0].options.selectedIndex + 60;
+}
+
+//modal 닫기버튼
+var modal_pension_array_0_0_close = document.getElementsByClassName(
+  "modal_pension_array_0_0_close"
+);
+modal_pension_array_0_0_close[0].addEventListener("click", function () {
+  range_close(0);
+});
+modal_pension_array_0_0_close[2].addEventListener("click", function () {
+  range_close(2);
+});
+modal_pension_array_0_0_close[4].addEventListener("click", function () {
+  range_close(4);
+});
+modal_pension_array_0_0_close[6].addEventListener("click", function () {
+  range_close(6);
+});
+
+//modal close
+function range_close(arg) {
+  modal_pension_container.item(arg / 2).style.display = "none";
 }

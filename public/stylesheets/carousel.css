@@ -743,27 +743,43 @@
 /* 새로운 modal */
 .modal_pension_container {
   position: fixed;
-  width: 80%;
-  height: 30%;
+  width: 90%;
+  height: 40%;
   top: 50%;
   background-color: darkcyan;
   font-size: 3rem;
-  margin-left: 6%;
+  margin-left: 5%;
 }
 
-.modal_pension_start {
+/* 국민연금만 */
+.modal_pension_start_national {
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.modal_pension_start {
+  height: 23%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 17%;
+}
+
+.modal_pension_start_2 {
+  height: 23%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .modal_pension_korean {
-  font-size: 4rem;
+  font-size: 5rem;
   margin-right: 3%;
 }
 .modal_pension_boxlist {
   width: 10%;
-  height: 20%;
+  height: 45%;
   font-size: 3.5rem;
 }
