@@ -159,8 +159,8 @@
   transition: left 0.5s;
 }
 
-.optimize_container{
-  width:100%;
+.optimize_container {
+  width: 100%;
   margin: 3% 0;
   display: flex;
   justify-content: center;
@@ -176,18 +176,20 @@
   align-items: center;
 }
 
-.optimize_icon{
-  width:7%;
+.optimize_icon {
+  width: 7%;
   padding-top: 7%;
   background-image: url(../images/control_horizontal.png);
   background-size: 100%;
 }
 
-.optimize_text{
+.optimize_text {
   margin-left: 2%;
   font-size: 4rem;
-  color:white;
+  color: white;
 }
+
+/* HOSUNG INTEGRATION */
 
 /* HOSUNG INTEGRATION */
 .hs_container {
@@ -314,10 +316,11 @@
 }
 
 /* 국민연금 toggle 버튼 */
-.nation_pension_toggle_location {
+/* .nation_pension_toggle_location {
   position: absolute;
   right: 17%;
-}
+  
+} */
 .national_pension_down_toggle_whole {
   background: #53ff4c;
   width: 70px;
@@ -722,17 +725,17 @@
   border-left: 25px solid #3bd186;
 }
 
-/* range버튼 */
-.pension_range_location {
-  width: 6%;
-  height: 5%;
-  position: absolute;
-  right: 9%;
-}
-
 .pension_range_button {
-  width: 100%;
-  height: 100%;
   background-color: white;
   border: none;
+}
+
+.pension_location_below {
+  justify-content: space-between;
+}
+
+.toggleandpension {
+  display: flex;
+  width: 20%;
+  justify-content: space-around;
 }
