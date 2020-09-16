@@ -3,7 +3,7 @@ import {initCarousel} from './carousel.mjs'
 import {KB_SPENDINDEX,CUSTOMERS,PERSONA,OPTIMIZED_PERSONA} from './pensionData.mjs'
 import {COLORS} from './chartColor.mjs'
 import {counterAnimation} from './counterAnimation.mjs'
-
+import {reduceData,buildChart,buildPensionSet,buildpensionData,ageArr} from './pensionChart.mjs'
 
 /* PIE INTEGRATION  */
 import { totalAsset_pieChart } from "./pie.mjs";
@@ -24,99 +24,23 @@ const CAROUSEL_BTNS = document.getElementsByClassName("carousel_btn_wrapper");
 const CAROUSEL_WRAP = document.getElementsByClassName("carousel_wrapper");
 initCarousel(CAROUSEL_WRAP, CAROUSEL_BTNS);
 
+
 /**INIT CHART */
 Chart.defaults.global.defaultFontColor = 'black';
 Chart.defaults.global.defaultFontSize = 30;
 Chart.defaults.global.defaultFontFamily = 'KB';
 
-const reduceData=(originData)=>{
-  return originData.assets.reduce((asset_acc,asset)=>{
-    asset.product_lists.reduce((product_acc,product)=>{
-        product.receipts.reduce((receipt_acc,receipt,idx)=>{
-          receipt_acc[idx]+=receipt;
-          return receipt_acc;
-        },product_acc);
-        return product_acc;
-    },asset_acc);
-    return asset_acc;
-  },[
-    0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0
-  ]).reduce((acc,v)=>{
-    acc.push(v/1000);
-    return acc;
-  },[]);
-}
-
-const buildChart=(context, inputData)=>{
-  return new Chart(context,{
-    type: 'line',
-    data: inputData,
-    options: {
-      tooltips: {
-        enabled: false,
-      },
-      legend: {
-        display: false,
-      },
-      pointDot: true,
-      scales: {
-        xAxes: [{
-          display: true,
-          ticks:{
-            maxRotation:0,
-            maxTicksLimit:8
-          }
-        }],
-        yAxes: [{
-          display: true,
-          ticks:{
-            suggestedMin:15,
-            suggestedMax:45,
-            stepSize:5
-          }
-        }],
-      }
-    }
-
-  });
-};
-
-const ageArr=(startAge, endAge)=>{
-  let ages=[];
-  while(startAge<=endAge)ages.push(startAge++);
-  return ages;
-}
-
-const buildpensionData=(xArray,dataArray,colorInput,pointColor,pointRad)=>{
-  return {
-    labels: xArray,
-    datasets: dataArray
-  }
-}
-
-const buildPensionSet=(originArr,colorInput,pointColor,pointRad)=>{
-  return {
-    data: originArr,
-    pointRadius: pointRad,
-    pointBackgroundColor:pointColor,
-    pointBorderColor:pointColor,
-    borderWidth: 10,
-    borderColor: colorInput,
-    backgroundColor: 'transparent',
-  }
-}
-
 const ctx = document.getElementById("myChart");
 let numDataPoints = 36;
-let pData=buildpensionData(ageArr(55,90),[
-  buildPensionSet(reduceData(PERSONA[0]),'#007acc','rgba(78,171,243,0.5)',7),
-  buildPensionSet(KB_SPENDINDEX,'#F6E04B','transparent',0)
-])
+const originData=[
+  buildPensionSet(reduceData(PERSONA[0]),'#007acc','rgba(78,171,243,0.5)',7,true),
+  buildPensionSet(KB_SPENDINDEX,'#F6E04B','transparent',0,true)
+];
+
+const DEEPCOPY=obj=>JSON.parse(JSON.stringify(obj));
+let pData=buildpensionData(ageArr(55,90),DEEPCOPY(originData));
+
+
 /**BUILD CHART */
 let CHARTJS = buildChart(ctx, pData);
 
@@ -223,9 +147,9 @@ const GRAPH_AREA=document.getElementsByClassName('chartJS_wrapper')[0];
 
 const optimizeHandler=()=>{
   pData.datasets=[
-    buildPensionSet(reduceData(OPTIMIZED_PERSONA[0]),'#007acc','rgba(78,171,243,0.5)',10),
-    buildPensionSet(reduceData(PERSONA[0]),'rgb(200,200,200,0.3)','transparent',0),
-    buildPensionSet(KB_SPENDINDEX,'#F6E04B','transparent',0),
+    buildPensionSet(reduceData(OPTIMIZED_PERSONA[0]),'#007acc','rgba(78,171,243,0.5)',10,true),
+    buildPensionSet(reduceData(PERSONA[0]),'rgb(200,200,200,0.3)','transparent',0,true),
+    buildPensionSet(KB_SPENDINDEX,'#F6E04B','transparent',0,true),
   ]
   CHARTJS.update();
 }
@@ -239,12 +163,47 @@ for(let i=0;i<OPTIONS.length;i++){
   OPTIONS[i].addEventListener('touchstart',(e)=>{SCROLL_FLAG.classList.add('scroll_act');})
   OPTIONS[i].addEventListener('touchend',(e)=>{SCROLL_FLAG.classList.remove('scroll_act');})
 }
+
+const changeAgeRange=(stAge,edAge)=>{
+  CHARTJS.data.labels=ageArr(stAge,edAge)
+  CHARTJS.data.datasets=DEEPCOPY(originData);
+  CHARTJS.data.datasets=CHARTJS.data.datasets.reduce((acc,dtset)=>{
+    dtset.data=dtset.data.slice(stAge-55,edAge-54);
+    acc.push(dtset);
+    return acc;
+  },[])
+  CHARTJS.update();
+}
+
 OPTIONS[0].addEventListener('click',(e)=>{
   if(e.target.tagName!=='LI')return;
   const prevFocused=document.getElementsByClassName('option_focused')[0];
   if(e.target===prevFocused)return;
   prevFocused.classList.remove('option_focused');
   e.target.classList.add('option_focused');
+  switch(e.target.value){
+    case 0:{
+      CHARTJS.options.scales.xAxes[0].ticks.maxTicksLimit=8;
+      changeAgeRange(55,90)
+      break;
+    }
+    case 1:{
+      CHARTJS.options.scales.xAxes[0].ticks.maxTicksLimit=6;
+      changeAgeRange(55,65);
+      break;
+    }
+    case 2:{
+      CHARTJS.options.scales.xAxes[0].ticks.maxTicksLimit=6;
+      changeAgeRange(65,75);
+      break;
+    }
+    case 3:{
+      CHARTJS.options.scales.xAxes[0].ticks.maxTicksLimit=6;
+      changeAgeRange(75,90);
+      break;
+    }
+    default:{}
+  }
 })
 
 OPTIONS[1].addEventListener('click',(e)=>{
