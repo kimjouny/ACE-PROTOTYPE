@@ -1206,28 +1206,154 @@ var modal_pension_boxlist = document.getElementsByClassName(
   "modal_pension_boxlist"
 );
 
-//modal 0번째, button-text값 연동
-modal_pension_boxlist[0].addEventListener("click", get_selected_age);
-function get_selected_age() {
-  var slider_range_0_0 = document.getElementById("slider_range_0_0");
-  slider_range_0_0.innerHTML =
-    modal_pension_boxlist[0].options.selectedIndex + 60;
+//modal button-text값 연동
+//국민연금 modal
+modal_pension_boxlist[0].addEventListener("click", function () {
+  get_selected_age(0);
+});
+//퇴직연금 modal
+modal_pension_boxlist[1].addEventListener("click", function () {
+  get_selected_age(1);
+});
+modal_pension_boxlist[2].addEventListener("click", function () {
+  get_selected_age(2);
+});
+//개인연금 modal
+modal_pension_boxlist[3].addEventListener("click", function () {
+  get_selected_age(3);
+});
+modal_pension_boxlist[4].addEventListener("click", function () {
+  get_selected_age(4);
+});
+//금융자산 modal
+modal_pension_boxlist[5].addEventListener("click", function () {
+  get_selected_age(5);
+});
+modal_pension_boxlist[6].addEventListener("click", function () {
+  get_selected_age(6);
+});
 
-  var slider_range_0_0_1 = document.getElementById("slider_range_0_0_1");
-  slider_range_0_0_1.innerHTML =
-    modal_pension_boxlist[0].options.selectedIndex + 60 - 17;
+function get_selected_age(arg) {
+  switch (arg) {
+    //국민연금 modal
+    case 0: {
+      //수급시작년
+      var slider_range_0_0 = document.getElementById("slider_range_0_0");
+      slider_range_0_0.innerHTML =
+        modal_pension_boxlist[0].options.selectedIndex + 60;
+      var slider_range_0_0_1 = document.getElementById("slider_range_0_0_1");
+      slider_range_0_0_1.innerHTML =
+        modal_pension_boxlist[0].options.selectedIndex + 60 - 17;
+      var pension_0_0_range_start_text = document.getElementById(
+        "pension_0_0_range_start_text"
+      );
+      pension_0_0_range_start_text.innerHTML =
+        modal_pension_boxlist[0].options.selectedIndex + 60 - 17;
 
-  var pension_0_0_range_start_text = document.getElementById(
-    "pension_0_0_range_start_text"
-  );
-  pension_0_0_range_start_text.innerHTML =
-    modal_pension_boxlist[0].options.selectedIndex + 60 - 17;
+      var pension_0_0_range_start_text2 = document.getElementById(
+        "pension_0_0_range_start_text2"
+      );
+      pension_0_0_range_start_text2.innerHTML =
+        modal_pension_boxlist[0].options.selectedIndex + 60;
+      break;
+    }
+    //퇴직연금 modal
+    case 1: {
+      //수급시작년
+      var slider_range_1_0 = document.getElementById("slider_range_1_0");
+      slider_range_1_0.innerHTML =
+        modal_pension_boxlist[1].options.selectedIndex + 55;
+      var slider_range_1_0_1 = document.getElementById("slider_range_1_0_1");
+      slider_range_1_0_1.innerHTML =
+        modal_pension_boxlist[1].options.selectedIndex + 55 - 17;
+      var pension_1_0_range_start_text = document.getElementById(
+        "pension_1_0_range_start_text"
+      );
+      pension_1_0_range_start_text.innerHTML =
+        modal_pension_boxlist[1].options.selectedIndex + 55 - 17;
 
-  var pension_0_0_range_start_text2 = document.getElementById(
-    "pension_0_0_range_start_text2"
-  );
-  pension_0_0_range_start_text2.innerHTML =
-    modal_pension_boxlist[0].options.selectedIndex + 60;
+      var pension_1_0_range_start_text2 = document.getElementById(
+        "pension_1_0_range_start_text2"
+      );
+      pension_1_0_range_start_text2.innerHTML =
+        modal_pension_boxlist[1].options.selectedIndex + 55;
+      break;
+    }
+    //수급종료년
+    case 2: {
+      var slider_range_1_1 = document.getElementById("slider_range_1_1");
+      slider_range_1_1.innerHTML =
+        modal_pension_boxlist[2].options.selectedIndex + 55;
+      var slider_range_1_1_1 = document.getElementById("slider_range_1_1_1");
+      slider_range_1_1_1.innerHTML =
+        modal_pension_boxlist[2].options.selectedIndex + 55 - 17;
+      break;
+    }
+    //개인연금 modal
+    case 3: {
+      //수급시작년
+      var slider_range_2_0 = document.getElementById("slider_range_2_0");
+      slider_range_2_0.innerHTML =
+        modal_pension_boxlist[3].options.selectedIndex + 58;
+      var slider_range_2_0_1 = document.getElementById("slider_range_2_0_1");
+      slider_range_2_0_1.innerHTML =
+        modal_pension_boxlist[3].options.selectedIndex + 58 - 21;
+      var pension_2_0_range_start_text = document.getElementById(
+        "pension_2_0_range_start_text"
+      );
+      pension_2_0_range_start_text.innerHTML =
+        modal_pension_boxlist[3].options.selectedIndex + 58 - 21;
+
+      var pension_2_0_range_start_text2 = document.getElementById(
+        "pension_2_0_range_start_text2"
+      );
+      pension_2_0_range_start_text2.innerHTML =
+        modal_pension_boxlist[3].options.selectedIndex + 58;
+      break;
+    }
+    //수급종료년
+    case 4: {
+      var slider_range_2_1 = document.getElementById("slider_range_2_1");
+      slider_range_2_1.innerHTML =
+        modal_pension_boxlist[4].options.selectedIndex + 58;
+      var slider_range_2_1_1 = document.getElementById("slider_range_2_1_1");
+      slider_range_2_1_1.innerHTML =
+        modal_pension_boxlist[4].options.selectedIndex + 58 - 21;
+      break;
+    }
+    //금융자산 modal
+    case 5: {
+      //수급시작년
+      var slider_range_3_0 = document.getElementById("slider_range_3_0");
+      slider_range_3_0.innerHTML =
+        modal_pension_boxlist[5].options.selectedIndex + 55;
+      var slider_range_3_0_1 = document.getElementById("slider_range_3_0_1");
+      slider_range_3_0_1.innerHTML =
+        modal_pension_boxlist[5].options.selectedIndex + 55 - 22;
+      var pension_3_0_range_start_text = document.getElementById(
+        "pension_3_0_range_start_text"
+      );
+      pension_3_0_range_start_text.innerHTML =
+        modal_pension_boxlist[5].options.selectedIndex + 55 - 22;
+
+      var pension_3_0_range_start_text2 = document.getElementById(
+        "pension_3_0_range_start_text2"
+      );
+      pension_3_0_range_start_text2.innerHTML =
+        modal_pension_boxlist[5].options.selectedIndex + 55;
+      break;
+    }
+    //수급종료년
+    case 6: {
+      var slider_range_3_1 = document.getElementById("slider_range_3_1");
+      slider_range_3_1.innerHTML =
+        modal_pension_boxlist[6].options.selectedIndex + 55;
+      var slider_range_3_1_1 = document.getElementById("slider_range_3_1_1");
+      slider_range_3_1_1.innerHTML =
+        modal_pension_boxlist[6].options.selectedIndex + 55 - 22;
+      break;
+    }
+  }
 }
 
 //modal 닫기버튼
