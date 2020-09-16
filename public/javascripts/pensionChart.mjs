@@ -1,3 +1,5 @@
+import {DEEPCOPY} from './util.mjs'
+
 const reduceData=(originData)=>{
     return originData.assets.reduce((asset_acc,asset)=>{
       asset.product_lists.reduce((product_acc,product)=>{
@@ -81,4 +83,15 @@ const reduceData=(originData)=>{
     }
   }
 
-  export {reduceData,buildChart,buildPensionSet,buildpensionData,ageArr};
+  const changeAgeRange=(chartObj,originData,stAge,edAge)=>{
+    chartObj.data.labels=ageArr(stAge,edAge)
+    chartObj.data.datasets=DEEPCOPY(originData);
+    chartObj.data.datasets=chartObj.data.datasets.reduce((acc,dtset)=>{
+      dtset.data=dtset.data.slice(stAge-55,edAge-54);
+      acc.push(dtset);
+      return acc;
+    },[])
+    chartObj.update();
+  }
+
+  export {reduceData,buildChart,buildPensionSet,buildpensionData,ageArr,changeAgeRange};
