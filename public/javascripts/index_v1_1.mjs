@@ -1,12 +1,12 @@
-import { initCarousel } from "./carousel.mjs";
-import {
-  KB_SPENDINDEX,
-  CUSTOMERS,
-  PERSONA,
-  OPTIMIZED_PERSONA,
-} from "./pensionData.mjs";
-import { COLORS } from "./chartColor.mjs";
-import { counterAnimation } from "./counterAnimation.mjs";
+
+
+import {initCarousel} from './carousel.mjs'
+import {KB_SPENDINDEX,CUSTOMERS,PERSONA,OPTIMIZED_PERSONA} from './pensionData.mjs'
+import {COLORS} from './chartColor.mjs'
+import {counterAnimation} from './counterAnimation.mjs'
+import {reduceData,buildChart,buildPensionSet,buildpensionData,ageArr,changeAgeRange} from './pensionChart.mjs'
+import {DEEPCOPY} from './util.mjs'
+
 
 /* PIE INTEGRATION  */
 import { totalAsset_pieChart } from "./pie.mjs";
@@ -44,143 +44,25 @@ const CAROUSEL_BTNS = document.getElementsByClassName("carousel_btn_wrapper");
 const CAROUSEL_WRAP = document.getElementsByClassName("carousel_wrapper");
 initCarousel(CAROUSEL_WRAP, CAROUSEL_BTNS);
 
+
 /**INIT CHART */
 Chart.defaults.global.defaultFontColor = "black";
 Chart.defaults.global.defaultFontSize = 30;
-Chart.defaults.global.defaultFontFamily = "KB";
 
-const reduceData = (originData) => {
-  return originData.assets
-    .reduce(
-      (asset_acc, asset) => {
-        asset.product_lists.reduce((product_acc, product) => {
-          product.receipts.reduce((receipt_acc, receipt, idx) => {
-            receipt_acc[idx] += receipt;
-            return receipt_acc;
-          }, product_acc);
-          return product_acc;
-        }, asset_acc);
-        return asset_acc;
-      },
-      [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-      ]
-    )
-    .reduce((acc, v) => {
-      acc.push(v / 1000);
-      return acc;
-    }, []);
-};
-
-const buildChart = (context, inputData) => {
-  return new Chart(context, {
-    type: "line",
-    data: inputData,
-    options: {
-      tooltips: {
-        enabled: false,
-      },
-      legend: {
-        display: false,
-      },
-      pointDot: true,
-      scales: {
-        xAxes: [
-          {
-            display: true,
-            ticks: {
-              maxRotation: 0,
-              maxTicksLimit: 8,
-            },
-          },
-        ],
-        yAxes: [
-          {
-            display: true,
-            ticks: {
-              suggestedMin: 15,
-              suggestedMax: 45,
-              stepSize: 5,
-            },
-          },
-        ],
-      },
-    },
-  });
-};
-
-const ageArr = (startAge, endAge) => {
-  let ages = [];
-  while (startAge <= endAge) ages.push(startAge++);
-  return ages;
-};
-
-const buildpensionData = (
-  xArray,
-  dataArray,
-  colorInput,
-  pointColor,
-  pointRad
-) => {
-  return {
-    labels: xArray,
-    datasets: dataArray,
-  };
-};
-
-const buildPensionSet = (originArr, colorInput, pointColor, pointRad) => {
-  return {
-    data: originArr,
-    pointRadius: pointRad,
-    pointBackgroundColor: pointColor,
-    pointBorderColor: pointColor,
-    borderWidth: 10,
-    borderColor: colorInput,
-    backgroundColor: "transparent",
-  };
-};
+Chart.defaults.global.defaultFontFamily = 'KB';
 
 const ctx = document.getElementById("myChart");
 let numDataPoints = 36;
-let pData = buildpensionData(ageArr(55, 90), [
-  buildPensionSet(reduceData(PERSONA[0]), "#007acc", "rgba(78,171,243,0.5)", 7),
-  buildPensionSet(KB_SPENDINDEX, "#F6E04B", "transparent", 0),
-]);
+let originData=[
+  buildPensionSet(reduceData(PERSONA[0]),'#007acc','rgba(78,171,243,0.5)',7,true),
+  buildPensionSet(KB_SPENDINDEX,'#F6E04B','transparent',0,true)
+];
+
+
+let pData=buildpensionData(ageArr(55,90),DEEPCOPY(originData));
+
+
+
 /**BUILD CHART */
 let CHARTJS = buildChart(ctx, pData);
 
@@ -297,24 +179,53 @@ const GRAPH_AREA = document.getElementsByClassName("chartJS_wrapper")[0];
 // GRAPH_AREA.addEventListener('touchmove', handleStockTouchMove);
 // GRAPH_AREA.addEventListener('touchend', handleStockTouchEnd);
 
-const optimizeHandler = () => {
-  pData.datasets = [
-    buildPensionSet(
-      reduceData(OPTIMIZED_PERSONA[0]),
-      "#007acc",
-      "rgba(78,171,243,0.5)",
-      10
-    ),
-    buildPensionSet(
-      reduceData(PERSONA[0]),
-      "rgb(200,200,200,0.3)",
-      "transparent",
-      0
-    ),
-    buildPensionSet(KB_SPENDINDEX, "#F6E04B", "transparent", 0),
-  ];
-  CHARTJS.update();
-};
+
+const updateGraphByRange=(val)=>{
+  const displayOption=OPTIONS[1].getElementsByClassName('option_content');
+  for(let i=0;i<displayOption.length;i++){
+    displayOption[i].style.backgroundColor=displayOption[i].dataset.bg;
+    displayOption[i].style.color="white";
+  }
+  switch(val){
+    case 0:{
+      CHARTJS.options.scales.xAxes[0].ticks.maxTicksLimit=8;
+      changeAgeRange(CHARTJS,originData,55,90)
+      break;
+    }
+    case 1:{
+      CHARTJS.options.scales.xAxes[0].ticks.maxTicksLimit=6;
+      changeAgeRange(CHARTJS,originData,55,65);
+      break;
+    }
+    case 2:{
+      CHARTJS.options.scales.xAxes[0].ticks.maxTicksLimit=6;
+      changeAgeRange(CHARTJS,originData,65,75);
+      break;
+    }
+    case 3:{
+      CHARTJS.options.scales.xAxes[0].ticks.maxTicksLimit=6;
+      changeAgeRange(CHARTJS,originData,75,90);
+      break;
+    }
+    default:{}
+  }
+}
+
+const optimizeHandler=()=>{
+  originData=[
+    buildPensionSet(reduceData(OPTIMIZED_PERSONA[0]),'#007acc','rgba(78,171,243,0.5)',10,true),
+    buildPensionSet(reduceData(PERSONA[0]),'rgb(200,200,200,0.3)','transparent',0,true),
+    buildPensionSet(KB_SPENDINDEX,'#F6E04B','transparent',0,true),
+  ]
+  const currentRange=document.getElementsByClassName('option_focused')[0].value;
+  updateGraphByRange(currentRange);
+  OPTIONS[1].innerHTML=`
+    <li class="option_content" data-bg="#007ACC" value="0" style="color:white;background-color: #007ACC;">(최적화)예상수령액</li>
+    <li class="option_content" data-bg="silver" value="1" style="color:white;background-color: silver;">(기존)예상수령액</li>  
+    <li class="option_content" data-bg="#F6E04B" value="2" style="color:white;background-color: #F6E04B;">KB소비지수</li>
+  `
+}
+
 
 const SCROLL_FLAG = document.getElementsByClassName("prev_btn")[0];
 const OPTIMIZE_BTN = document.getElementsByClassName("optimize_container")[0];
@@ -329,13 +240,36 @@ for (let i = 0; i < OPTIONS.length; i++) {
     SCROLL_FLAG.classList.remove("scroll_act");
   });
 }
-OPTIONS[0].addEventListener("click", (e) => {
-  if (e.target.tagName !== "LI") return;
-  const prevFocused = document.getElementsByClassName("option_focused")[0];
-  if (e.target === prevFocused) return;
-  prevFocused.classList.remove("option_focused");
-  e.target.classList.add("option_focused");
-});
+
+
+
+
+OPTIONS[0].addEventListener('click',(e)=>{
+  if(e.target.tagName!=='LI')return;
+  const prevFocused=document.getElementsByClassName('option_focused')[0];
+  if(e.target===prevFocused)return;
+  prevFocused.classList.remove('option_focused');
+  e.target.classList.add('option_focused');
+  updateGraphByRange(e.target.value);
+})
+
+OPTIONS[1].addEventListener('click',(e)=>{
+  if(e.target.tagName!=='LI')return;
+  if(e.target.style.backgroundColor=="white"){
+    e.target.style.backgroundColor=e.target.dataset.bg;
+    e.target.style.color="white";
+    if(!e.target.value)CHARTJS.data.datasets[e.target.value].pointRadius=7;
+    CHARTJS.data.datasets[e.target.value].showLine=true;
+  }
+  else{
+    e.target.style.backgroundColor="white";
+    e.target.style.color="black";
+    if(!e.target.value)CHARTJS.data.datasets[e.target.value].pointRadius=0;
+    CHARTJS.data.datasets[e.target.value].showLine=false;
+  }
+  CHARTJS.update();
+})
+
 
 OPTIONS[1].addEventListener("click", (e) => {
   if (e.target.tagName !== "LI") return;
