@@ -1,9 +1,12 @@
-
-import {initCarousel} from './carousel.mjs'
-import {KB_SPENDINDEX,CUSTOMERS,PERSONA,OPTIMIZED_PERSONA} from './pensionData.mjs'
-import {COLORS} from './chartColor.mjs'
-import {counterAnimation} from './counterAnimation.mjs'
-
+import { initCarousel } from "./carousel.mjs";
+import {
+  KB_SPENDINDEX,
+  CUSTOMERS,
+  PERSONA,
+  OPTIMIZED_PERSONA,
+} from "./pensionData.mjs";
+import { COLORS } from "./chartColor.mjs";
+import { counterAnimation } from "./counterAnimation.mjs";
 
 /* PIE INTEGRATION  */
 import { totalAsset_pieChart } from "./pie.mjs";
@@ -11,8 +14,25 @@ import { monthlyPention_chart } from "./pie.mjs";
 
 /* PIE PART */
 window.onload = () => {
-  totalAsset_pieChart(55,90,2650000,239143000,429051000,289444000,55788000); //jy 파라미터 변경
-  monthlyPention_chart(55,90,27000000,200000000,429051000,130485000,199140000,112312312);
+  totalAsset_pieChart(
+    55,
+    90,
+    2650000,
+    239143000,
+    429051000,
+    289444000,
+    55788000
+  ); //jy 파라미터 변경
+  monthlyPention_chart(
+    55,
+    90,
+    27000000,
+    200000000,
+    429051000,
+    130485000,
+    199140000,
+    112312312
+  );
 };
 
 /* PACHINCO INTERACTION */
@@ -25,36 +45,71 @@ const CAROUSEL_WRAP = document.getElementsByClassName("carousel_wrapper");
 initCarousel(CAROUSEL_WRAP, CAROUSEL_BTNS);
 
 /**INIT CHART */
-Chart.defaults.global.defaultFontColor = 'black';
+Chart.defaults.global.defaultFontColor = "black";
 Chart.defaults.global.defaultFontSize = 30;
-Chart.defaults.global.defaultFontFamily = 'KB';
+Chart.defaults.global.defaultFontFamily = "KB";
 
-const reduceData=(originData)=>{
-  return originData.assets.reduce((asset_acc,asset)=>{
-    asset.product_lists.reduce((product_acc,product)=>{
-        product.receipts.reduce((receipt_acc,receipt,idx)=>{
-          receipt_acc[idx]+=receipt;
-          return receipt_acc;
-        },product_acc);
-        return product_acc;
-    },asset_acc);
-    return asset_acc;
-  },[
-    0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0
-  ]).reduce((acc,v)=>{
-    acc.push(v/1000);
-    return acc;
-  },[]);
-}
+const reduceData = (originData) => {
+  return originData.assets
+    .reduce(
+      (asset_acc, asset) => {
+        asset.product_lists.reduce((product_acc, product) => {
+          product.receipts.reduce((receipt_acc, receipt, idx) => {
+            receipt_acc[idx] += receipt;
+            return receipt_acc;
+          }, product_acc);
+          return product_acc;
+        }, asset_acc);
+        return asset_acc;
+      },
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+      ]
+    )
+    .reduce((acc, v) => {
+      acc.push(v / 1000);
+      return acc;
+    }, []);
+};
 
-const buildChart=(context, inputData)=>{
-  return new Chart(context,{
-    type: 'line',
+const buildChart = (context, inputData) => {
+  return new Chart(context, {
+    type: "line",
     data: inputData,
     options: {
       tooltips: {
@@ -65,58 +120,67 @@ const buildChart=(context, inputData)=>{
       },
       pointDot: true,
       scales: {
-        xAxes: [{
-          display: true,
-          ticks:{
-            maxRotation:0,
-            maxTicksLimit:8
-          }
-        }],
-        yAxes: [{
-          display: true,
-          ticks:{
-            suggestedMin:15,
-            suggestedMax:45,
-            stepSize:5
-          }
-        }],
-      }
-    }
-
+        xAxes: [
+          {
+            display: true,
+            ticks: {
+              maxRotation: 0,
+              maxTicksLimit: 8,
+            },
+          },
+        ],
+        yAxes: [
+          {
+            display: true,
+            ticks: {
+              suggestedMin: 15,
+              suggestedMax: 45,
+              stepSize: 5,
+            },
+          },
+        ],
+      },
+    },
   });
 };
 
-const ageArr=(startAge, endAge)=>{
-  let ages=[];
-  while(startAge<=endAge)ages.push(startAge++);
+const ageArr = (startAge, endAge) => {
+  let ages = [];
+  while (startAge <= endAge) ages.push(startAge++);
   return ages;
-}
+};
 
-const buildpensionData=(xArray,dataArray,colorInput,pointColor,pointRad)=>{
+const buildpensionData = (
+  xArray,
+  dataArray,
+  colorInput,
+  pointColor,
+  pointRad
+) => {
   return {
     labels: xArray,
-    datasets: dataArray
-  }
-}
+    datasets: dataArray,
+  };
+};
 
-const buildPensionSet=(originArr,colorInput,pointColor,pointRad)=>{
+const buildPensionSet = (originArr, colorInput, pointColor, pointRad) => {
   return {
     data: originArr,
     pointRadius: pointRad,
-    pointBackgroundColor:pointColor,
-    pointBorderColor:pointColor,
+    pointBackgroundColor: pointColor,
+    pointBorderColor: pointColor,
     borderWidth: 10,
     borderColor: colorInput,
-    backgroundColor: 'transparent',
-  }
-}
+    backgroundColor: "transparent",
+  };
+};
 
 const ctx = document.getElementById("myChart");
 let numDataPoints = 36;
-let pData=buildpensionData(ageArr(55,90),[
-  buildPensionSet(reduceData(PERSONA[0]),'#007acc','rgba(78,171,243,0.5)',7),
-  buildPensionSet(KB_SPENDINDEX,'#F6E04B','transparent',0)
-])
+let pData = buildpensionData(ageArr(55, 90), [
+  buildPensionSet(reduceData(PERSONA[0]), "#007acc", "rgba(78,171,243,0.5)", 7),
+  buildPensionSet(KB_SPENDINDEX, "#F6E04B", "transparent", 0),
+]);
 /**BUILD CHART */
 let CHARTJS = buildChart(ctx, pData);
 
@@ -192,9 +256,21 @@ const handleStockTouchStart = (e) => {
 };
 
 const handleStockTouchMove = (e) => {
-  if (e.touches[0].pageY - e.currentTarget.getBoundingClientRect().y <CANVAS_CONTAINER.offsetTop)return;
-  if (e.touches[0].clientX <e.currentTarget.offsetWidth * 0.1 + e.currentTarget.offsetLeft)return;
-  const graphRatio =(e.touches[0].clientX -e.currentTarget.offsetLeft -e.currentTarget.offsetWidth * 0.12) /(e.currentTarget.offsetWidth * 0.88);
+  if (
+    e.touches[0].pageY - e.currentTarget.getBoundingClientRect().y <
+    CANVAS_CONTAINER.offsetTop
+  )
+    return;
+  if (
+    e.touches[0].clientX <
+    e.currentTarget.offsetWidth * 0.1 + e.currentTarget.offsetLeft
+  )
+    return;
+  const graphRatio =
+    (e.touches[0].clientX -
+      e.currentTarget.offsetLeft -
+      e.currentTarget.offsetWidth * 0.12) /
+    (e.currentTarget.offsetWidth * 0.88);
   const currentAge = Math.round(55 + graphRatio * numDataPoints);
   if (currentAge < 55 || currentAge > 90) return;
   STOCK_EL.style.left = `${e.touches[0].clientX}px`;
@@ -215,50 +291,62 @@ const handleStockTouchEnd = (e) => {
 };
 
 /* STOCK INTERACTION */
-const CANVAS_CONTAINER=document.getElementsByClassName('canvas_container')[0];
-const GRAPH_AREA=document.getElementsByClassName('chartJS_wrapper')[0];
+const CANVAS_CONTAINER = document.getElementsByClassName("canvas_container")[0];
+const GRAPH_AREA = document.getElementsByClassName("chartJS_wrapper")[0];
 // GRAPH_AREA.addEventListener('touchstart', handleStockTouchStart);
 // GRAPH_AREA.addEventListener('touchmove', handleStockTouchMove);
 // GRAPH_AREA.addEventListener('touchend', handleStockTouchEnd);
 
-const optimizeHandler=()=>{
-  pData.datasets=[
-    buildPensionSet(reduceData(OPTIMIZED_PERSONA[0]),'#007acc','rgba(78,171,243,0.5)',10),
-    buildPensionSet(reduceData(PERSONA[0]),'rgb(200,200,200,0.3)','transparent',0),
-    buildPensionSet(KB_SPENDINDEX,'#F6E04B','transparent',0),
-  ]
+const optimizeHandler = () => {
+  pData.datasets = [
+    buildPensionSet(
+      reduceData(OPTIMIZED_PERSONA[0]),
+      "#007acc",
+      "rgba(78,171,243,0.5)",
+      10
+    ),
+    buildPensionSet(
+      reduceData(PERSONA[0]),
+      "rgb(200,200,200,0.3)",
+      "transparent",
+      0
+    ),
+    buildPensionSet(KB_SPENDINDEX, "#F6E04B", "transparent", 0),
+  ];
   CHARTJS.update();
-}
+};
 
-const SCROLL_FLAG=document.getElementsByClassName('prev_btn')[0];
-const OPTIMIZE_BTN=document.getElementsByClassName('optimize_container')[0];
-OPTIMIZE_BTN.addEventListener('click',optimizeHandler);
+const SCROLL_FLAG = document.getElementsByClassName("prev_btn")[0];
+const OPTIMIZE_BTN = document.getElementsByClassName("optimize_container")[0];
+OPTIMIZE_BTN.addEventListener("click", optimizeHandler);
 /**SEGMENT OPTION */
-const OPTIONS=document.getElementsByClassName('option_contents');
-for(let i=0;i<OPTIONS.length;i++){
-  OPTIONS[i].addEventListener('touchstart',(e)=>{SCROLL_FLAG.classList.add('scroll_act');})
-  OPTIONS[i].addEventListener('touchend',(e)=>{SCROLL_FLAG.classList.remove('scroll_act');})
+const OPTIONS = document.getElementsByClassName("option_contents");
+for (let i = 0; i < OPTIONS.length; i++) {
+  OPTIONS[i].addEventListener("touchstart", (e) => {
+    SCROLL_FLAG.classList.add("scroll_act");
+  });
+  OPTIONS[i].addEventListener("touchend", (e) => {
+    SCROLL_FLAG.classList.remove("scroll_act");
+  });
 }
-OPTIONS[0].addEventListener('click',(e)=>{
-  if(e.target.tagName!=='LI')return;
-  const prevFocused=document.getElementsByClassName('option_focused')[0];
-  if(e.target===prevFocused)return;
-  prevFocused.classList.remove('option_focused');
-  e.target.classList.add('option_focused');
-})
+OPTIONS[0].addEventListener("click", (e) => {
+  if (e.target.tagName !== "LI") return;
+  const prevFocused = document.getElementsByClassName("option_focused")[0];
+  if (e.target === prevFocused) return;
+  prevFocused.classList.remove("option_focused");
+  e.target.classList.add("option_focused");
+});
 
-OPTIONS[1].addEventListener('click',(e)=>{
-  if(e.target.tagName!=='LI')return;
-  if(e.target.style.backgroundColor=="white"){
-    e.target.style.backgroundColor=e.target.dataset.bg;
-    e.target.style.color="white";
+OPTIONS[1].addEventListener("click", (e) => {
+  if (e.target.tagName !== "LI") return;
+  if (e.target.style.backgroundColor == "white") {
+    e.target.style.backgroundColor = e.target.dataset.bg;
+    e.target.style.color = "white";
+  } else {
+    e.target.style.backgroundColor = "white";
+    e.target.style.color = "black";
   }
-  else{
-    e.target.style.backgroundColor="white";
-    e.target.style.color="black";
-  }
-})
-
+});
 
 /** HOSUNG MIGRATION */
 var national_pension_down_content = document.getElementById(
@@ -695,8 +783,8 @@ toggle_array[3].addEventListener("click", ho);
 // toggle_array[4].addEventListener("click", ho);
 
 //range 버튼
-var national_pension_range = document.getElementById("national_pension_range");
-national_pension_range.addEventListener("click", range_start_0_0);
+// var national_pension_range = document.getElementById("national_pension_range");
+// national_pension_range.addEventListener("click", range_start_0_0);
 var retire_pension_range_1_0 = document.getElementById(
   "retire_pension_range_1_0"
 );
@@ -716,13 +804,13 @@ var retire_pension_range_3_0 = document.getElementById(
 retire_pension_range_3_0.addEventListener("click", range_start_3_0);
 
 //modal contents display on/off
-var modal_pension_array_0_0 = document.getElementById(
-  "modal_pension_array_0_0"
-);
-var modal_pension_array_0_0_close = document.getElementById(
-  "modal_pension_array_0_0_close"
-);
-modal_pension_array_0_0.style.display = "none";
+// var modal_pension_array_0_0 = document.getElementById(
+//   "modal_pension_array_0_0"
+// );
+// var modal_pension_array_0_0_close = document.getElementById(
+//   "modal_pension_array_0_0_close"
+// );
+// modal_pension_array_0_0.style.display = "none";
 //range 1_0
 var modal_pension_array_1_0 = document.getElementById(
   "modal_pension_array_1_0"
@@ -760,17 +848,17 @@ var modal_pension_array_3_0_close = document.getElementById(
 
 function range_close() {
   console.log("rance close");
-  modal_pension_array_0_0.style.display = "none";
+  // modal_pension_array_0_0.style.display = "none";
   modal_pension_array_1_0.style.display = "none";
   //khs
   //modal_pension_array_1_1.style.display = "none";
   modal_pension_array_2_0.style.display = "none";
   modal_pension_array_3_0.style.display = "none";
 }
-function range_start_0_0() {
-  console.log("range");
-  modal_pension_array_0_0.style.display = "block";
-}
+// function range_start_0_0() {
+//   console.log("range");
+//   modal_pension_array_0_0.style.display = "block";
+// }
 function range_start_1_0() {
   modal_pension_array_1_0.style.display = "block";
 }
@@ -788,12 +876,12 @@ function range_start_3_0() {
 }
 
 // modal 0_0
-var pension_array_0_0_slider = document.getElementById(
-  "pension_array_0_0_slider"
-);
-var slider_range = document.getElementById("slider_range_0_0");
-slider_range.innerHTML = "60";
-modal_pension_array_0_0_close.addEventListener("click", range_close);
+// var pension_array_0_0_slider = document.getElementById(
+//   "pension_array_0_0_slider"
+// );
+// var slider_range = document.getElementById("slider_range_0_0");
+// slider_range.innerHTML = "60";
+// modal_pension_array_0_0_close.addEventListener("click", range_close);
 
 // modal 1_0
 var pension_array_1_0_slider = document.getElementById(
@@ -858,26 +946,19 @@ modal_pension_array_3_0_close.addEventListener("click", range_close);
 
 //새로운 modal range
 //modal 0_0
-var slider_0_0 = document.getElementById("slider_0_0");
-noUiSlider.create(slider_0_0, {
-  // start: [55, 90],
-  start: [60],
-  connect: [true, false],
-  step: 1,
-  orientation: "horizontal", // 'horizontal' or 'vertical'
-  range: {
-    min: [55],
-    max: [65],
-  },
-  // Move handle on tap, bars are draggable
-  // behaviour: "tap-drag",
-  //tooltips: true,
-  // pips: {
-  //   mode: "steps",
-  //   stepped: true,
-  //   density: 2,
-  // },
-});
+// var slider_0_0 = document.getElementById("slider_0_0");
+// noUiSlider.create(slider_0_0, {
+//   // start: [55, 90],
+//   start: [60],
+//   connect: [true, false],
+//   step: 1,
+//   orientation: "horizontal", // 'horizontal' or 'vertical'
+//   range: {
+//     min: [55],
+//     max: [65],
+//   },
+
+// });
 
 //modal 1_0
 // window.onload = () => {
@@ -953,7 +1034,7 @@ noUiSlider.create(slider_3_0, {
   // },
 });
 
-var slider_range_0_0 = document.getElementById("slider_range_0_0");
+// var slider_range_0_0 = document.getElementById("slider_range_0_0");
 var slider_range_1_0 = document.getElementById("slider_range_1_0");
 var slider_range_1_0_2 = document.getElementById("slider_range_1_0_2");
 //khs
@@ -962,7 +1043,7 @@ var slider_range_2_0 = document.getElementById("slider_range_2_0");
 var slider_range_3_0 = document.getElementById("slider_range_3_0");
 
 //초기화 값
-slider_range_0_0.innerHTML = "60";
+// slider_range_0_0.innerHTML = "60";
 slider_range_1_0.innerHTML = "55";
 slider_range_1_0_2.innerHTML = "90";
 //khs
@@ -973,28 +1054,28 @@ slider_range_2_0_2.innerHTML = "90";
 slider_range_3_0.innerHTML = "54";
 slider_range_3_0_2.innerHTML = "90";
 
-slider_0_0.noUiSlider.on("slide.one", slider_0_0_func);
-// slider_0_0.addEventListener("update", slider_0_0_func);
-function slider_0_0_func() {
-  console.log("0_0");
-  slider_range_0_0.innerHTML = Math.floor(slider_0_0.noUiSlider.get());
+// slider_0_0.noUiSlider.on("slide.one", slider_0_0_func);
+// // slider_0_0.addEventListener("update", slider_0_0_func);
+// function slider_0_0_func() {
+//   console.log("0_0");
+//   slider_range_0_0.innerHTML = Math.floor(slider_0_0.noUiSlider.get());
 
-  var pension_0_0_range_start_text2 = document.getElementById(
-    "pension_0_0_range_start_text2"
-  );
-  pension_0_0_range_start_text2.innerHTML = Math.floor(
-    slider_0_0.noUiSlider.get()
-  );
+//   var pension_0_0_range_start_text2 = document.getElementById(
+//     "pension_0_0_range_start_text2"
+//   );
+//   pension_0_0_range_start_text2.innerHTML = Math.floor(
+//     slider_0_0.noUiSlider.get()
+//   );
 
-  var pension_0_0_range_start_text = document.getElementById(
-    "pension_0_0_range_start_text"
-  );
-  pension_0_0_range_start_text.innerHTML =
-    38 + Math.floor(slider_0_0.noUiSlider.get()) - 55;
-  var slider_range_0_0_1 = document.getElementById("slider_range_0_0_1");
-  slider_range_0_0_1.innerHTML =
-    38 + Math.floor(slider_0_0.noUiSlider.get()) - 55;
-}
+//   var pension_0_0_range_start_text = document.getElementById(
+//     "pension_0_0_range_start_text"
+//   );
+//   pension_0_0_range_start_text.innerHTML =
+//     38 + Math.floor(slider_0_0.noUiSlider.get()) - 55;
+//   var slider_range_0_0_1 = document.getElementById("slider_range_0_0_1");
+//   slider_range_0_0_1.innerHTML =
+//     38 + Math.floor(slider_0_0.noUiSlider.get()) - 55;
+// }
 
 slider_1_0.noUiSlider.on("slide.one", slider_1_0_func);
 //slider_1_0.addEventListener("click", slider_1_0_func);
@@ -1102,4 +1183,27 @@ function slider_3_0_func() {
   var slider_range_3_0_b = document.getElementById("slider_range_3_0_b");
   slider_range_3_0_b.innerHTML =
     Math.floor(slider_3_0.noUiSlider.get()[1]) - 21;
+}
+
+//새로운 modal시작
+var modal_pension_container = document.getElementsByClassName(
+  "modal_pension_container"
+);
+console.log(modal_pension_container.item(0).style.display);
+modal_pension_container.item(0).style.display = "none";
+
+var pension_range_button = document.getElementsByClassName(
+  "pension_range_button"
+);
+pension_range_button[0].addEventListener("click", modal_click);
+
+function modal_click() {
+  console.log("0번째modal");
+  modal_pension_container.item(0).style.display = "block";
+  // 콤보박스
+  var modal_pension_boxlist = document.getElementsByClassName(
+    "modal_pension_boxlist"
+  );
+  console.log(modal_pension_boxlist[0].options.selectedIndex);
+  //이 값가지고 이제 넣으면 끝.
 }

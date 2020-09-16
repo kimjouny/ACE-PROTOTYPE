@@ -369,10 +369,10 @@
               <!-- modal시작 -->
               <!-- modal 0_0 -->
             
-              <div class="modal_pension_array_0_0" id="modal_pension_array_0_0" style="left:-100%">
+              <!-- <div class="modal_pension_array_0_0" id="modal_pension_array_0_0" style="left:-100%">
                 <div class="modal_pension_array_0_0_total">
                   <div class="modal_pension_array_0_0_start">
-                    <!-- <input type="range" class="slider" id="pension_array_0_0_slider" value="60" min="60" max="70" > -->
+                  
                     <div id="slider_0_0" class="slider_0_0"></div>
                   </div>
                   <div class="modal_pension_array_0_0_korean">
@@ -381,8 +381,23 @@
                   
                   <div class="modal_pension_array_0_0_close" id="modal_pension_array_0_0_close"><i class="fas fa-times"></i></div>
                 </div>                
+              </div> -->
+              <!-- modal시작 -->
+              <div class ="modal_pension_container" id="modal_pension_0_0" style="left:-100%" >
+                <div class="modal_pension_start">
+                  <div class="modal_pension_korean">수급개시년 : 2038년 (만55세)</div>
+                  <select class="modal_pension_boxlist">
+                    <option value="55">55</option>                                  
+                    <script>               
+                      for(i=56;i<=90;i++){
+                      document.write("<option>"+i+"</option>");
+                      }
+                    </script>  
+                  </select>
+                </div>
               </div>
-             
+
+
               <!-- modal 1_0 -->
               <div class="modal_pension_array_1_0" id="modal_pension_array_1_0" style="left:-100%">
                 <div class="modal_pension_array_1_0_total">

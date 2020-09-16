@@ -166,9 +166,9 @@
   justify-content: center;
 }
 
-.optimize_wrapper{
-  width:90%;
-  padding:3% 0;
+.optimize_wrapper {
+  width: 90%;
+  padding: 3% 0;
   background-color: #419fe8;
   border-radius: 3rem;
   display: flex;
@@ -738,4 +738,32 @@
   display: flex;
   width: 20%;
   justify-content: space-around;
+}
+
+/* 새로운 modal */
+.modal_pension_container {
+  position: fixed;
+  width: 80%;
+  height: 30%;
+  top: 50%;
+  background-color: darkcyan;
+  font-size: 3rem;
+  margin-left: 6%;
+}
+
+.modal_pension_start {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal_pension_korean {
+  font-size: 4rem;
+  margin-right: 3%;
+}
+.modal_pension_boxlist {
+  width: 10%;
+  height: 20%;
+  font-size: 3.5rem;
 }
