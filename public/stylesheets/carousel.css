@@ -24,10 +24,6 @@
   height: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
-  /* display:flex;
-    flex-direction: column;
-    align-items: center; */
-  /* flex-direction: column; */
 }
 
 .carousel_btn_wrapper {
@@ -172,8 +168,8 @@
 
 .optimize_wrapper{
   width:90%;
-  padding:2% 0;
-  background-color: #65c3ec;
+  padding:3% 0;
+  background-color: #419fe8;
   border-radius: 3rem;
   display: flex;
   justify-content: center;
@@ -183,7 +179,6 @@
 .optimize_icon{
   width:7%;
   padding-top: 7%;
-  
   background-image: url(../images/control_horizontal.png);
   background-size: 100%;
 }
