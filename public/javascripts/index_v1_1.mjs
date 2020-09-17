@@ -250,34 +250,25 @@ OPTIONS[0].addEventListener('click', (e) => {
   updateGraphByRange(e.target.value);
 })
 
-OPTIONS[1].addEventListener('click', (e) => {
-  if (e.target.tagName !== 'LI') return;
-  if (e.target.style.backgroundColor == "white") {
-    e.target.style.backgroundColor = e.target.dataset.bg;
-    e.target.style.color = "white";
-    if (!e.target.value) CHARTJS.data.datasets[e.target.value].pointRadius = 7;
-    CHARTJS.data.datasets[e.target.value].showLine = true;
+OPTIONS[1].addEventListener('click',(e)=>{
+  if(e.target.tagName!=='LI')return;
+  if(e.target.style.backgroundColor == "white"){
+    e.target.classList.add('option_undisplay')
+    e.target.style.backgroundColor=e.target.dataset.bg;
+    e.target.style.color="white";
+    if(!e.target.value)CHARTJS.data.datasets[e.target.value].pointRadius=7;
+    CHARTJS.data.datasets[e.target.value].showLine=true;
   }
-  else {
-    e.target.style.backgroundColor = "white";
-    e.target.style.color = "black";
-    if (!e.target.value) CHARTJS.data.datasets[e.target.value].pointRadius = 0;
-    CHARTJS.data.datasets[e.target.value].showLine = false;
+  else{
+    e.target.classList.remove('option_undisplay')
+    e.target.style.backgroundColor="white";
+    e.target.style.color="black";
+    if(!e.target.value)CHARTJS.data.datasets[e.target.value].pointRadius=0;
+    CHARTJS.data.datasets[e.target.value].showLine=false;
+
   }
   CHARTJS.update();
 })
-
-
-OPTIONS[1].addEventListener("click", (e) => {
-  if (e.target.tagName !== "LI") return;
-  if (e.target.style.backgroundColor == "white") {
-    e.target.style.backgroundColor = e.target.dataset.bg;
-    e.target.style.color = "white";
-  } else {
-    e.target.style.backgroundColor = "white";
-    e.target.style.color = "black";
-  }
-});
 
 /** HOSUNG MIGRATION */
 var national_pension_down_content = document.getElementById(
