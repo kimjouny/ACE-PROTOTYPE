@@ -1,11 +1,11 @@
 
 
-import {initCarousel} from './carousel.mjs'
-import {KB_SPENDINDEX,CUSTOMERS,PERSONA,OPTIMIZED_PERSONA} from './pensionData.mjs'
-import {COLORS} from './chartColor.mjs'
-import {counterAnimation} from './counterAnimation.mjs'
-import {reduceData,buildChart,buildPensionSet,buildpensionData,ageArr,changeAgeRange} from './pensionChart.mjs'
-import {DEEPCOPY} from './util.mjs'
+import { initCarousel } from './carousel.mjs'
+import { KB_SPENDINDEX, CUSTOMERS, PERSONA, OPTIMIZED_PERSONA } from './pensionData.mjs'
+import { COLORS } from './chartColor.mjs'
+import { counterAnimation } from './counterAnimation.mjs'
+import { reduceData, buildChart, buildPensionSet, buildpensionData, ageArr, changeAgeRange } from './pensionChart.mjs'
+import { DEEPCOPY } from './util.mjs'
 
 
 /* PIE INTEGRATION  */
@@ -53,13 +53,13 @@ Chart.defaults.global.defaultFontFamily = 'KB';
 
 const ctx = document.getElementById("myChart");
 let numDataPoints = 36;
-let originData=[
-  buildPensionSet(reduceData(PERSONA[0]),'#007acc','rgba(78,171,243,0.5)',7,true),
-  buildPensionSet(KB_SPENDINDEX,'#F6E04B','transparent',0,true)
+let originData = [
+  buildPensionSet(reduceData(PERSONA[0]), '#007acc', 'rgba(78,171,243,0.5)', 7, true),
+  buildPensionSet(KB_SPENDINDEX, '#F6E04B', 'transparent', 0, true)
 ];
 
 
-let pData=buildpensionData(ageArr(55,90),DEEPCOPY(originData));
+let pData = buildpensionData(ageArr(55, 90), DEEPCOPY(originData));
 
 
 
@@ -89,13 +89,12 @@ const buildPensionInfo = (age) => {
       if (!v.receipts[age - 55]) return acc;
       const CONCATTED = `
       <ul class="STpension_wrap">
-          <li class="STpension_label" style="background-color:${
-            COLORS[idx]
-          }"></li>
+          <li class="STpension_label" style="background-color:${COLORS[idx]
+        }"></li>
           <li class="STpension_type">${v.category}</li>
           <li class="STpension_amt">${Math.floor(
-            v.receipts[age - 55] / 120
-          )}만원</li>
+          v.receipts[age - 55] / 120
+        )}만원</li>
       </ul>
     `;
       return [acc[0] + CONCATTED, acc[1] + 1];
@@ -129,9 +128,8 @@ const handleStockTouchStart = (e) => {
   GRAPH_AREA.appendChild(STOCK_EL);
   GRAPH_AREA.appendChild(STOCK_AGE);
   STPOP_AGE.innerHTML = currentAge;
-  STPOP_INCOME.innerHTML = `${
-    Math.floor(temp_dataset[currentAge - 55] / 120) + getPensionIncome()
-  }만원`;
+  STPOP_INCOME.innerHTML = `${Math.floor(temp_dataset[currentAge - 55] / 120) + getPensionIncome()
+    }만원`;
   CHART_HEAD.style.visibility = "hidden";
   STOCK_POPUP.style.visibility = "visible";
   buildPensionInfo(currentAge);
@@ -159,9 +157,8 @@ const handleStockTouchMove = (e) => {
   STOCK_AGE.style.left = `${e.touches[0].clientX}px`;
   STOCK_AGE.innerHTML = `${currentAge}`;
   STPOP_AGE.innerHTML = currentAge;
-  STPOP_INCOME.innerHTML = `${
-    Math.floor(temp_dataset[currentAge - 55] / 120) + getPensionIncome()
-  }만원`;
+  STPOP_INCOME.innerHTML = `${Math.floor(temp_dataset[currentAge - 55] / 120) + getPensionIncome()
+    }만원`;
   buildPensionInfo(currentAge);
 };
 
@@ -180,46 +177,46 @@ const GRAPH_AREA = document.getElementsByClassName("chartJS_wrapper")[0];
 // GRAPH_AREA.addEventListener('touchend', handleStockTouchEnd);
 
 
-const updateGraphByRange=(val)=>{
-  const displayOption=OPTIONS[1].getElementsByClassName('option_content');
-  for(let i=0;i<displayOption.length;i++){
-    displayOption[i].style.backgroundColor=displayOption[i].dataset.bg;
-    displayOption[i].style.color="white";
+const updateGraphByRange = (val) => {
+  const displayOption = OPTIONS[1].getElementsByClassName('option_content');
+  for (let i = 0; i < displayOption.length; i++) {
+    displayOption[i].style.backgroundColor = displayOption[i].dataset.bg;
+    displayOption[i].style.color = "white";
   }
-  switch(val){
-    case 0:{
-      CHARTJS.options.scales.xAxes[0].ticks.maxTicksLimit=8;
-      changeAgeRange(CHARTJS,originData,55,90)
+  switch (val) {
+    case 0: {
+      CHARTJS.options.scales.xAxes[0].ticks.maxTicksLimit = 8;
+      changeAgeRange(CHARTJS, originData, 55, 90)
       break;
     }
-    case 1:{
-      CHARTJS.options.scales.xAxes[0].ticks.maxTicksLimit=6;
-      changeAgeRange(CHARTJS,originData,55,65);
+    case 1: {
+      CHARTJS.options.scales.xAxes[0].ticks.maxTicksLimit = 6;
+      changeAgeRange(CHARTJS, originData, 55, 65);
       break;
     }
-    case 2:{
-      CHARTJS.options.scales.xAxes[0].ticks.maxTicksLimit=6;
-      changeAgeRange(CHARTJS,originData,65,75);
+    case 2: {
+      CHARTJS.options.scales.xAxes[0].ticks.maxTicksLimit = 6;
+      changeAgeRange(CHARTJS, originData, 65, 75);
       break;
     }
-    case 3:{
-      CHARTJS.options.scales.xAxes[0].ticks.maxTicksLimit=6;
-      changeAgeRange(CHARTJS,originData,75,90);
+    case 3: {
+      CHARTJS.options.scales.xAxes[0].ticks.maxTicksLimit = 6;
+      changeAgeRange(CHARTJS, originData, 75, 90);
       break;
     }
-    default:{}
+    default: { }
   }
 }
 
-const optimizeHandler=()=>{
-  originData=[
-    buildPensionSet(reduceData(OPTIMIZED_PERSONA[0]),'#007acc','rgba(78,171,243,0.5)',10,true),
-    buildPensionSet(reduceData(PERSONA[0]),'rgb(200,200,200,0.3)','transparent',0,true),
-    buildPensionSet(KB_SPENDINDEX,'#F6E04B','transparent',0,true),
+const optimizeHandler = () => {
+  originData = [
+    buildPensionSet(reduceData(OPTIMIZED_PERSONA[0]), '#007acc', 'rgba(78,171,243,0.5)', 10, true),
+    buildPensionSet(reduceData(PERSONA[0]), 'rgb(200,200,200,0.3)', 'transparent', 0, true),
+    buildPensionSet(KB_SPENDINDEX, '#F6E04B', 'transparent', 0, true),
   ]
-  const currentRange=document.getElementsByClassName('option_focused')[0].value;
+  const currentRange = document.getElementsByClassName('option_focused')[0].value;
   updateGraphByRange(currentRange);
-  OPTIONS[1].innerHTML=`
+  OPTIONS[1].innerHTML = `
     <li class="option_content" data-bg="#007ACC" value="0" style="color:white;background-color: #007ACC;">(최적화)예상수령액</li>
     <li class="option_content" data-bg="silver" value="1" style="color:white;background-color: silver;">(기존)예상수령액</li>  
     <li class="option_content" data-bg="#F6E04B" value="2" style="color:white;background-color: #F6E04B;">KB소비지수</li>
@@ -244,10 +241,10 @@ for (let i = 0; i < OPTIONS.length; i++) {
 
 
 
-OPTIONS[0].addEventListener('click',(e)=>{
-  if(e.target.tagName!=='LI')return;
-  const prevFocused=document.getElementsByClassName('option_focused')[0];
-  if(e.target===prevFocused)return;
+OPTIONS[0].addEventListener('click', (e) => {
+  if (e.target.tagName !== 'LI') return;
+  const prevFocused = document.getElementsByClassName('option_focused')[0];
+  if (e.target === prevFocused) return;
   prevFocused.classList.remove('option_focused');
   e.target.classList.add('option_focused');
   updateGraphByRange(e.target.value);
@@ -268,6 +265,7 @@ OPTIONS[1].addEventListener('click',(e)=>{
     e.target.style.color="black";
     if(!e.target.value)CHARTJS.data.datasets[e.target.value].pointRadius=0;
     CHARTJS.data.datasets[e.target.value].showLine=false;
+
   }
   CHARTJS.update();
 })
@@ -1183,18 +1181,19 @@ function get_selected_age(arg) {
     }
     //퇴직연금 modal
     case 1: {
+      //0번째라서 밀린거구나. 1번째부터해야하고. 
       //수급시작년
       var slider_range_1_0 = document.getElementById("slider_range_1_0");
       slider_range_1_0.innerHTML =
         modal_pension_boxlist[1].options.selectedIndex + 55;
       var slider_range_1_0_1 = document.getElementById("slider_range_1_0_1");
       slider_range_1_0_1.innerHTML =
-        modal_pension_boxlist[1].options.selectedIndex + 55 - 17;
+        modal_pension_boxlist[1].options.selectedIndex + 55 - 22;
       var pension_1_0_range_start_text = document.getElementById(
         "pension_1_0_range_start_text"
       );
       pension_1_0_range_start_text.innerHTML =
-        modal_pension_boxlist[1].options.selectedIndex + 55 - 17;
+        modal_pension_boxlist[1].options.selectedIndex + 55 - 22;
 
       var pension_1_0_range_start_text2 = document.getElementById(
         "pension_1_0_range_start_text2"
@@ -1206,11 +1205,17 @@ function get_selected_age(arg) {
     //수급종료년
     case 2: {
       var slider_range_1_1 = document.getElementById("slider_range_1_1");
-      slider_range_1_1.innerHTML =
-        modal_pension_boxlist[2].options.selectedIndex + 55;
       var slider_range_1_1_1 = document.getElementById("slider_range_1_1_1");
-      slider_range_1_1_1.innerHTML =
-        modal_pension_boxlist[2].options.selectedIndex + 55 - 17;
+      if (modal_pension_boxlist[2].options.selectedIndex == 0) {
+        slider_range_1_1.innerHTML = 74;
+        slider_range_1_1_1.innerHTML = 52;
+      }
+      else {
+        slider_range_1_1.innerHTML =
+          modal_pension_boxlist[2].options.selectedIndex + 55 - 1;
+        slider_range_1_1_1.innerHTML =
+          modal_pension_boxlist[2].options.selectedIndex + 55 - 22 - 1;
+      }
       break;
     }
     //개인연금 modal
@@ -1221,12 +1226,12 @@ function get_selected_age(arg) {
         modal_pension_boxlist[3].options.selectedIndex + 58;
       var slider_range_2_0_1 = document.getElementById("slider_range_2_0_1");
       slider_range_2_0_1.innerHTML =
-        modal_pension_boxlist[3].options.selectedIndex + 58 - 21;
+        modal_pension_boxlist[3].options.selectedIndex + 58 - 22;
       var pension_2_0_range_start_text = document.getElementById(
         "pension_2_0_range_start_text"
       );
       pension_2_0_range_start_text.innerHTML =
-        modal_pension_boxlist[3].options.selectedIndex + 58 - 21;
+        modal_pension_boxlist[3].options.selectedIndex + 58 - 22;
 
       var pension_2_0_range_start_text2 = document.getElementById(
         "pension_2_0_range_start_text2"
@@ -1238,11 +1243,19 @@ function get_selected_age(arg) {
     //수급종료년
     case 4: {
       var slider_range_2_1 = document.getElementById("slider_range_2_1");
-      slider_range_2_1.innerHTML =
-        modal_pension_boxlist[4].options.selectedIndex + 58;
       var slider_range_2_1_1 = document.getElementById("slider_range_2_1_1");
-      slider_range_2_1_1.innerHTML =
-        modal_pension_boxlist[4].options.selectedIndex + 58 - 21;
+
+      if (modal_pension_boxlist[4].options.selectedIndex == 0) {
+        slider_range_2_1.innerHTML = 62;
+        slider_range_2_1_1.innerHTML = 40;
+      }
+      else {
+        slider_range_2_1.innerHTML =
+          modal_pension_boxlist[4].options.selectedIndex + 58 - 4;
+
+        slider_range_2_1_1.innerHTML =
+          modal_pension_boxlist[4].options.selectedIndex + 58 - 22 - 4;
+      }
       break;
     }
     //금융자산 modal
@@ -1270,11 +1283,19 @@ function get_selected_age(arg) {
     //수급종료년
     case 6: {
       var slider_range_3_1 = document.getElementById("slider_range_3_1");
-      slider_range_3_1.innerHTML =
-        modal_pension_boxlist[6].options.selectedIndex + 55;
       var slider_range_3_1_1 = document.getElementById("slider_range_3_1_1");
-      slider_range_3_1_1.innerHTML =
-        modal_pension_boxlist[6].options.selectedIndex + 55 - 22;
+
+      if (modal_pension_boxlist[6].options.selectedIndex == 0) {
+        slider_range_3_1.innerHTML = 90;
+        slider_range_3_1_1.innerHTML = 68;
+      }
+      else {
+        slider_range_3_1.innerHTML =
+          modal_pension_boxlist[6].options.selectedIndex + 55 - 1;
+
+        slider_range_3_1_1.innerHTML =
+          modal_pension_boxlist[6].options.selectedIndex + 55 - 22 - 1;
+      }
       break;
     }
   }
