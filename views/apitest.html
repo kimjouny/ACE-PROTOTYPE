@@ -1,70 +1,62 @@
 <html>
+
 <head>
+    <meta charset="utf-8" />
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script type="text/javascript" src="js/jquery.ajax-cross-origin.min.js"></script>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/hmac-sha256.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/enc-base64-min.js"></script>
+  
+    <!-- sha256 암호화 cdn-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9/crypto-js.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9/hmac-sha256.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9/enc-base64.min.js"></script>
 
     <script>
-
+        var apiKey = 'l7xxkIbPvyQa2yaaUhensvWLGa9oqN62Siy8';
+        
+     //   var secretKey = '1NXCCYbelOaAhNRCmXpjVp370mnIChRa';
+     //   var strJson=JSON.stringify({'dataHeader':{}, 'dataBody':{'deptCode': '3737'}});
+        var strJson=JSON.stringify({'dataHeader':{}, 'dataBody':{'ciNo': 'LA08ubL8CSqf8TkGBwHhKhaOXolVpzqi1lwXHIy1Km8YVCHBJcqFkzuqlXdP9kZ/WMt7oVfNQXGzrKVYYplYUw==', 'clientId':'l7xxkIbPvyQa2yaaUhensvWLGa9oqN62Siy8','loginType':'1'}});
+        var hsKey = generateHMAC(apiKey,strJson);
+       
         $(document).ready(function () {
-
             $("input[type=button]").click(function () {
-
-                // $.ajaxPrefilter('json', function (options, orig, jqXHR) {
-                //     return 'jsonp';
-                // });
                 $.ajax({
-                    url: "https://dev-openapi.kbstar.com:8443/cqs/issuingWaitingStatus/ver1",
-                   // crossOrigin: true,
+                   url: "https://dev-openapi.kbstar.com:8443/v1.0/OAuth/saml/openAPIAssertion",
+                  // url: "https://dev-openapi.kbstar.com:8443/v1.0/OAuth/saml/openAPIAssertion",
+                  //  url: "https://dev-openapi.kbstar.com:8443/v1.0/OAuth/saml/openAPIAssertion",
                     crossDomain: true,
                     type: "post",
                     dataType: "json",
-                    contentType: "application/json",
+                    contentType: "application/json; charset=utf-8",
                     headers: {
-                        "hsKey": GenerateHMAC('l7xxkIbPvyQa2yaaUhensvWLGa9oqN62Siy8'),
-                       // "hsKey": "LA08ubL8CSqf8TkGBwHhKhaOXolVpzqi1lwXHIy1Km8YVCHBJcqFkzuqlXdP9kZ/WMt7oVfNQXGzrKVYYplYUw==",
-                        "apiKey": "l7xxkIbPvyQa2yaaUhensvWLGa9oqN62Siy8"
+                        "apiKey": apiKey,
+                        "hsKey": hsKey,
                     },
-                    // beforeSend: function (xhr) {
-                    //     xhr.setRequestHeader("hsKey", "LA08ubL8CSqf8TkGBwHhKhaOXolVpzqi1lwXHIy1Km8YVCHBJcqFkzuqlXdP9kZ");
-                    //     xhr.setRequestHeader("apiKey", "l7xxkIbPvyQa2yaaUhensvWLGa9oqN62Siy8");
-                    // },
-                    data: {
 
-                        "dataBody": {
-                            "ciNo": "LA08ubL8CSqf8TkGBwHhKhaOXolVpzqi1lwXHIy1Km8YVCHBJcqFkzuqlXdP9kZ/WMt7oVfNQXGzrKVYYplYUw=="
-                        }
-                    },
+                    data : strJson,
                     success: function (data) {
-                        alert("성공 : " + JSON.stringify(data));
-
+                        alert("성공: " + JSON.stringify(data));
+                        // test=JSON.stringify(data).dataHeader;
+                        // sessionId=(data["dataHeader"]["gatewayUUID"]);
+                        // console.log(sessionId);
                     },
                     error: function (xhr) {
                         alert("실패" + JSON.stringify(xhr));
                     }
-
                 });
-                //return false; 
-
-            });
-
+            })
         });
 
-            function GenerateHMAC(payload) {
-                
-                var message = btoa(payload + "1NXCCYbelOaAhNRCmXpjVp370mnIChRa");
-                var hash = CryptoJS.HmacSHA256(message, 'sha256');
-                var hashInBase64 = CryptoJS.enc.Base64.stringify(hash);
-                return hashInBase64;
-            }
+        function generateHMAC(apiKey,strJson) {
+            var hashText = CryptoJS.HmacSHA256(strJson,apiKey);
+            var hashInBase64 = CryptoJS.enc.Base64.stringify(hashText);
+            return hashInBase64;
+        }
     </script>
 
 <body>
     <input type="button" value="확인" />
 
-    <div>merge를 쉽게 해봅니다</div>
+    <div></div>
 </body>
 
 </html>
