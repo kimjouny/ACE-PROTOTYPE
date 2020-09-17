@@ -746,9 +746,10 @@
   width: 90%;
   height: 40%;
   top: 50%;
-  background-color: darkcyan;
+  background-color: #419fe8;;
   font-size: 3rem;
   margin-left: 5%;
+  border-radius: 3rem;
 }
 
 /* 국민연금만 */
