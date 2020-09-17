@@ -1260,10 +1260,10 @@ function get_selected_age(arg) {
       }
       else {
         slider_range_2_1.innerHTML =
-          modal_pension_boxlist[4].options.selectedIndex + 58;
+          modal_pension_boxlist[4].options.selectedIndex + 58 - 4;
 
         slider_range_2_1_1.innerHTML =
-          modal_pension_boxlist[4].options.selectedIndex + 58 - 22;
+          modal_pension_boxlist[4].options.selectedIndex + 58 - 22 - 4;
       }
       break;
     }
