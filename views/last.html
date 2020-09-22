@@ -1,9 +1,12 @@
 <head>
     <link rel="apple-touch-icon" href="images/icon_114x114.png" />
     <link rel="shortcut icon" href="images/icon_72x72.png" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/chartJs.css">
     <link rel="stylesheet" type="text/css" href="stylesheets/common.css">
     <link rel="stylesheet" type="text/css" href="stylesheets/hs.css">
     <link rel="stylesheet" type="text/css" href="stylesheets/yj.css">
+    <script type="text/javascript" src="javascripts/Chart.bundle.min.js"></script>
+    <script type="module" src="javascripts/index_v1_2.mjs"></script>
     <script src="javascripts/yj.js"></script>
     <script src="javascripts/hs.js"></script>
 </head>
@@ -43,10 +46,51 @@
                 <div class="compare_ratio">▲1.85%</div>
             </div>
         </div>
-        <div class="present_container">
-            <div class="present_label">
+        <div class="present_container" style="padding: 5% 0;width:90%;align-items: flex-start;">
+            <div class="present_label" style="margin-left: 5%;">
                 <div class="present_txt">은퇴 후 연령에 따른 예상 수입·지출</div>
             </div>
+                <div class="stockdisplay_container">
+                  <div class="stockdisplay_agewrap">
+                    <span class="stockdisplay_agecontrol"></span>세 월수령액 :
+                    <span class="stockdisplay_month_income"></span>
+                  </div>
+                  <div class="STpension_container"></div>
+                </div>
+                <div class="chartJS_text">
+                  은퇴이후 55~65세에<br>
+                  은퇴 자금 부족이 심할 것으로<br>
+                  예상됩니다.
+                </div>
+                <div class="option_container">
+                  <div class="option_text">구간</div>
+                  <ul class="option_contents">
+                    <li class="option_content option_focused" value="0">전체</li>
+                    <li class="option_content" value="1">1기(55~65세)</li>
+                    <li class="option_content" value="2">2기(65~75세)</li>
+                    <li class="option_content" value="3">3기(75세~)</li>
+                  </ul>
+                </div>
+                <div class="option_container" style="margin-bottom: 3%;">
+                  <div class="option_text">그래프</div>
+                  <ul class="option_contents">
+                    <li class="option_content" data-bg="#007ACC" value="0" style="color:white;background-color: #007ACC;">
+                      예상수령액</li>
+                    <li class="option_content" data-bg="#F6E04B" value="1" style="color:white;background-color: #F6E04B;">
+                      KB소비지수</li>
+                  </ul>
+                </div>
+                <div class="canvas_container">
+                  <div class="canvas_wrapper">
+                    <canvas id="myChart" width="2" height="1"></canvas>
+                  </div>
+                </div>
+                <section class="optimize_container">
+                    <div class="optimize_wrapper">
+                      <div class="optimize_icon"></div>
+                      <div class="optimize_text">절세를 고려한 최적화 시뮬레이션</div>
+                    </div>
+                </section>
         </div>
     </section>
     <!-- FOOTER -->
