@@ -1,0 +1,42 @@
+.present_toggle{
+    width:100%;
+    border-radius: 2rem;
+    padding : 0% 0%;
+    background-color: white;
+    border: 1px solid silver;
+    font-size: 4rem;
+    margin:0%;
+    list-style: none;
+    display:flex;
+    overflow: hidden;
+}
+
+.present_toggle > li{
+    flex:1;
+    text-align: center;
+    border-right: 1px solid silver;
+    padding: 1% 0;
+}
+
+.present_toggle_act{
+    background-color: #c9c9c9;
+    color:white;
+}
+
+.present_compare{
+    margin-top: 2%;
+    width:90%;
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 5rem;
+    color:gray;
+    border:1px solid silver;
+    padding: 2% 5%;
+    border-radius: 2rem;
+}
+
+.compare_ratio{
+    color:red;
+    margin-left: 5%;
+}
