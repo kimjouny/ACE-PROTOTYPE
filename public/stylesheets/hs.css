@@ -16,7 +16,7 @@
 
 .hs_label_inside_first_money{
     font-size : 5rem; 
-    color : blue;
+    color : #2C8FFE;
 }
 
 .hs_label_inside_second{
@@ -36,7 +36,7 @@
 
 .hs_label_inside_third_table {
    width:100%;
-   font-size : 3rem;
+   font-size : 3.3rem;
    text-align :center;
    border : 0.2px solid black;
    align-items: center;
@@ -51,4 +51,21 @@
 /* th, td {
     border : 1px solid black;
 } */
+
+.hs_label_inside_thrid_table_title_css{
+    padding: 1.5%;
+}
+
+.hs_label_inside_thrid_table_title_css1,
+.hs_label_inside_thrid_table_title_css2{
+  padding-left :1.5%;
+  padding-right : 1.5%;
+
+}
+.hs_label_inside_thrid_table_title_css3 {
+    padding-left :1.5%;
+    padding-right : 1.5%;
+    padding-top : 2%;
+    padding-bottom: 2%;
+}
 
