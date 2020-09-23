@@ -454,7 +454,7 @@ window.onload = function () {
 
     //modal button-text값 연동
     //국민연금 modal
-    modal_pension_boxlist[0].addEventListener("click", function () {
+    modal_pension_boxlist[0].addEventListener("change", function () {
         get_selected_age(0);
     });
     //퇴직연금 modal
@@ -475,7 +475,7 @@ window.onload = function () {
     modal_pension_boxlist[5].addEventListener("click", function () {
         get_selected_age(5);
     });
-    modal_pension_boxlist[6].addEventListener("touch", function () {
+    modal_pension_boxlist[6].addEventListener("click", function () {
         get_selected_age(6);
     });
 
