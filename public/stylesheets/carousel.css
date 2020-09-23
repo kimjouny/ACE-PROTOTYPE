@@ -108,7 +108,7 @@
   font-size: 4rem;
   color: silver;
   font-weight: bold;
-  border-bottom: 2px solid #007acc;
+  /* border-bottom: 2px solid #007acc; */
 }
 
 .totaldetail_wrapper {
@@ -642,7 +642,7 @@
 
 /* 연금카드 재구성 */
 .hs_asset_list {
-  width: 103%;
+  width: 97%;
   height: 70%;
   margin: 2% -2% 0 0%;
 }
@@ -745,8 +745,10 @@
   width: 82%;
   height: 22%;
   top: 50%;
-  background-color: darkcyan;
-  margin-left: -1%;
+  background-color: #fa9f44;
+  margin-left: 9%;
+  z-index : 50;
+  border-radius: 1rem;
 }
 
 /* 국민연금만 */
