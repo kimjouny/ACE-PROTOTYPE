@@ -5,24 +5,26 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
   
     <!-- sha256 암호화 cdn-->
+      
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9/crypto-js.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9/hmac-sha256.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9/enc-base64.min.js"></script>
-
     <script>
         var apiKey = 'l7xxkIbPvyQa2yaaUhensvWLGa9oqN62Siy8';
-        
-     //   var secretKey = '1NXCCYbelOaAhNRCmXpjVp370mnIChRa';
-     //   var strJson=JSON.stringify({'dataHeader':{}, 'dataBody':{'deptCode': '3737'}});
-        var strJson=JSON.stringify({'dataHeader':{}, 'dataBody':{'ciNo': 'LA08ubL8CSqf8TkGBwHhKhaOXolVpzqi1lwXHIy1Km8YVCHBJcqFkzuqlXdP9kZ/WMt7oVfNQXGzrKVYYplYUw==', 'clientId':'l7xxkIbPvyQa2yaaUhensvWLGa9oqN62Siy8','loginType':'1'}});
-        var hsKey = generateHMAC(apiKey,strJson);
-       
+        var secretKey = '1NXCCYbelOaAhNRCmXpjVp370mnIChRa';
+    //  var strJson=JSON.stringify({'dataHeader':{}, 'dataBody':{'deptCode': '3737'}});
+        var strJson;
+        var hsKey;
+        var samlAssertion="";
+        var accessToken;
         $(document).ready(function () {
             $("input[type=button]").click(function () {
+                strJson=JSON.stringify({'dataHeader':{}, 'dataBody':{'ciNo': 'LA08ubL8CSqf8TkGBwHhKhaOXolVpzqi1lwXHIy1Km8YVCHBJcqFkzuqlXdP9kZ/WMt7oVfNQXGzrKVYYplYUw==', 'clientId':'l7xxkIbPvyQa2yaaUhensvWLGa9oqN62Siy8', 'loginType':'1'}});
+                hsKey = generateHMAC(apiKey,strJson);
                 $.ajax({
-                   url: "https://dev-openapi.kbstar.com:8443/v1.0/OAuth/saml/openAPIAssertion",
-                  // url: "https://dev-openapi.kbstar.com:8443/v1.0/OAuth/saml/openAPIAssertion",
-                  //  url: "https://dev-openapi.kbstar.com:8443/v1.0/OAuth/saml/openAPIAssertion",
+                  //  url: "https://dev-openapi.kbstar.com:8443/kec/pension/retirementPension/getAllPensionAsset/ver1",
+                  // url: "https://dev-openapi.kbstar.com:8443/cqs/issuingWaitingStatus/ver1",
+                    url: "https://dev-openapi.kbstar.com:8443/v1.0/OAuth/saml/openAPIAssertion",
                     crossDomain: true,
                     type: "post",
                     dataType: "json",
@@ -34,17 +36,70 @@
 
                     data : strJson,
                     success: function (data) {
-                        alert("성공: " + JSON.stringify(data));
+                        //alert("성공: " + JSON.stringify(data));
                         // test=JSON.stringify(data).dataHeader;
-                        // sessionId=(data["dataHeader"]["gatewayUUID"]);
+                        samlAssertion=(data["dataBody"]["samlAssertion"]);
+                        //alert(JSON.stringify(data));
+                        OAuth_AccessToken(samlAssertion);
                         // console.log(sessionId);
                     },
                     error: function (xhr) {
-                        alert("실패" + JSON.stringify(xhr));
+                        alert("실패123" + JSON.stringify(xhr));
                     }
                 });
             })
         });
+
+        function OAuth_AccessToken(samlAssertion) {
+            strJson=JSON.stringify({'dataHeader':{}, 'dataBody':{'samlAssertion': samlAssertion, 'grantType':'urn:ietf:params:oauth:grant-type:saml2-bearer', 'clientId':apiKey, 'clientSecret':secretKey }});
+            hsKey = generateHMAC(apiKey,strJson);
+            $.ajax({
+                    url: "https://dev-openapi.kbstar.com:8443/v1.0/OAuth/token/access",
+                    crossDomain: true,
+                    type: "post",
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    headers: {
+                        "apiKey": apiKey,
+                        "hsKey": hsKey
+                    },
+                    data : strJson,
+                    success: function (data) {
+                        accessToken=(data["dataBody"]["access_token"]);
+                        tokenType=(JSON.stringify(data));
+                        pention_investmentAllAsset(accessToken);
+                    },
+                    error: function (xhr) {
+                        alert("실패123" + JSON.stringify(xhr));
+                    }
+                });
+        }
+
+        function pention_investmentAllAsset(accessToken) {
+            strJson=JSON.stringify({'dataHeader':{}, 'dataBody':{'custCnifNo':'LA08ubL8CSqf8TkGBwHhKhaOXolVpzqi1lwXHIy1Km8YVCHBJcqFkzuqlXdP9kZ/WMt7oVfNQXGzrKVYYplYUw==' }});
+            hsKey = generateHMAC(accessToken,strJson);
+            $.ajax({
+                    url: "/kb_openAPI",
+                    crossDomain: true,
+                    type: "post",
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    headers: {
+                        "apiKey": apiKey,
+                        "hsKey": hsKey,
+                        "Authorization" : accessToken
+                    },
+                    data : strJson,
+                    success: function (data) {
+                        alert(JSON.stringify(data));
+                      //  accessToken=(data["dataBody"]["access_token"]);
+                        
+                    },
+                    error: function (xhr) {
+                        alert("실패3" + JSON.stringify(xhr));
+                    }
+                });
+        }
 
         function generateHMAC(apiKey,strJson) {
             var hashText = CryptoJS.HmacSHA256(strJson,apiKey);
@@ -54,8 +109,7 @@
     </script>
 
 <body>
-    <input type="button" value="확인" />
-
+    <input type="button" value="확인"/>
     <div></div>
 </body>
 

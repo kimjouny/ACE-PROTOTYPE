@@ -152,3 +152,56 @@ html,body{
     background-repeat: no-repeat;
     background-position: 50% 50%;
   }
+
+  .present_container{
+    position: relative;
+    margin-top: 10%;
+    width:80%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    padding : 5%;
+    border-radius: 1rem;
+    border: 1px solid #9c9c9c;
+    margin-left: 5%;
+  }
+
+  .present_label{
+    position: absolute;
+    top:0;
+    transform: translateY(-50%);
+    width:80%;
+    padding: 2% 5%;
+    background-color: silver;
+    font-size: 4rem;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    color:white;
+  }
+
+  .present_txt{
+    flex:1;
+  }
+
+  .present_btn{
+    width:8%;
+    padding-top: 8%;
+    background-image: url(../images/plus.svg);
+    background-size: 100%;
+  }
+
+  .present_analysis{
+    width:100%;
+    padding:5% 0;
+    display:flex;
+    justify-content: flex-end;
+    align-items: baseline;
+    font-size:  5rem;
+  }
+
+  .analysis_amount{
+    margin-left: 5%;
+    font-size: 6rem;
+    color:#2C8FFE;
+  }
