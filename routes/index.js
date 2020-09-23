@@ -20,6 +20,11 @@ router.get('/v1.2',(req,res,next)=>{
   res.render('last.html');
 })
 
+router.get('/asset', (req, res, next) => {
+  res.render('pensionAsset.html');
+})
+
+
 router.get('/apitest', (req,res,next)=>{
   res.render('apitest.html');
 })

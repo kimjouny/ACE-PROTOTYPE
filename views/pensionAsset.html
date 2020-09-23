@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="apple-touch-icon" href="images/icon_114x114.png" />
+    <link rel="shortcut icon" href="images/icon_72x72.png" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/carousel.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/common.css">
+    <script src="javascripts/hs.js"></script>
+    <!-- HOSUNG DEPENDENCY -->
+    <link rel="stylesheet" type="text/css" href="stylesheets/all.min.css">
+</head>
+
+<body>
+    <!-- HEADER -->
+
+    <section class="common_header_container">
+        <div class="common_header_wrapper">
+            <div class="header_head">
+                <div class="prev_btn" onclick="gotoV12()"></div>
+                <div class="head_text">시니어 신사업</div>
+            </div>
+            <script>
+                function gotoV12() {
+                    window.location.href = "/v1.2";
+                }
+            </script>
+            <div class="header_icons">
+                <div class="search_btn"></div>
+                <div class="total_btn"></div>
+            </div>
+        </div>
+    </section>
+    <!-- MAIN -->
+    <section class="page_container">
+        <div class="caro_header_container">
+            현재<br>
+            은퇴준비 자산
+        </div>
+        <div class="totalincome_container">
+            <div class="totalincome_month">
+                <span class="ti_text" id="hs_label_inside_first_money"></span>
+                <div class="pachinco_wrapper">
+                    <!--영준 빠칭코 주석-->
+                    <!-- <span class="pc_amount" duration="500000" data-count="5825243">5,825,243</span>원<span
+                  class="pc_arrow">&nbsp;▲</span> -->
+                    <span class="pc_amount" duration="500000">5,825,243</span>원<span class="pc_arrow">&nbsp;▲</span>
+                    <span style="color:red">1.</span><span class="pc_ratio" data-count="85">0</span><span
+                        style="color:red">%</span>
+                </div>
+                <div class="ti_textsub">현재 은퇴준비 자산총액</div>
+            </div>
+        </div>
+        <div id="pension_asset_lists">
+            <div class="hs_container">
+                <div class="hs_asset_list">
+                    <div class="hs_asset_list_card hs_asset_list_card_national_barcolor">
+                        <div class="hs_asset_list_card_name">
+                            국민연금
+                        </div>
+                        <div class="hs_asset_list_card_middle">
+                            <div class="hs_asset_list_card_middle_money" id="national_pension_calculate2">원
+                            </div>
+                            <div class="hs_asset_list_card_middle_money_name">납입금액</div>
+                        </div>
+                        <div class="hs_asset_list_card_right">
+                            <button type="button" id="national_pension_down_button"
+                                class="hs_asset_list_card_right_button">
+                                <i class="fas fa-chevron-down" id="national_pension_down"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- 국민연금 세부컨텐츠 up and down -->
+                    <div class="national_pension_down_content" id="national_pension_down_content" style="display:none">
+                        <div class="national_pension_down_content_up pension_location_below">
+                            <div class="national_pension_down_content_up_korean">
+                                <div>납부월수 : 148개월</div>
+                                <div>예상 총 납부월수 : 316개월</div>
+                                <div>수급개시년월 : 20<span id="pension_0_0_range_start_text">43</span>년 5월(만<span
+                                        id="pension_0_0_range_start_text2">60</span>세)</div>
+                            </div>
+                            <!-- 토글버튼 -->
+                            <div class="toggleandpension">
+                                <div class="nation_pension_toggle_location">
+                                    <div class="national_pension_down_toggle_whole"
+                                        id="national_pension_down_toggle_whole_id_1">
+                                        <button class='national_pension_down_toggle_circle'
+                                            id="national_pension_down_toggle_circle_id_1"></button>
+                                    </div>
+                                </div>
+                                <div class="pension_range_location">
+                                    <button type="button" id="national_pension_range" class="pension_range_button">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="national_pension_down_content_down">
+                            <div id="pension_array_0_0">납부총액 : </div>
+                            <div>예상 총 보험료 총액 : 144,902,280원</div>
+                        </div>
+                    </div>
+                    <!-- 퇴직연금 -->
+                    <div class="hs_asset_list_card hs_asset_list_card_retire_barcolor">
+                        <div class="hs_asset_list_card_name">
+                            퇴직연금
+                        </div>
+                        <div class="hs_asset_list_card_middle">
+                            <div class="hs_asset_list_card_middle_money" id="national_pension_calculate1"></div>
+
+                            <div class="hs_asset_list_card_middle_money_name">평가금액</div>
+                        </div>
+                        <div class="hs_asset_list_card_right">
+                            <button type="button" id="retire_pension_down_button"
+                                class="hs_asset_list_card_right_button">
+                                <i class="fas fa-chevron-down" id="retire_pension_down"></i>
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <!--퇴직연금 컨텐츠-->
+                    <div class="retire_pension_down_content" id="retire_pension_down_content" style="display:none">
+                        <!--퇴직연금 1번째 컨텐츠-->
+                        <div class="retire_pension_down_content_up_1">
+                            <div class="retire_pension_down_content_up pension_location_below">
+                                <div class="retire_pension_down_content_up_korean">
+                                    <div>가입회사 : 국민은행</div>
+                                    <div>상품명 : AB미국그로스(주식-재간접)</div>
+                                    <div>가입일 : 2015년 03월 05일</div>
+                                    <div>수급개시년월 : 20<span id="pension_1_0_range_start_text">38</span>년 4월(만<span
+                                            id="pension_1_0_range_start_text2">55</span>세)</div>
+                                </div>
+                                <!-- 토글버튼 -->
+
+                                <div class="toggleandpension">
+                                    <div class="nation_pension_toggle_location">
+                                        <div class="national_pension_down_toggle_whole"
+                                            id="national_pension_down_toggle_whole_id_2">
+                                            <button class='national_pension_down_toggle_circle'
+                                                id="national_pension_down_toggle_circle_id_2"></button>
+                                        </div>
+                                    </div>
+                                    <!-- range버튼 -->
+                                    <div class="pension_range_location">
+                                        <button type="button" id="retire_pension_range_1_0"
+                                            class="pension_range_button">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="retire_pension_down_content_down">
+                                <div id="pension_array_1_0">평가금액 : </div>
+                                <div>수익률 : 87.16%</div>
+                                <div>납입금액 : 34,651,000원</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- 개인연금 컨텐츠 -->
+                    <div class="hs_asset_list_card hs_asset_list_card_personal_barcolor">
+                        <div class="hs_asset_list_card_name">
+                            개인연금
+                        </div>
+                        <div class="hs_asset_list_card_middle">
+                            <div class="hs_asset_list_card_middle_money" id=personal_pension_calculate>원</div>
+                            <div class="hs_asset_list_card_middle_money_name">평가금액</div>
+                        </div>
+                        <div class="hs_asset_list_card_right">
+                            <button type="button" id="personal_pension_down_button"
+                                class="hs_asset_list_card_right_button">
+                                <i class="fas fa-chevron-down" id="personal_pension_down"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!--개인연금 1번째 컨텐츠-->
+                    <div class="personal_pension_down_contentqq" id="personal_pension_down_content"
+                        style="display:none">
+                        <div class="personal_pension_down_content_up_1qq">
+                            <div class="personal_pension_down_content_up pension_location_below">
+                                <div class="personal_pension_down_content_up_korean">
+                                    <div>가입회사 : 국민은행</div>
+                                    <div>상품명 : KB실버웰빙 연금신탁(채권형)</div>
+                                    <div>가입일 : 2011년 02월 21일</div>
+                                    <div>수급개시년월 : 20<span id="pension_2_0_range_start_text">37</span>년 2월(만<span
+                                            id="pension_2_0_range_start_text2">58</span>세)</div>
+                                </div>
+                                <!-- 토글버튼 -->
+                                <div class="toggleandpension">
+                                    <div class="nation_pension_toggle_location">
+                                        <div class="national_pension_down_toggle_whole"
+                                            id="national_pension_down_toggle_whole_id_4">
+                                            <button class='national_pension_down_toggle_circle'
+                                                id="national_pension_down_toggle_circle_id_4"></button>
+                                        </div>
+                                    </div>
+                                    <div class="pension_range_location">
+                                        <button type="button" id="retire_pension_range_2_0"
+                                            class="pension_range_button">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="personal_pension_down_content_down11">
+                                <div id="pension_array_2_0">평가금액 : </div>
+                                <div>수익률 : 15.51%</div>
+                                <div>납입금액 : 24,680,000원</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hs_asset_list_card hs_asset_list_card_financial_barcolor">
+                        <div class="hs_asset_list_card_name">
+                            금융자산
+                        </div>
+                        <div class="hs_asset_list_card_middle">
+                            <div class="hs_asset_list_card_middle_money" id="hs_asset_list_financial_pension_money_1">원
+                            </div>
+                            <div class="hs_asset_list_card_middle_money_name">평가금액</div>
+                        </div>
+                        <div class="hs_asset_list_card_right">
+                            <button type="button" id="financial_pension_down_button"
+                                class="hs_asset_list_card_right_button">
+                                <i class="fas fa-chevron-down" id="financial_pension_down"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!--금융자산 컨텐츠-->
+                    <div class="financial_pension_down_content" id="financial_pension_down_content"
+                        style="display:none">
+                        <!--금융자산 1번째 컨텐츠-->
+                        <div class="financial_pension_down_content_up_1">
+                            <div class="financial_pension_down_content_up pension_location_below">
+                                <div class="financial_pension_down_content_up_korean">
+                                    <div>가입회사 : 국민은행</div>
+                                    <div>상품명 : 마이다스 미소 중소형주 투자신탁</div>
+                                    <div>가입일 : 2020년 09월 10일</div>
+                                    <div>수급개시년월 : 20<span id="pension_3_0_range_start_text">33</span>년 1월(만<span
+                                            id="pension_3_0_range_start_text2">54</span>세)</div>
+                                </div>
+                                <!-- 토글버튼 -->
+                                <div class="toggleandpension">
+                                    <div class="nation_pension_toggle_location">
+                                        <div class="national_pension_down_toggle_whole"
+                                            id="national_pension_down_toggle_whole_id_5">
+                                            <button class='national_pension_down_toggle_circle'
+                                                id="national_pension_down_toggle_circle_id_5"></button>
+                                        </div>
+                                    </div>
+                                    <!-- range버튼 -->
+                                    <div class="pension_range_location">
+                                        <button type="button" id="retire_pension_range_3_0"
+                                            class="pension_range_button">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="financial_pension_down_content_down">
+                                <div id="pension_array_3_0">평가금액 : </div>
+                                <div>수익률 : 3.00%</div>
+                                <div>납입금액 : 194,174,757원</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hs_asset_list_card hs_asset_list_card_etc_barcolor">
+                        <div class="hs_asset_list_card_name">
+                            기타자산
+                        </div>
+                        <div class="hs_asset_list_card_middle">
+                            <div class="hs_asset_list_card_middle_money">0원</div>
+                            <div class="hs_asset_list_card_middle_money_name">평가금액</div>
+                        </div>
+                        <div class="hs_asset_list_card_right">
+                            <button type="button" id="etc_pension_down_button" class="hs_asset_list_card_right_button">
+                                <i class="fas fa-plus" id="etc_pension_down"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--새로운 modal시작 -->
+            <!--modal 0_0-->
+            <div class="modal_pension_container" id="modal_pension_0_0">
+                <div class="modal_pension_start_national">
+                    <div class="modal_pension_korean">수급개시년 : 20<span id="slider_range_0_0_1">43</span>년 (만
+                        <span id="slider_range_0_0">60</span>세)</div>
+                    <select class="modal_pension_boxlist" style="height: 10%">
+                        <option value="60">60</option>
+                        <script>
+                            for (i = 61; i <= 90; i++) {
+                                document.write("<option>" + i + "</option>");
+                            }
+                        </script>
+                    </select>
+                    <div class="modal_pension_array_0_0_close" id="modal_pension_array_0_0_close"><i
+                            class="fas fa-times"></i></div>
+                </div>
+            </div>
+
+            <!--퇴직연금 modal 1_0-->
+            <div class="modal_pension_container" id="modal_pension_1_0">
+                <div class="modal_pension_start">
+                    <div class="modal_pension_korean">수급개시년 : 20<span id="slider_range_1_0_1">33</span>년 (만
+                        <span id="slider_range_1_0">55</span>세)</div>
+                    <select class="modal_pension_boxlist">
+                        <option value="55">55</option>
+                        <script>
+                            for (i = 56; i <= 90; i++) {
+                                document.write("<option>" + i + "</option>");
+                            }
+                        </script>
+                    </select>
+                    <div class="modal_pension_array_0_0_close" id="modal_pension_array_0_0_close"><i
+                            class="fas fa-times"></i></div>
+                </div>
+                <div class="modal_pension_start_2">
+                    <div class="modal_pension_korean">수급종료년 : 20<span id="slider_range_1_1_1">52</span>년 (만
+                        <span id="slider_range_1_1">74</span>세)</div>
+                    <select class="modal_pension_boxlist">
+                        <option value="74">74</option>
+                        <script>
+                            for (i = 55; i <= 90; i++) {
+                                document.write("<option>" + i + "</option>");
+                            }
+                        </script>
+                    </select>
+                    <div class="modal_pension_array_0_0_close" id="modal_pension_array_0_0_close"><i
+                            class="fas fa-times"></i></div>
+                </div>
+            </div>
+
+            <!--modal 2_0-->
+            <div class="modal_pension_container" id="modal_pension_2_0">
+                <div class="modal_pension_start">
+                    <div class="modal_pension_korean">수급개시년 : 20<span id="slider_range_2_0_1">36</span>년 (만
+                        <span id="slider_range_2_0">58</span>세)</div>
+                    <select class="modal_pension_boxlist">
+                        <option value="58">58</option>
+                        <script>
+                            for (i = 59; i <= 90; i++) {
+                                document.write("<option>" + i + "</option>");
+                            }
+                        </script>
+                    </select>
+                    <div class="modal_pension_array_0_0_close" id="modal_pension_array_0_0_close"><i
+                            class="fas fa-times"></i></div>
+                </div>
+                <div class="modal_pension_start_2">
+                    <div class="modal_pension_korean">수급종료년 : 20<span id="slider_range_2_1_1">40</span>년 (만
+                        <span id="slider_range_2_1">62</span>세)</div>
+                    <select class="modal_pension_boxlist">
+                        <option value="62">62</option>
+                        <script>
+                            for (i = 55; i <= 90; i++) {
+                                document.write("<option>" + i + "</option>");
+                            }
+                        </script>
+                    </select>
+                    <div class="modal_pension_array_0_0_close" id="modal_pension_array_0_0_close"><i
+                            class="fas fa-times"></i></div>
+                </div>
+            </div>
+
+            <!--modal 3_0-->
+            <div class="modal_pension_container" id="modal_pension_3_0">
+                <div class="modal_pension_start">
+                    <div class="modal_pension_korean">수급개시년 : 20<span id="slider_range_3_0_1">33</span>년 (만
+                        <span id="slider_range_3_0">55</span>세)</div>
+                    <select class="modal_pension_boxlist">
+                        <option value="55">55</option>
+                        <script>
+                            for (i = 56; i <= 90; i++) {
+                                document.write("<option>" + i + "</option>");
+                            }
+                        </script>
+                    </select>
+                    <div class="modal_pension_array_0_0_close" id="modal_pension_array_0_0_close"><i
+                            class="fas fa-times"></i></div>
+                </div>
+                <div class="modal_pension_start_2">
+                    <div class="modal_pension_korean">수급종료년 : 20<span id="slider_range_3_1_1">68</span>년 (만
+                        <span id="slider_range_3_1">90</span>세)</div>
+                    <select class="modal_pension_boxlist">
+                        <option value="90">90</option>
+                        <script>
+                            for (i = 55; i <= 90; i++) {
+                                document.write("<option>" + i + "</option>");
+                            }
+                        </script>
+                    </select>
+                    <div class="modal_pension_array_0_0_close" id="modal_pension_array_0_0_close"><i
+                            class="fas fa-times"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- FOOTER  -->
+    <section class="common_footer_container">
+        <ul class="common_footer_wrapper">
+            <li class="home_btn"></li>
+            <li class="allaccount_btn"></li>
+            <li class="quicktransfer_btn"></li>
+            <li class="financemall_btn"></li>
+            <li class="callcenter_btn"></li>
+        </ul>
+    </section>
+</body>
+
+</html>
