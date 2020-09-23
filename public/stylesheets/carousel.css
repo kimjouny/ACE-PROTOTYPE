@@ -190,8 +190,6 @@
 }
 
 /* HOSUNG INTEGRATION */
-
-/* HOSUNG INTEGRATION */
 .hs_container {
   width: 105%;
   height: 40%;
@@ -644,7 +642,7 @@
 
 /* 연금카드 재구성 */
 .hs_asset_list {
-  width: 98%;
+  width: 103%;
   height: 70%;
   margin: 2% -2% 0 0%;
 }
@@ -728,6 +726,7 @@
 .pension_range_button {
   background-color: white;
   border: none;
+  width : 130%;
 }
 
 .pension_location_below {
@@ -743,13 +742,11 @@
 /* 새로운 modal */
 .modal_pension_container {
   position: fixed;
-  width: 90%;
-  height: 40%;
+  width: 82%;
+  height: 22%;
   top: 50%;
-  background-color: #419fe8;;
-  font-size: 3rem;
-  margin-left: 5%;
-  border-radius: 3rem;
+  background-color: darkcyan;
+  margin-left: -1%;
 }
 
 /* 국민연금만 */
@@ -776,7 +773,7 @@
 }
 
 .modal_pension_korean {
-  font-size: 5rem;
+  font-size: 4.7rem;
   margin-right: 3%;
 }
 .modal_pension_boxlist {
