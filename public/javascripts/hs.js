@@ -458,24 +458,24 @@ window.onload = function () {
         get_selected_age(0);
     });
     //퇴직연금 modal
-    modal_pension_boxlist[1].addEventListener("click", function () {
+    modal_pension_boxlist[1].addEventListener("change", function () {
         get_selected_age(1);
     });
-    modal_pension_boxlist[2].addEventListener("click", function () {
+    modal_pension_boxlist[2].addEventListener("change", function () {
         get_selected_age(2);
     });
     //개인연금 modal
-    modal_pension_boxlist[3].addEventListener("click", function () {
+    modal_pension_boxlist[3].addEventListener("change", function () {
         get_selected_age(3);
     });
-    modal_pension_boxlist[4].addEventListener("click", function () {
+    modal_pension_boxlist[4].addEventListener("change", function () {
         get_selected_age(4);
     });
     //금융자산 modal
-    modal_pension_boxlist[5].addEventListener("click", function () {
+    modal_pension_boxlist[5].addEventListener("change", function () {
         get_selected_age(5);
     });
-    modal_pension_boxlist[6].addEventListener("click", function () {
+    modal_pension_boxlist[6].addEventListener("change", function () {
         get_selected_age(6);
     });
 
