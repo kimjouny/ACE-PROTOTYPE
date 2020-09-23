@@ -1,22 +1,23 @@
 .present_toggle{
-    width:100%;
+    /* width:100%; */
     border-radius: 2rem;
-    padding : 0% 0%;
-    background-color: white;
+    padding : 0% 2%;
     border: 1px solid silver;
     font-size: 4rem;
     margin:0%;
     list-style: none;
     display:flex;
     overflow: hidden;
+    background-color: #c9c9c9;
+    color:white;
 }
 
-.present_toggle > li{
+/* .present_toggle > li{
     flex:1;
     text-align: center;
     border-right: 1px solid silver;
     padding: 1% 0;
-}
+} */
 
 .present_toggle_act{
     background-color: #c9c9c9;
