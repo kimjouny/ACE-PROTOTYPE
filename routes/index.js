@@ -61,4 +61,8 @@ router.post('/kb_openAPI', (req,res,next)=>{
 
 })
 
+router.get('/invision',(req,res,next)=>{
+  res.render('invision.html');
+})
+
 module.exports = router;
