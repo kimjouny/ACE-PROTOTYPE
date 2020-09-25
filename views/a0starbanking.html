@@ -14,19 +14,45 @@
 
 <body style="margin: 0; background: rgba(255, 255, 255, 1)">
   <input type="hidden" id="anPageName" name="page" value="a0starbanking" />
-  <div class="anima-container-center-horizontal">
+  <div class="anima-container-center-horizontal" id="hs_main_whole">
     <div class="a0starbanking anima-screen" anima-show-on-scroll>
       <div class="rectangle-C61RwL" anima-show-on-scroll></div>
       <div class="group-2-C61RwL" anima-show-on-scroll>
         <div class="rectangle-zUixHA" anima-show-on-scroll></div>
         <div class="uc774ub3d9uc7ac-zUixHA" anima-show-on-scroll>이동국</div>
       </div>
-      <img onClick="location.href='a1.html'" class="oval-C61RwL" anima-show-on-scroll
-        src="img/0starbanking-oval-E34B6AE7-5D51-41A2-8D36-EAA663BADDDF@2x.png" />
-      <div onClick="location.href='a1.html'" class="duc11cube44uc2a4-C61RwL font-class-1" anima-show-on-scroll>D서비스
+      <div id="hs_main_click" class="hs_main_click">
+        <!-- <div onClick="location.href='a1.html'" id="hs_main_click"> -->
+
+        <img class="oval-C61RwL hs_main_click2" id="hs_main_click" anima-show-on-scroll
+          src="img/0starbanking-oval-E34B6AE7-5D51-41A2-8D36-EAA663BADDDF@2x.png" />
+        <div id=" hs_main_click" class="duc11cube44uc2a4-C61RwL font-class-1" anima-show-on-scroll>D서비스
+        </div>
+
+        <script>
+          var hs_main_click = document.getElementById("hs_main_click");
+          var hs_main_whole = document.getElementById("hs_main_whole");
+          var hs_main_click2 = document.getElementsByClassName("oval-C61RwL");
+          hs_main_whole.addEventListener("click", checks);
+          hs_main_click.addEventListener("click", ho);
+
+          function checks(e) {
+            if (e.target.id !== "hs_main_click") {
+              hs_main_click2[0].style.backgroundColor = "lightblue";
+              setTimeout(function () {
+                hs_main_click2[0].style.backgroundColor = "";
+              }, 400)
+            }
+          }
+
+          hs_main_click.addEventListener("click", ho)
+          function ho(e) {
+            location.href = 'a1.html';
+          }
+        </script>
+        <div id="hs_main_click" class="uc740ud1f4-uc804ub7b5-C61RwL font-class-1" anima-show-on-scroll>
+          은퇴인출전략</div>
       </div>
-      <div onClick="location.href='a1.html'" class="uc740ud1f4-uc804ub7b5-C61RwL font-class-1" anima-show-on-scroll>
-        은퇴인출전략</div>
     </div>
 
   </div>
