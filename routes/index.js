@@ -65,8 +65,13 @@ router.get('/invision', (req, res, next) => {
   res.render('invision.html');
 })
 
+// hs route 
 router.get('/anima', (req, res, next) => {
   res.render('a0starbanking.html');
+})
+
+router.get('/animaservice', (req, res, next) => {
+  res.render('a1.html');
 })
 
 module.exports = router;
