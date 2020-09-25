@@ -1,0 +1,158 @@
+/* screen - a0starbanking */
+
+.a0starbanking {
+  background-color:var(--white);
+  background-image:url(../img/0starbanking-img0596-C03A5E3B-D364-4205-9D14-6E01050281A4.png);
+  background-size:100% 100%;
+  height:812px;
+  overflow:hidden;
+  position:relative;
+  width:375px;
+}
+.a0starbanking .duc11cube44uc2a4-C61RwL {
+  background-color:rgba(255,255,255,0);
+  color:var(--mine-shaft);
+  font-size:16.0px;
+  height:auto;
+  left:253px;
+  line-height:18.0px;
+  position:absolute;
+  text-align:left;
+  top:275px;
+  white-space:nowrap;
+  width:54px;
+}
+.a0starbanking .group-2-C61RwL {
+  background-color:rgba(255,255,255,0);
+  height:50px;
+  left:19px;
+  position:absolute;
+  top:150px;
+  width:86px;
+}
+.a0starbanking .oval-C61RwL {
+  background-color:rgba(255,255,255,0);
+  height:75px;
+  left:242px;
+  position:absolute;
+  top:237px;
+  width:75px;
+}
+.a0starbanking .rectangle-C61RwL {
+  background-color:var(--white);
+  height:45px;
+  left:0px;
+  position:absolute;
+  top:0px;
+  width:375px;
+}
+.a0starbanking .rectangle-zUixHA {
+  background-color:var(--white);
+  height:50px;
+  left:0px;
+  position:absolute;
+  top:0px;
+  width:80px;
+}
+.a0starbanking .uc740ud1f4-uc804ub7b5-C61RwL {
+  background-color:rgba(255,255,255,0);
+  color:var(--mine-shaft);
+  font-size:10.0px;
+  height:auto;
+  left:253px;
+  line-height:18.0px;
+  position:absolute;
+  text-align:left;
+  top:258px;
+  white-space:nowrap;
+  width:54px;
+}
+.a0starbanking .uc774ub3d9uc7ac-zUixHA {
+  background-color:rgba(255,255,255,0);
+  color:rgba(34,34,35,1.0);
+  font-family:"AppleSDGothicNeoB00", Helvetica, Arial, serif;
+  font-size:24.0px;
+  height:auto;
+  left:10px;
+  letter-spacing:-0.16px;
+  line-height:34.0px;
+  position:absolute;
+  text-align:center;
+  top:9px;
+  white-space:nowrap;
+  width:76px;
+}
+.border-class-1 {
+  border-color:var(--amber);
+  border-style:solid;
+  border-width:1px;
+}
+.border-class-2 {
+  border-color:var(--mine-shaft-2);
+  border-style:solid;
+  border-width:1px;
+}
+.font-class-1 {
+  font-family:"KBFGDisplay-Medium", Helvetica, Arial, serif;
+}
+.font-class-10 {
+  color:rgba(34,34,35,1.0);
+  font-family:"AppleSDGothicNeo-Bold", Helvetica, Arial, serif;
+  font-size:16.0px;
+  letter-spacing:-0.11px;
+  line-height:19.0px;
+}
+.font-class-2 {
+  font-family:"Helvetica-Condensed", Helvetica, Arial, serif;
+  font-size:20.0px;
+  letter-spacing:-0.40px;
+  line-height:18.0px;
+}
+.font-class-3 {
+  font-family:"AppleSDGothicNeo-Medium", Helvetica, Arial, serif;
+}
+.font-class-4 {
+  font-family:"Helvetica-Condensed", Helvetica, Arial, serif;
+}
+.font-class-5 {
+  font-family:"AppleSDGothicNeo-Regular", Helvetica, Arial, serif;
+}
+.font-class-6 {
+  color:var(--green);
+  font-family:"Helvetica-Condensed-Bold", Helvetica, Arial, serif;
+  font-size:14.0px;
+  letter-spacing:-0.09px;
+  line-height:18.0px;
+}
+.font-class-7 {
+  color:var(--log-cabin);
+  font-family:"AppleSDGothicNeoB00", Helvetica, Arial, serif;
+  font-size:16.0px;
+  letter-spacing:-0.11px;
+  line-height:22.0px;
+}
+.font-class-8 {
+  font-family:"Helvetica-Condensed-Bold", Helvetica, Arial, serif;
+  font-size:36.0px;
+  letter-spacing:-0.72px;
+  line-height:18.0px;
+}
+.font-class-9 {
+  color:var(--mine-shaft);
+  font-family:"KBFGDisplay-Medium", Helvetica, Arial, serif;
+  font-size:16.0px;
+  letter-spacing:-0.32px;
+  line-height:18.0px;
+}
+:root {
+  --amber:rgba(255,189,0,1.0);
+  --concrete:rgba(242,242,242,1.0);
+  --fuscous-gray:rgba(96,88,76,1.0);
+  --green:rgba(0,200,5,1.0);
+  --log-cabin:rgba(33,34,35,1.0);
+  --mine-shaft:rgba(50,51,50,1.0);
+  --mine-shaft-2:rgba(51,51,51,1.0);
+  --sonic-silver:rgba(119,119,119,1.0);
+  --supernova:rgba(255,204,2,0.30000001192092896);
+  --white:rgba(255,255,255,1.0);
+}
