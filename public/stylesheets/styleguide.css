@@ -1,47 +1,47 @@
 
 @font-face {
                             font-family: "KBFGDisplay-Bold";
-                            src: url('../fonts_designer/KBFGDisplayB.otf') format("opentype");
+                            src: url('fonts_designer/KBFGDisplayB.otf') format("opentype");
                         }
 
 @font-face {
                             font-family: "SFProDisplay-Regular";
-                            src: url('../fonts_designer/SF-Pro-Display-Regular.otf') format("opentype");
+                            src: url('fonts_designer/SF-Pro-Display-Regular.otf') format("opentype");
                         }
 
 @font-face {
                             font-family: "SFProDisplay-Thin";
-                            src: url('../fonts_designer/SF-Pro-Display-Thin.otf') format("opentype");
+                            src: url('fonts_designer/SF-Pro-Display-Thin.otf') format("opentype");
                         }
 
 @font-face {
                             font-family: "SFProText-Regular";
-                            src: url('../fonts_designer/SF-Pro-Text-Regular.otf') format("opentype");
+                            src: url('fonts_designer/SF-Pro-Text-Regular.otf') format("opentype");
                         }
 
 @font-face {
                             font-family: "Helvetica-Condensed-Bold";
-                            src: url('../fonts_designer/Helvetica-Condensed-Bold.otf') format("opentype");
+                            src: url('fonts_designer/Helvetica-Condensed-Bold.otf') format("opentype");
                         }
 
 @font-face {
                             font-family: "Helvetica-Condensed";
-                            src: url('../fonts_designer/Helvetica-Condensed.otf') format("opentype");
+                            src: url('fonts_designer/Helvetica-Condensed.otf') format("opentype");
                         }
 
 @font-face {
                             font-family: "AppleSDGothicNeoEB00";
-                            src: url('../fonts_designer/AppleSDGothicNeoEB.ttf') format("truetype");
+                            src: url('fonts_designer/AppleSDGothicNeoEB.ttf') format("truetype");
                         }
 
 @font-face {
                             font-family: "KBFGDisplay-Medium";
-                            src: url('../fonts_designer/KBFGDisplayM.otf') format("opentype");
+                            src: url('fonts_designer/KBFGDisplayM.otf') format("opentype");
                         }
 
 @font-face {
                             font-family: "AppleSDGothicNeoB00";
-                            src: url('../fonts_designer/AppleSDGothicNeoB.ttf') format("truetype");
+                            src: url('fonts_designer/AppleSDGothicNeoB.ttf') format("truetype");
                         }
 .anima-component-wrapper a,
 .anima-screen a {
